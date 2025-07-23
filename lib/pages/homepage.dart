@@ -143,6 +143,7 @@ class _HomePageState extends State<HomePage> {
                               padding: const EdgeInsets.all(10),
                               child: SvgPicture.asset(
                                 item.iconPath,
+                                color: Colors.white,
                               ),
                             ),
                           ),

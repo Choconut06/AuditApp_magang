@@ -1,6 +1,8 @@
 import 'package:audit_app_magang/pages/login.dart';
+import 'package:audit_app_magang/pages/homepage.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class MainMenuModel {
   String name;
@@ -19,64 +21,64 @@ class MainMenuModel {
 
     mainMenu.add(
       MainMenuModel(
-        name: 'Menu1',
-        iconPath: 'assets/icons/pictures.svg',
+        name: 'Menu 1',
+        iconPath: 'assets/icons/pictrures.svg',
         boxColor: Colors.blue.shade400
       )
     );
 
     mainMenu.add(
       MainMenuModel(
-        name: 'Menu2',
-        iconPath: 'assets/icons/pictures.svg',
+        name: 'Menu 2',
+        iconPath: 'assets/icons/pictrures.svg',
         boxColor: Colors.blue.shade400
       )
     );
 
     mainMenu.add(
       MainMenuModel(
-        name: 'Menu3',
-        iconPath: 'assets/icons/pictures.svg',
+        name: 'Menu 3',
+        iconPath: 'assets/icons/pictrures.svg',
         boxColor: Colors.blue.shade400
       )
     );
 
     mainMenu.add(
       MainMenuModel(
-        name: 'Menu4',
-        iconPath: 'assets/icons/pictures.svg',
+        name: 'Menu 4',
+        iconPath: 'assets/icons/pictrures.svg',
         boxColor: Colors.blue.shade400
       )
     );
 
     mainMenu.add(
       MainMenuModel(
-        name: 'Menu5',
-        iconPath: 'assets/icons/pictures.svg',
+        name: 'Menu 5',
+        iconPath: 'assets/icons/pictrures.svg',
         boxColor: Colors.blue.shade400
       )
     );
 
     mainMenu.add(
       MainMenuModel(
-        name: 'Menu6',
-        iconPath: 'assets/icons/pictures.svg',
+        name: 'Menu 6',
+        iconPath: 'assets/icons/pictrures.svg',
         boxColor: Colors.blue.shade400
       )
     );
 
     mainMenu.add(
       MainMenuModel(
-        name: 'Menu7',
-        iconPath: 'assets/icons/pictures.svg',
+        name: 'Menu 7',
+        iconPath: 'assets/icons/pictrures.svg',
         boxColor: Colors.blue.shade400
       )
     );
 
     mainMenu.add(
       MainMenuModel(
-        name: 'Menu8',
-        iconPath: 'assets/icons/pictures.svg',
+        name: 'Menu 8',
+        iconPath: 'assets/icons/pictrures.svg',
         boxColor: Colors.blue.shade400
       )
     );
