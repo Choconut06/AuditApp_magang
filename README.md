@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-# AuditApp_magang
-=======
 # audit_app_magang
 
 A new Flutter project.
