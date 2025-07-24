@@ -64,7 +64,7 @@ class LoginPage extends StatelessWidget {
                           filled: true,
                           fillColor: Colors.white,
                           hintText: 'Enter email...',
-                          labelText: 'Email',
+                          // labelText: 'Email',
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
                             borderSide: BorderSide.none,
@@ -86,7 +86,7 @@ class LoginPage extends StatelessWidget {
                           filled: true,
                           fillColor: Colors.white,
                           hintText: 'Enter password...',
-                          labelText: 'Password',
+                          // labelText: 'Password',
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
                             borderSide: BorderSide.none,

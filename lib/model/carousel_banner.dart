@@ -13,9 +13,9 @@ class _CarouselBannerState extends State<CarouselBanner> {
   int currentIndex = 0;
 
   final List<String> imgList = [
-    'assets/icons/pictrures.svg',
-    'assets/icons/pictrures.svg',
-    'assets/icons/pictrures.svg',
+    'assets/icons/pictures.svg',
+    'assets/icons/pictures.svg',
+    'assets/icons/pictures.svg',
   ];
 
   @override

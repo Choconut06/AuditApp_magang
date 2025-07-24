@@ -31,20 +31,6 @@ class _HomePageState extends State<HomePage> {
       key: _scaffoldKey,
       appBar: appBar(),
       drawer: _buildDrawer(),
-<<<<<<< HEAD
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          mainMenuBar(),
-          Expanded(
-            child: Container(
-              width: double.infinity,
-              child: const Column(
-                children: [
-                  SizedBox(height: 24),
-                  CarouselBanner(),
-                ],
-=======
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(0),
@@ -54,60 +40,65 @@ class _HomePageState extends State<HomePage> {
               const SizedBox(height: 24),
               const CarouselBanner(),
               const SizedBox(height: 20),
-              Container(
-                width: 384,
-                height: 486,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  border: Border.all(color: Colors.grey.shade400),
-                  borderRadius: BorderRadius.circular(12),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.1),
-                      blurRadius: 4,
-                      spreadRadius: 2,
-                      offset: const Offset(0, 3),
-                    ),
-                  ],
-                ),
-                padding: const EdgeInsets.symmetric(vertical: 16),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: List.generate(6, (index) {
-                    return Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 8),
-                      child: InkWell(
-                        onTap: () {},
-                        borderRadius: BorderRadius.circular(10),
-                        child: Container(
-                          width: 350,
-                          height: 58,
-                          decoration: BoxDecoration(
-                            color: Colors.blue.shade400,
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          alignment: Alignment.centerLeft,
-                          padding: const EdgeInsets.symmetric(horizontal: 16),
-                          child: Text(
-                            'Menu ${index + 1}',
-                            style: const TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w500,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                      ),
-                    );
-                  }),
-                ),
->>>>>>> 92c4cf54bc0d4ba6780e315db71ff05b8271e460
-              ),
+              contentBox(),
+              const SizedBox(height: 16)
             ],
           ),
         ),
       ),
     );
+  }
+
+
+  Container contentBox() {
+    return Container(
+              width: 384,
+              height: 486,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                border: Border.all(color: Colors.grey.shade400),
+                borderRadius: BorderRadius.circular(12),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.1),
+                    blurRadius: 4,
+                    spreadRadius: 2,
+                    offset: const Offset(0, 3),
+                  ),
+                ],
+              ),
+              padding: const EdgeInsets.symmetric(vertical: 16),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: List.generate(6, (index) {
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 8),
+                    child: InkWell(
+                      onTap: () {},
+                      borderRadius: BorderRadius.circular(10),
+                      child: Container(
+                        width: 350,
+                        height: 58,
+                        decoration: BoxDecoration(
+                          color: Colors.blue.shade400,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        alignment: Alignment.centerLeft,
+                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                        child: Text(
+                          'Content ${index + 1}',
+                          style: const TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ),
+                  );
+                }),
+              ),
+            );
   }
 
   // Drawer (Sidebar)

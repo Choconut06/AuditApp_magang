@@ -18,7 +18,7 @@ class MainMenuModel {
     mainMenu.add(
       MainMenuModel(
         name: 'Menu 1',
-        iconPath: 'assets/icons/pictrures.svg',
+        iconPath: 'assets/icons/pictures.svg',
         boxColor: Colors.blue.shade400
       )
     );
@@ -26,7 +26,7 @@ class MainMenuModel {
     mainMenu.add(
       MainMenuModel(
         name: 'Menu 2',
-        iconPath: 'assets/icons/pictrures.svg',
+        iconPath: 'assets/icons/pictures.svg',
         boxColor: Colors.blue.shade400
       )
     );
@@ -34,7 +34,7 @@ class MainMenuModel {
     mainMenu.add(
       MainMenuModel(
         name: 'Menu 3',
-        iconPath: 'assets/icons/pictrures.svg',
+        iconPath: 'assets/icons/pictures.svg',
         boxColor: Colors.blue.shade400
       )
     );
@@ -42,7 +42,7 @@ class MainMenuModel {
     mainMenu.add(
       MainMenuModel(
         name: 'Menu 4',
-        iconPath: 'assets/icons/pictrures.svg',
+        iconPath: 'assets/icons/pictures.svg',
         boxColor: Colors.blue.shade400
       )
     );
@@ -50,7 +50,7 @@ class MainMenuModel {
     mainMenu.add(
       MainMenuModel(
         name: 'Menu 5',
-        iconPath: 'assets/icons/pictrures.svg',
+        iconPath: 'assets/icons/pictures.svg',
         boxColor: Colors.blue.shade400
       )
     );
@@ -58,7 +58,7 @@ class MainMenuModel {
     mainMenu.add(
       MainMenuModel(
         name: 'Menu 6',
-        iconPath: 'assets/icons/pictrures.svg',
+        iconPath: 'assets/icons/pictures.svg',
         boxColor: Colors.blue.shade400
       )
     );
@@ -66,7 +66,7 @@ class MainMenuModel {
     mainMenu.add(
       MainMenuModel(
         name: 'Menu 7',
-        iconPath: 'assets/icons/pictrures.svg',
+        iconPath: 'assets/icons/pictures.svg',
         boxColor: Colors.blue.shade400
       )
     );
@@ -74,7 +74,7 @@ class MainMenuModel {
     mainMenu.add(
       MainMenuModel(
         name: 'Menu 8',
-        iconPath: 'assets/icons/pictrures.svg',
+        iconPath: 'assets/icons/pictures.svg',
         boxColor: Colors.blue.shade400
       )
     );
