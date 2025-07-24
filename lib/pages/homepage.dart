@@ -37,7 +37,6 @@ class _HomePageState extends State<HomePage> {
           Expanded(
             child: Container(
               width: double.infinity,
-              padding: const EdgeInsets.all(16),
               child: const Column(
                 children: [
                   SizedBox(height: 24),
