@@ -12,74 +12,239 @@ class MainMenuModel {
   });
 
   //list sementara hardcode next nya akan dibuat menggunakan database
-  static List<MainMenuModel> getMainMenu(){
+  static List<MainMenuModel> getMainMenu() {
     List<MainMenuModel> mainMenu = [];
 
     mainMenu.add(
       MainMenuModel(
-        name: 'Menu 1',
+        name: 'Penilaian Risiko',
         iconPath: 'assets/icons/pictures.svg',
-        boxColor: Colors.blue.shade400
-      )
+        boxColor: Colors.blue.shade400,
+      ),
     );
 
     mainMenu.add(
       MainMenuModel(
-        name: 'Menu 2',
+        name: 'PKAT',
         iconPath: 'assets/icons/pictures.svg',
-        boxColor: Colors.blue.shade400
-      )
+        boxColor: Colors.blue.shade400,
+      ),
     );
 
     mainMenu.add(
       MainMenuModel(
-        name: 'Menu 3',
+        name: 'Rencana Biaya',
         iconPath: 'assets/icons/pictures.svg',
-        boxColor: Colors.blue.shade400
-      )
+        boxColor: Colors.blue.shade400,
+      ),
     );
 
     mainMenu.add(
       MainMenuModel(
-        name: 'Menu 4',
+        name: 'Dokumen PKAT',
         iconPath: 'assets/icons/pictures.svg',
-        boxColor: Colors.blue.shade400
-      )
+        boxColor: Colors.blue.shade400,
+      ),
     );
 
     mainMenu.add(
       MainMenuModel(
-        name: 'Menu 5',
+        name: 'Surat Pemberitahuan',
         iconPath: 'assets/icons/pictures.svg',
-        boxColor: Colors.blue.shade400
-      )
+        boxColor: Colors.blue.shade400,
+      ),
     );
 
     mainMenu.add(
       MainMenuModel(
-        name: 'Menu 6',
+        name: 'Program Audit',
         iconPath: 'assets/icons/pictures.svg',
-        boxColor: Colors.blue.shade400
-      )
+        boxColor: Colors.blue.shade400,
+      ),
     );
 
     mainMenu.add(
       MainMenuModel(
-        name: 'Menu 7',
+        name: 'Biaya Penugasan',
         iconPath: 'assets/icons/pictures.svg',
-        boxColor: Colors.blue.shade400
-      )
+        boxColor: Colors.blue.shade400,
+      ),
     );
 
     mainMenu.add(
       MainMenuModel(
-        name: 'Menu 8',
+        name: 'Undangan Opening',
         iconPath: 'assets/icons/pictures.svg',
-        boxColor: Colors.blue.shade400
-      )
+        boxColor: Colors.blue.shade400,
+      ),
     );
 
+    mainMenu.add(
+      MainMenuModel(
+        name: 'Opening Meeting',
+        iconPath: 'assets/icons/pictures.svg',
+        boxColor: Colors.blue.shade400,
+      ),
+    );
+
+    mainMenu.add(
+      MainMenuModel(
+        name: 'Opening Meeting',
+        iconPath: 'assets/icons/pictures.svg',
+        boxColor: Colors.blue.shade400,
+      ),
+    );
+
+    mainMenu.add(
+      MainMenuModel(
+        name: 'Opening Meeting',
+        iconPath: 'assets/icons/pictures.svg',
+        boxColor: Colors.blue.shade400,
+      ),
+    );
+
+    mainMenu.add(
+      MainMenuModel(
+        name: 'Opening Meeting',
+        iconPath: 'assets/icons/pictures.svg',
+        boxColor: Colors.blue.shade400,
+      ),
+    );
+
+    mainMenu.add(
+      MainMenuModel(
+        name: 'Opening Meeting',
+        iconPath: 'assets/icons/pictures.svg',
+        boxColor: Colors.blue.shade400,
+      ),
+    );
+    mainMenu.add(
+      MainMenuModel(
+        name: 'Penilaian Risiko',
+        iconPath: 'assets/icons/pictures.svg',
+        boxColor: Colors.blue.shade400,
+      ),
+    );
+
+    mainMenu.add(
+      MainMenuModel(
+        name: 'PKAT',
+        iconPath: 'assets/icons/pictures.svg',
+        boxColor: Colors.blue.shade400,
+      ),
+    );
+
+    mainMenu.add(
+      MainMenuModel(
+        name: 'Rencana Biaya',
+        iconPath: 'assets/icons/pictures.svg',
+        boxColor: Colors.blue.shade400,
+      ),
+    );
+
+    mainMenu.add(
+      MainMenuModel(
+        name: 'Dokumen PKAT',
+        iconPath: 'assets/icons/pictures.svg',
+        boxColor: Colors.blue.shade400,
+      ),
+    );
+
+    mainMenu.add(
+      MainMenuModel(
+        name: 'Surat Pemberitahuan',
+        iconPath: 'assets/icons/pictures.svg',
+        boxColor: Colors.blue.shade400,
+      ),
+    );
+
+    mainMenu.add(
+      MainMenuModel(
+        name: 'Program Audit',
+        iconPath: 'assets/icons/pictures.svg',
+        boxColor: Colors.blue.shade400,
+      ),
+    );
+
+    mainMenu.add(
+      MainMenuModel(
+        name: 'Biaya Penugasan',
+        iconPath: 'assets/icons/pictures.svg',
+        boxColor: Colors.blue.shade400,
+      ),
+    );
+
+    mainMenu.add(
+      MainMenuModel(
+        name: 'Undangan Opening',
+        iconPath: 'assets/icons/pictures.svg',
+        boxColor: Colors.blue.shade400,
+      ),
+    );
+
+    mainMenu.add(
+      MainMenuModel(
+        name: 'Opening Meeting',
+        iconPath: 'assets/icons/pictures.svg',
+        boxColor: Colors.blue.shade400,
+      ),
+    );
+
+    mainMenu.add(
+      MainMenuModel(
+        name: 'Opening Meeting',
+        iconPath: 'assets/icons/pictures.svg',
+        boxColor: Colors.blue.shade400,
+      ),
+    );
+
+    mainMenu.add(
+      MainMenuModel(
+        name: 'Opening Meeting',
+        iconPath: 'assets/icons/pictures.svg',
+        boxColor: Colors.blue.shade400,
+      ),
+    );
+
+    mainMenu.add(
+      MainMenuModel(
+        name: 'Opening Meeting',
+        iconPath: 'assets/icons/pictures.svg',
+        boxColor: Colors.blue.shade400,
+      ),
+    );
+
+    mainMenu.add(
+      MainMenuModel(
+        name: 'Opening Meeting',
+        iconPath: 'assets/icons/pictures.svg',
+        boxColor: Colors.blue.shade400,
+      ),
+    );
+
+    mainMenu.add(
+      MainMenuModel(
+        name: 'Surat Pemberitahuan',
+        iconPath: 'assets/icons/pictures.svg',
+        boxColor: Colors.blue.shade400,
+      ),
+    );
+
+    mainMenu.add(
+      MainMenuModel(
+        name: 'Program Audit',
+        iconPath: 'assets/icons/pictures.svg',
+        boxColor: Colors.blue.shade400,
+      ),
+    );
+
+    mainMenu.add(
+      MainMenuModel(
+        name: 'Biaya Penugasan',
+        iconPath: 'assets/icons/pictures.svg',
+        boxColor: Colors.blue.shade400,
+      ),
+    );
     return mainMenu;
   }
 }
-

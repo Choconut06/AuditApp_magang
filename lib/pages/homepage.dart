@@ -1,4 +1,4 @@
-import 'package:audit_app_magang/model/carousel_banner.dart';
+import 'package:audit_app_magang/model/carousel_banner.dart'; // bisa dihapus jika tak digunakan lagi
 import 'package:audit_app_magang/model/mainmenu.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -33,27 +33,11 @@ class _HomePageState extends State<HomePage> {
       drawer: _buildDrawer(),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(0),
-          child: Column(
-            children: [
-              mainMenuBar(),
-              const SizedBox(height: 24),
-              const CarouselBanner(),
-              const SizedBox(height: 20),
-              contentBox(),
-              const SizedBox(height: 16)
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-
-  Container contentBox() {
-    return Container(
-              width: 384,
-              height: 486,
+          padding: const EdgeInsets.all(16),
+          child: Center(
+            child: Container(
+              width: 360,
+              padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
                 color: Colors.white,
                 border: Border.all(color: Colors.grey.shade400),
@@ -67,38 +51,52 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ],
               ),
-              padding: const EdgeInsets.symmetric(vertical: 16),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: List.generate(6, (index) {
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 8),
-                    child: InkWell(
-                      onTap: () {},
-                      borderRadius: BorderRadius.circular(10),
-                      child: Container(
-                        width: 350,
-                        height: 58,
-                        decoration: BoxDecoration(
-                          color: Colors.blue.shade400,
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        alignment: Alignment.centerLeft,
-                        padding: const EdgeInsets.symmetric(horizontal: 16),
-                        child: Text(
-                          'Content ${index + 1}',
-                          style: const TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500,
-                            color: Colors.white,
+              child: Wrap(
+                spacing: 12,
+                runSpacing: 12,
+                alignment: WrapAlignment.center,
+                children: List.generate(mainMenu.length, (index) {
+                  final item = mainMenu[index];
+                  return GestureDetector(
+                    onTap: () {
+                      print('Pindah ke halaman ${item.name}');
+                    },
+                    child: SizedBox(
+                      width: 70,
+                      child: Column(
+                        children: [
+                          Container(
+                            height: 50,
+                            width: 50,
+                            decoration: BoxDecoration(
+                              color: item.boxColor,
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(10),
+                              child: SvgPicture.asset(
+                                item.iconPath,
+                                color: Colors.white,
+                              ),
+                            ),
                           ),
-                        ),
+                          const SizedBox(height: 8),
+                          Text(
+                            item.name,
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(fontSize: 12),
+                          ),
+                        ],
                       ),
                     ),
                   );
                 }),
               ),
-            );
+            ),
+          ),
+        ),
+      ),
+    );
   }
 
   // Drawer (Sidebar)
@@ -141,81 +139,6 @@ class _HomePageState extends State<HomePage> {
                 MaterialPageRoute(builder: (context) => const LoginPage()),
               );
             },
-          ),
-        ],
-      ),
-    );
-  }
-
-  SizedBox mainMenuBar() {
-    return SizedBox(
-      height: 230,
-      width: double.infinity,
-      child: Stack(
-        alignment: Alignment.topCenter,
-        children: [
-          Container(
-            height: 127,
-            decoration: BoxDecoration(
-              color: Colors.blue[400],
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withOpacity(0.2),
-                  spreadRadius: 2,
-                  blurRadius: 5,
-                  offset: const Offset(0, 3),
-                ),
-              ],
-            ),
-          ),
-          Positioned(
-            top: 10,
-            child: Container(
-              height: 219,
-              width: 384,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                border: Border.all(color: Colors.grey.shade400),
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.all(10),
-                child: GridView.count(
-                  crossAxisCount: 4,
-                  physics: const NeverScrollableScrollPhysics(),
-                  children: List.generate(mainMenu.length, (index) {
-                    final item = mainMenu[index];
-                    return GestureDetector(
-                      onTap: () {
-                        print('Pindah ke halaman ${item.name}');
-                      },
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Container(
-                            height: 50,
-                            width: 50,
-                            decoration: BoxDecoration(
-                              color: item.boxColor,
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(10),
-                              child: SvgPicture.asset(
-                                item.iconPath,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
-                          const SizedBox(height: 8),
-                          Text(item.name),
-                        ],
-                      ),
-                    );
-                  }),
-                ),
-              ),
-            ),
           ),
         ],
       ),
