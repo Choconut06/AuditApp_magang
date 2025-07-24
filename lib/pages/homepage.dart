@@ -1,3 +1,4 @@
+import 'package:audit_app_magang/model/carousel_banner.dart';
 import 'package:audit_app_magang/model/mainmenu.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -30,13 +31,19 @@ class _HomePageState extends State<HomePage> {
       appBar: appBar(),
       drawer: _buildDrawer(),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           mainMenuBar(),
           Expanded(
             child: Container(
               width: double.infinity,
-              color: Colors.grey[100],
-              child: const Center(child: Text("On Progress")),
+              padding: const EdgeInsets.all(16),
+              child: const Column(
+                children: [
+                  SizedBox(height: 24),
+                  CarouselBanner(),
+                ],
+              ),
             ),
           )
         ],
@@ -89,7 +96,7 @@ class _HomePageState extends State<HomePage> {
 
   SizedBox mainMenuBar() {
     return SizedBox(
-      height: 300,
+      height: 230,
       width: double.infinity,
       child: Stack(
         alignment: Alignment.topCenter,
