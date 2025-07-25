@@ -3,6 +3,7 @@ import 'package:audit_app_magang/model/mainmenu.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'login.dart';
+import 'risk_assessment.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -59,8 +60,22 @@ class _HomePageState extends State<HomePage> {
                   final item = mainMenu[index];
                   return GestureDetector(
                     onTap: () {
-                      print('Pindah ke halaman ${item.name}');
+                      if (item.name == 'Penilaian Risiko') {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const RiskAssessmentPage(),
+                          ),
+                        );
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text('Menu ${item.name} belum tersedia'),
+                          ),
+                        );
+                      }
                     },
+
                     child: SizedBox(
                       width: 70,
                       child: Column(
