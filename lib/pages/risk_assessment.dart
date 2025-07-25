@@ -1,7 +1,14 @@
+import 'package:audit_app_magang/pages/AddRiskPage.dart';
+import 'package:audit_app_magang/pages/biaya_penugasanpage.dart';
+import 'package:audit_app_magang/pages/dokumen_pkatpage.dart';
+import 'package:audit_app_magang/pages/homepage.dart';
+import 'package:audit_app_magang/pages/pkatpage.dart';
+import 'package:audit_app_magang/pages/program__auditpage.dart';
+import 'package:audit_app_magang/pages/rencana_biayapage.dart';
+import 'package:audit_app_magang/pages/surat_pemberitahuanpage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'login.dart';
-import 'AddRiskPage.dart';
 
 class RiskAssessmentPage extends StatefulWidget {
   const RiskAssessmentPage({super.key});
@@ -38,7 +45,7 @@ class _RiskAssessmentPageState extends State<RiskAssessmentPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      appBar: _buildAppBar(),
+      appBar: appBar(),
       drawer: _buildDrawer(),
       body: Column(
         children: [
@@ -130,55 +137,63 @@ class _RiskAssessmentPageState extends State<RiskAssessmentPage> {
     );
   }
 
-  AppBar _buildAppBar() {
-    return AppBar(
-      automaticallyImplyLeading: false,
-      backgroundColor: Colors.blue[400],
-      toolbarHeight: 120,
-      flexibleSpace: SafeArea(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      _scaffoldKey.currentState?.openDrawer();
-                    },
-                    child: Container(
+  PreferredSizeWidget appBar() {
+    return PreferredSize(
+      preferredSize: const Size.fromHeight(120),
+      child: AppBar(
+        automaticallyImplyLeading: false,
+        backgroundColor: Colors.blue[400],
+        flexibleSpace: SafeArea(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 10,
+                  vertical: 10,
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    // Menu Button
+                    GestureDetector(
+                      onTap: () {
+                        _scaffoldKey.currentState?.openDrawer();
+                      },
+                      child: Container(
+                        padding: const EdgeInsets.all(8),
+                        decoration: BoxDecoration(
+                          color: Colors.blue[400],
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: SvgPicture.asset(
+                          'assets/icons/three-lines.svg',
+                          color: Colors.white,
+                          height: 40,
+                          width: 40,
+                        ),
+                      ),
+                    ),
+
+                    // Profile icon
+                    Container(
                       padding: const EdgeInsets.all(8),
                       decoration: BoxDecoration(
                         color: Colors.blue[400],
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: SvgPicture.asset(
-                        'assets/icons/three-lines.svg',
+                        'assets/icons/profile.svg',
                         color: Colors.white,
                         height: 40,
                         width: 40,
                       ),
                     ),
-                  ),
-                  Container(
-                    padding: const EdgeInsets.all(8),
-                    decoration: BoxDecoration(
-                      color: Colors.blue[400],
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: SvgPicture.asset(
-                      'assets/icons/profile.svg',
-                      color: Colors.white,
-                      height: 40,
-                      width: 40,
-                    ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
@@ -199,16 +214,94 @@ class _RiskAssessmentPageState extends State<RiskAssessmentPage> {
             ),
           ),
           ListTile(
-            leading: const Icon(Icons.dashboard),
+            leading: const Icon(Icons.abc),
             title: const Text('Home'),
             onTap: () {
-              Navigator.pop(context);
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => HomePage()),
+              );
             },
           ),
           ListTile(
-            leading: const Icon(Icons.list),
-            title: const Text('Risiko Audit'),
-            onTap: () {},
+            leading: const Icon(Icons.abc),
+            title: const Text('Penilaian Resiko'),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => RiskAssessmentPage()),
+              );
+            },
+          ),
+          ExpansionTile(
+            leading: const Icon(Icons.abc),
+            title: const Text("Program Kerja"),
+            children: [
+              ListTile(
+                title: const Text('PKAT'),
+                onTap: () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => PkatPage()),
+                  );
+                },
+              ),
+              ListTile(
+                title: const Text('Rencana Biaya'),
+                onTap: () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => RencanaBiayaPage()),
+                  );
+                },
+              ),
+              ListTile(
+                title: const Text('Dokumen PKAT'),
+                onTap: () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => DokumenPkatPage()),
+                  );
+                },
+              ),
+            ],
+          ),
+          ExpansionTile(
+            leading: const Icon(Icons.abc),
+            title: const Text("Persiapan Audit"),
+            children: [
+              ListTile(
+                title: const Text('Surat Pemberitahuan'),
+                onTap: () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => SuratPemberitahuanPage(),
+                    ),
+                  );
+                },
+              ),
+              ListTile(
+                title: const Text('Program Audit'),
+                onTap: () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => ProgramAuditPage()),
+                  );
+                },
+              ),
+              ListTile(
+                title: const Text('Biaya Penugasan'),
+                onTap: () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => BiayaPenugasanPage(),
+                    ),
+                  );
+                },
+              ),
+            ],
           ),
           const Spacer(),
           ListTile(
