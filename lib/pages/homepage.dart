@@ -1,5 +1,4 @@
 import 'package:audit_app_magang/model/mainmenu.dart';
-import 'package:audit_app_magang/pages/Penilaian_resikopage.dart';
 import 'package:audit_app_magang/pages/biaya_penugasanpage.dart';
 import 'package:audit_app_magang/pages/dokumen_pkatpage.dart';
 import 'package:audit_app_magang/pages/pkatpage.dart';
@@ -122,6 +121,16 @@ class _HomePageState extends State<HomePage> {
                 style: TextStyle(color: Colors.white, fontSize: 24),
               ),
             ),
+          ),
+          ListTile(
+            leading: const Icon(Icons.abc),
+            title: const Text('Home'),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => HomePage()),
+              );
+            },
           ),
           ListTile(
             leading: const Icon(Icons.abc),
