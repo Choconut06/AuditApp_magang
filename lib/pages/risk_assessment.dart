@@ -206,27 +206,29 @@ class _RiskAssessmentPageState extends State<RiskAssessmentPage> {
             ),
           ),
           ListTile(
-            leading: const Icon(Icons.abc),
+            leading: const Icon(Icons.home),
             title: const Text('Home'),
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => HomePage()),
+                MaterialPageRoute(builder: (context) => const HomePage()),
               );
             },
           ),
           ListTile(
-            leading: const Icon(Icons.abc),
+            leading: const Icon(Icons.shield),
             title: const Text('Penilaian Resiko'),
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => RiskAssessmentPage()),
+                MaterialPageRoute(
+                  builder: (context) => const RiskAssessmentPage(),
+                ),
               );
             },
           ),
           ExpansionTile(
-            leading: const Icon(Icons.abc),
+            leading: const Icon(Icons.folder),
             title: const Text("Program Kerja"),
             children: [
               ListTile(
@@ -259,7 +261,7 @@ class _RiskAssessmentPageState extends State<RiskAssessmentPage> {
             ],
           ),
           ExpansionTile(
-            leading: const Icon(Icons.abc),
+            leading: const Icon(Icons.receipt_long),
             title: const Text("Persiapan Audit"),
             children: [
               ListTile(

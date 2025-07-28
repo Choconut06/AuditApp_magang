@@ -1,10 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:audit_app_magang/pages/risk_assessment.dart';
-import 'package:audit_app_magang/pages/pkatpage.dart';
-import 'package:audit_app_magang/pages/dokumen_pkatpage.dart';
-import 'package:audit_app_magang/pages/surat_pemberitahuanpage.dart';
-import 'package:audit_app_magang/pages/program__auditpage.dart';
-import 'package:audit_app_magang/pages/biaya_penugasanpage.dart';
 
 class MainMenuModel {
   String name;
