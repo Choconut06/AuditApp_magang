@@ -25,7 +25,922 @@ class _BiayaPenugasanPageState extends State<BiayaPenugasanPage> {
       key: _scaffoldKey,
       appBar: appBar(),
       drawer: _buildDrawer(),
-      body: Column(),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Filter(),
+            SizedBox(height: 4),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+              child: Container(
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: const Color.fromARGB(255, 255, 255, 255),
+                  borderRadius: BorderRadius.circular(8),
+                  border: Border.all(
+                    color: Colors.blueGrey.shade400.withOpacity(0.3),
+                  ),
+                  // boxShadow: [
+                  //   BoxShadow(
+                  //     color: Colors.grey.shade500,
+                  //     offset: Offset(4.0, 4.0),
+                  //     blurRadius: 15.0,
+                  //     spreadRadius: 1
+                  //   ),
+                  //   BoxShadow(
+                  //     color: const Color.fromARGB(255, 255, 255, 255),
+                  //     offset: Offset(-4.0, -4.0),
+                  //     blurRadius: 15.0,
+                  //     spreadRadius: 1
+                  //   ),
+                  // ]
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        color: Colors.grey[200],
+                        borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(8),
+                          topRight: Radius.circular(8),
+                        ),
+                      ),
+                      padding: const EdgeInsets.all(8),
+                      child: Stack(
+                        children: [
+                          Align(
+                            alignment: Alignment.centerLeft,
+                            child: Column(
+                              children: [
+                                Text(
+                                  'Tahun',
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                ),
+                                SizedBox(height: 2),
+                                Text(
+                                  '2025',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Align(
+                            alignment: Alignment.centerRight,
+                            child: Container(
+                              height: 32,
+                              width: 60,
+                              decoration: BoxDecoration(
+                                color: const Color.fromARGB(255, 255, 255, 255),
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                            ),
+                          ),
+                          Align(
+                            alignment: Alignment.centerRight,
+                            child: Container(
+                              height: 32,
+                              width: 60,
+                              decoration: BoxDecoration(
+                                color: const Color.fromARGB(
+                                  255,
+                                  88,
+                                  255,
+                                  124,
+                                ).withOpacity(0.3),
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              alignment: Alignment.center,
+                              child: const Text(
+                                'Status',
+                                style: TextStyle(
+                                  color: Color.fromARGB(255, 0, 126, 6),
+                                  fontSize: 12,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+
+                    // Konten teks
+                    Padding(
+                      padding: const EdgeInsets.all(8),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: const [
+                          Text(
+                            'Objek Audit: Administration to HC & Finance Director',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w800,
+                              fontSize: 16,
+                            ),
+                          ),
+                          SizedBox(height: 4),
+                          Text(
+                            'Surat Tugas: Lorem ipsum dolor siamet',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w800,
+                              fontSize: 16,
+                            ),
+                          ),
+                          SizedBox(height: 4),
+                          Text(
+                            'Auditor: Lorem ipsum dolor siamet',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w800,
+                              fontSize: 16,
+                            ),
+                          ),
+                          SizedBox(height: 4),
+                          Text(
+                            'Rev: Lorem ipsum dolor siamet',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w800,
+                              fontSize: 16,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        IconButton(
+                          icon: Icon(
+                            Icons.access_time,
+                            color: Colors.grey[600],
+                          ),
+                          onPressed: () {},
+                        ),
+                        IconButton(
+                          icon: Icon(
+                            Icons.account_circle,
+                            color: Colors.grey[600],
+                          ),
+                          onPressed: () {},
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            SizedBox(height: 8),
+
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+              child: Container(
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: const Color.fromARGB(255, 255, 255, 255),
+                  borderRadius: BorderRadius.circular(8),
+                  border: Border.all(
+                    color: Colors.blueGrey.shade400.withOpacity(0.3),
+                  ),
+                  // boxShadow: [
+                  //   BoxShadow(
+                  //     color: Colors.grey.shade500,
+                  //     offset: Offset(4.0, 4.0),
+                  //     blurRadius: 15.0,
+                  //     spreadRadius: 1
+                  //   ),
+                  //   BoxShadow(
+                  //     color: const Color.fromARGB(255, 255, 255, 255),
+                  //     offset: Offset(-4.0, -4.0),
+                  //     blurRadius: 15.0,
+                  //     spreadRadius: 1
+                  //   ),
+                  // ]
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        color: Colors.grey[200],
+                        borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(8),
+                          topRight: Radius.circular(8),
+                        ),
+                      ),
+                      padding: const EdgeInsets.all(8),
+                      child: Stack(
+                        children: [
+                          Align(
+                            alignment: Alignment.centerLeft,
+                            child: Column(
+                              children: [
+                                Text(
+                                  'Tahun',
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                ),
+                                SizedBox(height: 2),
+                                Text(
+                                  '2025',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Align(
+                            alignment: Alignment.centerRight,
+                            child: Container(
+                              height: 32,
+                              width: 60,
+                              decoration: BoxDecoration(
+                                color: const Color.fromARGB(255, 255, 255, 255),
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                            ),
+                          ),
+                          Align(
+                            alignment: Alignment.centerRight,
+                            child: Container(
+                              height: 32,
+                              width: 60,
+                              decoration: BoxDecoration(
+                                color: const Color.fromARGB(
+                                  255,
+                                  88,
+                                  255,
+                                  124,
+                                ).withOpacity(0.3),
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              alignment: Alignment.center,
+                              child: const Text(
+                                'Status',
+                                style: TextStyle(
+                                  color: Color.fromARGB(255, 0, 126, 6),
+                                  fontSize: 12,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+
+                    // Konten teks
+                    Padding(
+                      padding: const EdgeInsets.all(8),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: const [
+                          Text(
+                            'Objek Audit: Administration to HC & Finance Director',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w800,
+                              fontSize: 16,
+                            ),
+                          ),
+                          SizedBox(height: 4),
+                          Text(
+                            'Surat Tugas: Lorem ipsum dolor siamet',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w800,
+                              fontSize: 16,
+                            ),
+                          ),
+                          SizedBox(height: 4),
+                          Text(
+                            'Auditor: Lorem ipsum dolor siamet',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w800,
+                              fontSize: 16,
+                            ),
+                          ),
+                          SizedBox(height: 4),
+                          Text(
+                            'Rev: Lorem ipsum dolor siamet',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w800,
+                              fontSize: 16,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        IconButton(
+                          icon: Icon(
+                            Icons.access_time,
+                            color: Colors.grey[600],
+                          ),
+                          onPressed: () {},
+                        ),
+                        IconButton(
+                          icon: Icon(
+                            Icons.account_circle,
+                            color: Colors.grey[600],
+                          ),
+                          onPressed: () {},
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+
+            SizedBox(height: 8),
+
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+              child: Container(
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: const Color.fromARGB(255, 255, 255, 255),
+                  borderRadius: BorderRadius.circular(8),
+                  border: Border.all(
+                    color: Colors.blueGrey.shade400.withOpacity(0.3),
+                  ),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.shade500,
+                      offset: Offset(4.0, 4.0),
+                      blurRadius: 15.0,
+                      spreadRadius: 1,
+                    ),
+                    BoxShadow(
+                      color: const Color.fromARGB(255, 255, 255, 255),
+                      offset: Offset(-4.0, -4.0),
+                      blurRadius: 15.0,
+                      spreadRadius: 1,
+                    ),
+                  ],
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        color: Colors.grey[200],
+                        borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(8),
+                          topRight: Radius.circular(8),
+                        ),
+                      ),
+                      padding: const EdgeInsets.all(8),
+                      child: Stack(
+                        children: [
+                          Align(
+                            alignment: Alignment.centerLeft,
+                            child: Column(
+                              children: [
+                                Text(
+                                  'Tahun',
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                ),
+                                SizedBox(height: 2),
+                                Text(
+                                  '2024',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Align(
+                            alignment: Alignment.centerRight,
+                            child: Container(
+                              height: 32,
+                              width: 60,
+                              decoration: BoxDecoration(
+                                color: const Color.fromARGB(255, 255, 255, 255),
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                            ),
+                          ),
+                          Align(
+                            alignment: Alignment.centerRight,
+                            child: Container(
+                              height: 32,
+                              width: 60,
+                              decoration: BoxDecoration(
+                                color: const Color.fromARGB(
+                                  255,
+                                  255,
+                                  88,
+                                  88,
+                                ).withOpacity(0.3),
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              alignment: Alignment.center,
+                              child: const Text(
+                                'Status',
+                                style: TextStyle(
+                                  color: Color.fromARGB(255, 126, 0, 0),
+                                  fontSize: 12,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+
+                    // Konten teks
+                    Padding(
+                      padding: const EdgeInsets.all(8),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: const [
+                          Text(
+                            'Objek Audit: Administration to HC & Finance Director',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w800,
+                              fontSize: 16,
+                            ),
+                          ),
+                          SizedBox(height: 4),
+                          Text(
+                            'Surat Tugas: Lorem ipsum dolor siamet',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w800,
+                              fontSize: 16,
+                            ),
+                          ),
+                          SizedBox(height: 4),
+                          Text(
+                            'Auditor: Lorem ipsum dolor siamet',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w800,
+                              fontSize: 16,
+                            ),
+                          ),
+                          SizedBox(height: 4),
+                          Text(
+                            'Rev: Lorem ipsum dolor siamet',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w800,
+                              fontSize: 16,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        IconButton(
+                          icon: Icon(
+                            Icons.access_time,
+                            color: Colors.grey[600],
+                          ),
+                          onPressed: () {},
+                        ),
+                        IconButton(
+                          icon: Icon(
+                            Icons.account_circle,
+                            color: Colors.grey[600],
+                          ),
+                          onPressed: () {},
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+
+            SizedBox(height: 8),
+
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+              child: Container(
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: const Color.fromARGB(255, 255, 255, 255),
+                  borderRadius: BorderRadius.circular(8),
+                  border: Border.all(
+                    color: Colors.blueGrey.shade400.withOpacity(0.3),
+                  ),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.shade500,
+                      offset: Offset(4.0, 4.0),
+                      blurRadius: 15.0,
+                      spreadRadius: 1,
+                    ),
+                    BoxShadow(
+                      color: const Color.fromARGB(255, 255, 255, 255),
+                      offset: Offset(-4.0, -4.0),
+                      blurRadius: 15.0,
+                      spreadRadius: 1,
+                    ),
+                  ],
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        color: Colors.grey[200],
+                        borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(8),
+                          topRight: Radius.circular(8),
+                        ),
+                      ),
+                      padding: const EdgeInsets.all(8),
+                      child: Stack(
+                        children: [
+                          Align(
+                            alignment: Alignment.centerLeft,
+                            child: Column(
+                              children: [
+                                Text(
+                                  'Tahun',
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                ),
+                                SizedBox(height: 2),
+                                Text(
+                                  '2023',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Align(
+                            alignment: Alignment.centerRight,
+                            child: Container(
+                              height: 32,
+                              width: 60,
+                              decoration: BoxDecoration(
+                                color: const Color.fromARGB(255, 255, 255, 255),
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                            ),
+                          ),
+                          Align(
+                            alignment: Alignment.centerRight,
+                            child: Container(
+                              height: 32,
+                              width: 60,
+                              decoration: BoxDecoration(
+                                color: const Color.fromARGB(
+                                  255,
+                                  255,
+                                  163,
+                                  88,
+                                ).withOpacity(0.3),
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              alignment: Alignment.center,
+                              child: const Text(
+                                'Status',
+                                style: TextStyle(
+                                  color: Color.fromARGB(255, 126, 76, 0),
+                                  fontSize: 12,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+
+                    // Konten teks
+                    Padding(
+                      padding: const EdgeInsets.all(8),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: const [
+                          Text(
+                            'Objek Audit: Administration to HC & Finance Director',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w800,
+                              fontSize: 16,
+                            ),
+                          ),
+                          SizedBox(height: 4),
+                          Text(
+                            'Surat Tugas: Lorem ipsum dolor siamet',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w800,
+                              fontSize: 16,
+                            ),
+                          ),
+                          SizedBox(height: 4),
+                          Text(
+                            'Auditor: Lorem ipsum dolor siamet',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w800,
+                              fontSize: 16,
+                            ),
+                          ),
+                          SizedBox(height: 4),
+                          Text(
+                            'Rev: Lorem ipsum dolor siamet',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w800,
+                              fontSize: 16,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        IconButton(
+                          icon: Icon(
+                            Icons.access_time,
+                            color: Colors.grey[600],
+                          ),
+                          onPressed: () {},
+                        ),
+                        IconButton(
+                          icon: Icon(
+                            Icons.account_circle,
+                            color: Colors.grey[600],
+                          ),
+                          onPressed: () {},
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+
+            SizedBox(height: 8),
+
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+              child: Container(
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: const Color.fromARGB(255, 255, 255, 255),
+                  borderRadius: BorderRadius.circular(8),
+                  border: Border.all(
+                    color: Colors.blueGrey.shade400.withOpacity(0.3),
+                  ),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.shade500,
+                      offset: Offset(4.0, 4.0),
+                      blurRadius: 15.0,
+                      spreadRadius: 1,
+                    ),
+                    BoxShadow(
+                      color: const Color.fromARGB(255, 255, 255, 255),
+                      offset: Offset(-4.0, -4.0),
+                      blurRadius: 15.0,
+                      spreadRadius: 1,
+                    ),
+                  ],
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        color: Colors.grey[200],
+                        borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(8),
+                          topRight: Radius.circular(8),
+                        ),
+                      ),
+                      padding: const EdgeInsets.all(8),
+                      child: Stack(
+                        children: [
+                          Align(
+                            alignment: Alignment.centerLeft,
+                            child: Column(
+                              children: [
+                                Text(
+                                  'Tahun',
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                ),
+                                SizedBox(height: 2),
+                                Text(
+                                  '2023',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Align(
+                            alignment: Alignment.centerRight,
+                            child: Container(
+                              height: 32,
+                              width: 60,
+                              decoration: BoxDecoration(
+                                color: const Color.fromARGB(255, 255, 255, 255),
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                            ),
+                          ),
+                          Align(
+                            alignment: Alignment.centerRight,
+                            child: Container(
+                              height: 32,
+                              width: 60,
+                              decoration: BoxDecoration(
+                                color: const Color.fromARGB(
+                                  255,
+                                  88,
+                                  255,
+                                  124,
+                                ).withOpacity(0.3),
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              alignment: Alignment.center,
+                              child: const Text(
+                                'Status',
+                                style: TextStyle(
+                                  color: Color.fromARGB(255, 0, 126, 6),
+                                  fontSize: 12,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+
+                    // Konten teks
+                    Padding(
+                      padding: const EdgeInsets.all(8),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: const [
+                          Text(
+                            'Objek Audit: Administration to HC & Finance Director',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w800,
+                              fontSize: 16,
+                            ),
+                          ),
+                          SizedBox(height: 4),
+                          Text(
+                            'Surat Tugas: Lorem ipsum dolor siamet',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w800,
+                              fontSize: 16,
+                            ),
+                          ),
+                          SizedBox(height: 4),
+                          Text(
+                            'Auditor: Lorem ipsum dolor siamet',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w800,
+                              fontSize: 16,
+                            ),
+                          ),
+                          SizedBox(height: 4),
+                          Text(
+                            'Rev: Lorem ipsum dolor siamet',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w800,
+                              fontSize: 16,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        IconButton(
+                          icon: Icon(
+                            Icons.access_time,
+                            color: Colors.grey[600],
+                          ),
+                          onPressed: () {},
+                        ),
+                        IconButton(
+                          icon: Icon(
+                            Icons.account_circle,
+                            color: Colors.grey[600],
+                          ),
+                          onPressed: () {},
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+
+            SizedBox(height: 8),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Row Filter() {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+          height: 60,
+          width: 160,
+          padding: EdgeInsets.only(left: 16, right: 16, top: 10),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              GestureDetector(
+                child: Container(
+                  padding: EdgeInsets.all(8),
+                  height: 40,
+                  width: 120,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    border: Border.all(
+                      color: Colors.blueGrey.shade400.withOpacity(0.3),
+                    ),
+                    borderRadius: BorderRadius.circular(24),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.shade400,
+                        offset: Offset(2.0, 2.0),
+                        blurRadius: 10.0,
+                        spreadRadius: 0.1,
+                      ),
+                      BoxShadow(
+                        color: const Color.fromARGB(255, 255, 255, 255),
+                        offset: Offset(-2.0, -2.0),
+                        blurRadius: 10.0,
+                        spreadRadius: 0.1,
+                      ),
+                    ],
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Icon(
+                        Icons.filter_alt_outlined,
+                        color: Colors.blue.shade400,
+                      ),
+                      Text(
+                        'Filter',
+                        style: TextStyle(color: Colors.blue.shade400),
+                      ),
+                    ],
+                  ),
+                ),
+                onTap: () {},
+              ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 
@@ -66,7 +981,15 @@ class _BiayaPenugasanPageState extends State<BiayaPenugasanPage> {
                         ),
                       ),
                     ),
-
+                    //Title
+                    const Text(
+                      'Biaya Penugasan',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 24,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
                     // Profile icon
                     Container(
                       padding: const EdgeInsets.all(8),
