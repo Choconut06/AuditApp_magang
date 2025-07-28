@@ -8,6 +8,7 @@ import 'package:audit_app_magang/pages/surat_pemberitahuanpage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'login.dart';
+import 'addrencanabiaya.dart';
 
 class RencanaBiayaPage extends StatefulWidget {
   const RencanaBiayaPage({super.key});
@@ -19,13 +20,115 @@ class RencanaBiayaPage extends StatefulWidget {
 class _RencanaBiayaPageState extends State<RencanaBiayaPage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
+  List<Map<String, String>> biayaData = [
+    {
+      "nomor": "1",
+      "tahun": "2024",
+      "pkat": "PKAT-001",
+      "total": "15 Juta",
+      "revisi": "1",
+      "status": "Disetujui",
+      "noRevisi": "RB001",
+    },
+    {
+      "nomor": "2",
+      "tahun": "2025",
+      "pkat": "PKAT-002",
+      "total": "22 Juta",
+      "revisi": "2",
+      "status": "Revisi",
+      "noRevisi": "RB002",
+    },
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
       appBar: appBar(),
       drawer: _buildDrawer(),
-      body: Column()
+      body: Column(
+        children: [
+          const SizedBox(height: 20),
+          Expanded(
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(minWidth: 800),
+                child: DataTable(
+                  columnSpacing: 12,
+                  headingRowColor: MaterialStateProperty.all(
+                    Colors.blue.shade100,
+                  ),
+                  border: TableBorder.all(color: Colors.grey.shade300),
+                  columns: const [
+                    DataColumn(label: Text('Nomor')),
+                    DataColumn(label: Text('Tahun')),
+                    DataColumn(label: Text('PKAT')),
+                    DataColumn(label: Text('Total Biaya')),
+                    DataColumn(label: Text('Revisi')),
+                    DataColumn(label: Text('Status Revisi')),
+                    DataColumn(label: Text('Nomor Revisi')),
+                    DataColumn(label: Text('Aksi')),
+                  ],
+                  rows:
+                      biayaData.map((row) {
+                        return DataRow(
+                          cells: [
+                            DataCell(Text(row['nomor']!)),
+                            DataCell(Text(row['tahun']!)),
+                            DataCell(Text(row['pkat']!)),
+                            DataCell(Text(row['total']!)),
+                            DataCell(Text(row['revisi']!)),
+                            DataCell(Text(row['status']!)),
+                            DataCell(Text(row['noRevisi']!)),
+                            DataCell(
+                              Row(
+                                children: [
+                                  IconButton(
+                                    icon: const Icon(
+                                      Icons.edit,
+                                      color: Colors.orange,
+                                    ),
+                                    onPressed: () {},
+                                  ),
+                                  IconButton(
+                                    icon: const Icon(
+                                      Icons.delete,
+                                      color: Colors.red,
+                                    ),
+                                    onPressed: () {},
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        );
+                      }).toList(),
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () async {
+          final newData = await Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const AddRencanaBiayaPage(),
+            ),
+          );
+
+          if (newData != null) {
+            setState(() {
+              biayaData.add(newData);
+            });
+          }
+        },
+        icon: const Icon(Icons.add),
+        label: const Text("Tambah Rencana Biaya"),
+      ),
     );
   }
 
@@ -47,7 +150,6 @@ class _RencanaBiayaPageState extends State<RencanaBiayaPage> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    // Menu Button
                     GestureDetector(
                       onTap: () {
                         _scaffoldKey.currentState?.openDrawer();
@@ -66,8 +168,6 @@ class _RencanaBiayaPageState extends State<RencanaBiayaPage> {
                         ),
                       ),
                     ),
-
-                    // Profile icon
                     Container(
                       padding: const EdgeInsets.all(8),
                       decoration: BoxDecoration(
@@ -91,7 +191,7 @@ class _RencanaBiayaPageState extends State<RencanaBiayaPage> {
     );
   }
 
-   Drawer _buildDrawer() {
+  Drawer _buildDrawer() {
     return Drawer(
       child: Column(
         children: [
@@ -106,27 +206,27 @@ class _RencanaBiayaPageState extends State<RencanaBiayaPage> {
             ),
           ),
           ListTile(
-            leading: const Icon(Icons.abc),
+            leading: const Icon(Icons.home),
             title: const Text('Home'),
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => HomePage()),
+                MaterialPageRoute(builder: (_) => const HomePage()),
               );
             },
           ),
           ListTile(
-            leading: const Icon(Icons.abc),
+            leading: const Icon(Icons.shield),
             title: const Text('Penilaian Resiko'),
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => RiskAssessmentPage()),
+                MaterialPageRoute(builder: (_) => const RiskAssessmentPage()),
               );
             },
           ),
           ExpansionTile(
-            leading: const Icon(Icons.abc),
+            leading: const Icon(Icons.folder),
             title: const Text("Program Kerja"),
             children: [
               ListTile(
@@ -134,7 +234,7 @@ class _RencanaBiayaPageState extends State<RencanaBiayaPage> {
                 onTap: () {
                   Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(builder: (context) => PkatPage()),
+                    MaterialPageRoute(builder: (_) => const PkatPage()),
                   );
                 },
               ),
@@ -143,7 +243,7 @@ class _RencanaBiayaPageState extends State<RencanaBiayaPage> {
                 onTap: () {
                   Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(builder: (context) => RencanaBiayaPage()),
+                    MaterialPageRoute(builder: (_) => const RencanaBiayaPage()),
                   );
                 },
               ),
@@ -152,14 +252,14 @@ class _RencanaBiayaPageState extends State<RencanaBiayaPage> {
                 onTap: () {
                   Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(builder: (context) => DokumenPkatPage()),
+                    MaterialPageRoute(builder: (_) => const DokumenPkatPage()),
                   );
                 },
               ),
             ],
           ),
           ExpansionTile(
-            leading: const Icon(Icons.abc),
+            leading: const Icon(Icons.receipt_long),
             title: const Text("Persiapan Audit"),
             children: [
               ListTile(
@@ -168,7 +268,7 @@ class _RencanaBiayaPageState extends State<RencanaBiayaPage> {
                   Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => SuratPemberitahuanPage(),
+                      builder: (_) => const SuratPemberitahuanPage(),
                     ),
                   );
                 },
@@ -178,7 +278,7 @@ class _RencanaBiayaPageState extends State<RencanaBiayaPage> {
                 onTap: () {
                   Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(builder: (context) => ProgramAuditPage()),
+                    MaterialPageRoute(builder: (_) => const ProgramAuditPage()),
                   );
                 },
               ),
@@ -188,7 +288,7 @@ class _RencanaBiayaPageState extends State<RencanaBiayaPage> {
                   Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => BiayaPenugasanPage(),
+                      builder: (_) => const BiayaPenugasanPage(),
                     ),
                   );
                 },
@@ -202,7 +302,7 @@ class _RencanaBiayaPageState extends State<RencanaBiayaPage> {
             onTap: () {
               Navigator.pushReplacement(
                 context,
-                MaterialPageRoute(builder: (context) => const LoginPage()),
+                MaterialPageRoute(builder: (_) => const LoginPage()),
               );
             },
           ),

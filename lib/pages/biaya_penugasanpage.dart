@@ -25,11 +25,11 @@ class _BiayaPenugasanPageState extends State<BiayaPenugasanPage> {
       key: _scaffoldKey,
       appBar: appBar(),
       drawer: _buildDrawer(),
-      body: Column()
+      body: Column(),
     );
   }
 
-   PreferredSizeWidget appBar() {
+  PreferredSizeWidget appBar() {
     return PreferredSize(
       preferredSize: const Size.fromHeight(120),
       child: AppBar(
@@ -91,7 +91,7 @@ class _BiayaPenugasanPageState extends State<BiayaPenugasanPage> {
     );
   }
 
-   Drawer _buildDrawer() {
+  Drawer _buildDrawer() {
     return Drawer(
       child: Column(
         children: [

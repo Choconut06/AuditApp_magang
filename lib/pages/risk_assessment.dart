@@ -49,30 +49,7 @@ class _RiskAssessmentPageState extends State<RiskAssessmentPage> {
       drawer: _buildDrawer(),
       body: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: ElevatedButton.icon(
-                onPressed: () async {
-                  final newRisk = await Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const AddRiskPage(),
-                    ),
-                  );
-
-                  if (newRisk != null) {
-                    setState(() {
-                      riskData.add(newRisk);
-                    });
-                  }
-                },
-                icon: const Icon(Icons.add),
-                label: const Text("Tambah Data"),
-              ),
-            ),
-          ),
+          const SizedBox(height: 20), // Spacer pengganti tombol lama
           Expanded(
             child: SingleChildScrollView(
               scrollDirection: Axis.horizontal,
@@ -134,6 +111,22 @@ class _RiskAssessmentPageState extends State<RiskAssessmentPage> {
           ),
         ],
       ),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () async {
+          final newRisk = await Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const AddRiskPage()),
+          );
+
+          if (newRisk != null) {
+            setState(() {
+              riskData.add(newRisk);
+            });
+          }
+        },
+        icon: const Icon(Icons.add),
+        label: const Text("Tambah Data"),
+      ),
     );
   }
 
@@ -155,7 +148,6 @@ class _RiskAssessmentPageState extends State<RiskAssessmentPage> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    // Menu Button
                     GestureDetector(
                       onTap: () {
                         _scaffoldKey.currentState?.openDrawer();
