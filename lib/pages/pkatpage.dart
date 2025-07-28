@@ -31,7 +31,6 @@ class _PkatPageState extends State<PkatPage> {
       "status": "Disetujui",
       "noRevisi": "R001",
     },
-    // Tambah data dummy lainnya jika perlu
   ];
 
   @override

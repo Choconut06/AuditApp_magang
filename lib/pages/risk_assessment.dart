@@ -27,7 +27,7 @@ class _RiskAssessmentPageState extends State<RiskAssessmentPage> {
       "jenis": "Internal",
       "objek": "Keuangan",
       "sasaran": "Efisiensi",
-      "reverensi": "ISO 31000",
+      "revisi": "Pengurangan Anggaran Uang Makan Siang",
       "status": "Selesai",
     },
     {
@@ -36,7 +36,7 @@ class _RiskAssessmentPageState extends State<RiskAssessmentPage> {
       "jenis": "Eksternal",
       "objek": "Operasional",
       "sasaran": "Efektivitas",
-      "reverensi": "COSO",
+      "revisi": "IYA",
       "status": "Proses",
     },
   ];
@@ -67,7 +67,7 @@ class _RiskAssessmentPageState extends State<RiskAssessmentPage> {
                     DataColumn(label: Text('Jenis Audit')),
                     DataColumn(label: Text('Objek Audit')),
                     DataColumn(label: Text('Sasaran')),
-                    DataColumn(label: Text('Reverensi')),
+                    DataColumn(label: Text('Revisi')),
                     DataColumn(label: Text('Status')),
                     DataColumn(label: Text('Aksi')),
                   ],
@@ -80,7 +80,7 @@ class _RiskAssessmentPageState extends State<RiskAssessmentPage> {
                             DataCell(Text(row['jenis']!)),
                             DataCell(Text(row['objek']!)),
                             DataCell(Text(row['sasaran']!)),
-                            DataCell(Text(row['reverensi']!)),
+                            DataCell(Text(row['revisi']!)),
                             DataCell(Text(row['status']!)),
                             DataCell(
                               Row(

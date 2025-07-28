@@ -71,7 +71,67 @@ class _HomePageState extends State<HomePage> {
           final item = mainMenu[index];
           return GestureDetector(
             onTap: () {
-              print('Pindah ke halaman ${item.name}');
+              switch (item.name) {
+                case 'Penilaian Risiko':
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const RiskAssessmentPage(),
+                    ),
+                  );
+                  break;
+                case 'PKAT':
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const PkatPage()),
+                  );
+                  break;
+                case 'Rencana Biaya':
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const RencanaBiayaPage(),
+                    ),
+                  );
+                  break;
+                case 'Dokumen PKAT':
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const DokumenPkatPage(),
+                    ),
+                  );
+                  break;
+                case 'Surat Pemberitahuan':
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const SuratPemberitahuanPage(),
+                    ),
+                  );
+                  break;
+                case 'Program Audit':
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const ProgramAuditPage(),
+                    ),
+                  );
+                  break;
+                case 'Biaya Penugasan':
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const BiayaPenugasanPage(),
+                    ),
+                  );
+                  break;
+                default:
+                  // fallback jika menu tidak ditemukan
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text('Halaman belum tersedia')),
+                  );
+              }
             },
             child: SizedBox(
               width: 70,

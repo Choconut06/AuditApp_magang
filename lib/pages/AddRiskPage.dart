@@ -15,7 +15,7 @@ class _AddRiskPageState extends State<AddRiskPage> {
     "jenis": "",
     "objek": "",
     "sasaran": "",
-    "reverensi": "",
+    "revisi": "",
     "status": "",
   };
 
@@ -34,7 +34,7 @@ class _AddRiskPageState extends State<AddRiskPage> {
               _buildTextField("jenis", "Jenis Audit"),
               _buildTextField("objek", "Objek Audit"),
               _buildTextField("sasaran", "Sasaran"),
-              _buildTextField("reverensi", "Reverensi"),
+              _buildTextField("revisi", "Revisi"),
               _buildTextField("status", "Status"),
               const SizedBox(height: 20),
               ElevatedButton(
