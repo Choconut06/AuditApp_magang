@@ -1,3 +1,4 @@
+//untuk page Surat Pemberitahuan
 class SuratPemberitahuanItem {
   final String tahun;
   final String status;
@@ -66,13 +67,14 @@ class SuratPemberitahuanItem {
   }
 }
 
-
+//Untuk Page Program Audit
 class ProgramAuditModel {
   final String tahun;
   final String status;
   final int statusCode; // 1: Hijau, 0: Merah, 2: Oranye
   final String objekAudit;
   final String suratTugas;
+  final String programAudit;
   final String auditor;
   final String rev;
 
@@ -82,6 +84,7 @@ class ProgramAuditModel {
     required this.statusCode,
     required this.objekAudit,
     required this.suratTugas,
+    required this.programAudit,
     required this.auditor,
     required this.rev,
   });
@@ -96,6 +99,7 @@ class ProgramAuditModel {
       statusCode: 1,
       objekAudit: 'Administration to HC & Finance Director',
       suratTugas: 'Lorem ipsum dolor siamet',
+      programAudit: 'Lorem Ipsum Dolor Si amet',
       auditor: 'Lorem ipsum dolor siamet',
       rev: 'Lorem ipsum dolor siamet',)
     );
@@ -106,6 +110,7 @@ class ProgramAuditModel {
       statusCode: 0,
       objekAudit: 'Administration to HC & Finance Director',
       suratTugas: 'Lorem ipsum dolor siamet',
+      programAudit: 'Lorem Ipsum Dolor Si amet',
       auditor: 'Lorem ipsum dolor siamet',
       rev: 'Lorem ipsum dolor siamet',
       ),  
@@ -117,6 +122,7 @@ class ProgramAuditModel {
       statusCode: 0,
       objekAudit: 'Administration to HC & Finance Director',
       suratTugas: 'Lorem ipsum dolor siamet',
+      programAudit: 'Lorem Ipsum Dolor Si amet',
       auditor: 'Lorem ipsum dolor siamet',
       rev: 'Lorem ipsum dolor siamet',)
     );
@@ -127,11 +133,89 @@ class ProgramAuditModel {
       statusCode: 2,
       objekAudit: 'Administration to HC & Finance Director',
       suratTugas: 'Lorem ipsum dolor siamet',
+      programAudit: 'Lorem Ipsum Dolor Si amet',
       auditor: 'Lorem ipsum dolor siamet',
       rev: 'Lorem ipsum dolor siamet',
       ),
     );
+
     return programAuditModelList;
   }
   
+}
+
+//Untuk Page Biaya Penugasan
+class BiayaPenugasanModel {
+  final String tahun;
+  final String status;
+  final int statusCode; // 1: Hijau, 0: Merah, 2: Oranye
+  final String objekAudit;
+  final String suratTugas;
+  final String noSPPD;
+  final String auditor;
+  final String rev;
+
+  BiayaPenugasanModel({
+    required this.tahun,
+    required this.status,
+    required this.statusCode,
+    required this.objekAudit,
+    required this.suratTugas,
+    required this.noSPPD,
+    required this.auditor,
+    required this.rev,
+  });
+
+  static List<BiayaPenugasanModel> getBiayaPenugasanList() {
+  List<BiayaPenugasanModel> BiayaPenugasanList = [];
+
+    BiayaPenugasanList.add(
+      BiayaPenugasanModel(
+      tahun: '2025',
+      status: 'Status',
+      statusCode: 1,
+      objekAudit: 'Administration to HC & Finance Director',
+      suratTugas: 'Lorem ipsum dolor siamet',
+      noSPPD: 'Lorem Ipsum Dolor Si Amet',
+      auditor: 'Lorem ipsum dolor siamet',
+      rev: 'Lorem ipsum dolor siamet',)
+    );
+    BiayaPenugasanList.add(
+      BiayaPenugasanModel(
+      tahun: '2025',
+      status: 'Status',
+      statusCode: 0,
+      objekAudit: 'Administration to HC & Finance Director',
+      suratTugas: 'Lorem ipsum dolor siamet',
+      noSPPD: 'Lorem Ipsum Dolor Si Amet',
+      auditor: 'Lorem ipsum dolor siamet',
+      rev: 'Lorem ipsum dolor siamet',
+      ),  
+    );
+    BiayaPenugasanList.add(
+      BiayaPenugasanModel(
+      tahun: '2024',
+      status: 'Status',
+      statusCode: 0,
+      objekAudit: 'Administration to HC & Finance Director',
+      suratTugas: 'Lorem ipsum dolor siamet',
+      noSPPD: 'Lorem Ipsum Dolor Si Amet',
+      auditor: 'Lorem ipsum dolor siamet',
+      rev: 'Lorem ipsum dolor siamet',)
+    );
+    BiayaPenugasanList.add(
+      BiayaPenugasanModel(
+      tahun: '2023',
+      status: 'Status',
+      statusCode: 2,
+      objekAudit: 'Administration to HC & Finance Director',
+      suratTugas: 'Lorem ipsum dolor siamet',
+      noSPPD: 'Lorem Ipsum Dolor Si Amet',
+      auditor: 'Lorem ipsum dolor siamet',
+      rev: 'Lorem ipsum dolor siamet',
+      ),
+    );
+
+    return BiayaPenugasanList;
+  }
 }

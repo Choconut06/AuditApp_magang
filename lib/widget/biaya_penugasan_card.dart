@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:audit_app_magang/model/persiapan_audit_model.dart';
 
-class ProgramAuditCard extends StatefulWidget {
-  final ProgramAuditModel item;
+class BiayaPenugasanCard extends StatefulWidget {
+  final BiayaPenugasanModel item;
 
-  const ProgramAuditCard({Key? key, required this.item}) : super(key: key);
+  const BiayaPenugasanCard({Key? key, required this.item}) : super(key: key);
 
   @override
-  State<ProgramAuditCard> createState() => _ProgramAuditCardState();
+  State<BiayaPenugasanCard> createState() => _BiayaPenugasanCardState();
 }
 
-class _ProgramAuditCardState extends State<ProgramAuditCard> {
+class _BiayaPenugasanCardState extends State<BiayaPenugasanCard> {
   Color _getStatusColor(int code) {
     switch (code) {
       case 0:
@@ -100,10 +100,10 @@ class _ProgramAuditCardState extends State<ProgramAuditCard> {
                   const SizedBox(height: 4),
                   Text("Surat Tugas: ${widget.item.suratTugas}", style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 16)),
                   const SizedBox(height: 4),
+                  Text("No SPPD: ${widget.item.noSPPD}", style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 16)),
+                  const SizedBox(height: 4,),
                   Text("Auditor: ${widget.item.auditor}", style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 16)),
                   const SizedBox(height: 4),
-                  Text("Program Audit: ${widget.item.programAudit}", style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 16)),
-                  const SizedBox(height: 4,),
                   Text("Rev: ${widget.item.rev}", style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 16)),
                 ],
               ),
