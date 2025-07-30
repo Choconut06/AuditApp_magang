@@ -12,6 +12,7 @@ import 'package:audit_app_magang/pages/risk_assessment.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'login.dart';
+import 'package:audit_app_magang/widget/sidebar.dart';
 
 class SuratPemberitahuanPage extends StatefulWidget {
   const SuratPemberitahuanPage({super.key});
@@ -33,83 +34,83 @@ class _SuratPemberitahuanPageState extends State<SuratPemberitahuanPage> {
   void _getSuratList() {
     suratList = SuratPemberitahuanItem.getSuratList();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
       appBar: appBar(),
-      drawer: _buildDrawer(),
+      drawer: CustomDrawer(),
       body: SingleChildScrollView(
         child: Column(
           children: [
             filter(),
-            const SizedBox(
-              height: 4
-            ),
+            const SizedBox(height: 4),
             for (final item in suratList) SuratItemCard(item: item),
           ],
         ),
-      )
+      ),
     );
   }
 
   Row filter() {
     return Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+          height: 60,
+          width: 160,
+          padding: EdgeInsets.only(left: 16, right: 16, top: 10),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
-                Container(
-                height: 60,
-                width: 160,
-                padding: EdgeInsets.only(left: 16, right: 16, top: 10),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    GestureDetector(
-                      child: Container(
-                        padding: EdgeInsets.all(8),
-                        height: 40,
-                        width: 120,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          border: Border.all(
-                            color: Colors.blueGrey.shade400.withOpacity(0.3)
-                          ),
-                          borderRadius: BorderRadius.circular(24),
-                          // boxShadow: [
-                          //   BoxShadow(
-                          //     color: Colors.grey.shade400,
-                          //     offset: Offset(2.0, 2.0),
-                          //     blurRadius: 10.0,
-                          //     spreadRadius: 0.1
-                          //   ),
-                          //   BoxShadow(
-                          //     color: const Color.fromARGB(255, 255, 255, 255),
-                          //     offset: Offset(-2.0, -2.0),
-                          //     blurRadius: 10.0,
-                          //     spreadRadius: 0.1
-                          //   ),
-                          // ]
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Icon(Icons.filter_alt_outlined, color: Colors.blue.shade400,),
-                            Text(
-                              'Filter',
-                              style: TextStyle(
-                                color: Colors.blue.shade400
-                              ),
-                            )
-                          ],
-                        ),
+              GestureDetector(
+                child: Container(
+                  padding: EdgeInsets.all(8),
+                  height: 40,
+                  width: 120,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    border: Border.all(
+                      color: Colors.blueGrey.shade400.withOpacity(0.3),
+                    ),
+                    borderRadius: BorderRadius.circular(24),
+                    // boxShadow: [
+                    //   BoxShadow(
+                    //     color: Colors.grey.shade400,
+                    //     offset: Offset(2.0, 2.0),
+                    //     blurRadius: 10.0,
+                    //     spreadRadius: 0.1
+                    //   ),
+                    //   BoxShadow(
+                    //     color: const Color.fromARGB(255, 255, 255, 255),
+                    //     offset: Offset(-2.0, -2.0),
+                    //     blurRadius: 10.0,
+                    //     spreadRadius: 0.1
+                    //   ),
+                    // ]
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Icon(
+                        Icons.filter_alt_outlined,
+                        color: Colors.blue.shade400,
                       ),
-                      onTap: () {},
-                    )
-                  ],
+                      Text(
+                        'Filter',
+                        style: TextStyle(color: Colors.blue.shade400),
+                      ),
+                    ],
+                  ),
                 ),
+                onTap: () {},
               ),
-            ]
-          );
+            ],
+          ),
+        ),
+      ],
+    );
   }
 
   PreferredSizeWidget appBar() {
@@ -168,7 +169,7 @@ class _SuratPemberitahuanPageState extends State<SuratPemberitahuanPage> {
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 24,
-                          fontWeight: FontWeight.w500
+                          fontWeight: FontWeight.w500,
                         ),
                       ),
                       // Profile icon
@@ -195,127 +196,4 @@ class _SuratPemberitahuanPageState extends State<SuratPemberitahuanPage> {
       ),
     );
   }
-
-   Drawer _buildDrawer() {
-    return Drawer(
-      child: Column(
-        children: [
-          const DrawerHeader(
-            decoration: BoxDecoration(color: Colors.blue),
-            child: Align(
-              alignment: Alignment.bottomLeft,
-              child: Text(
-                'Menu',
-                style: TextStyle(color: Colors.white, fontSize: 24),
-              ),
-            ),
-          ),
-          ListTile(
-            leading: const Icon(Icons.home),
-            title: const Text('Home'),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const HomePage()),
-              );
-            },
-          ),
-          ListTile(
-            leading: const Icon(Icons.shield),
-            title: const Text('Penilaian Resiko'),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const RiskAssessmentPage(),
-                ),
-              );
-            },
-          ),
-          ExpansionTile(
-            leading: const Icon(Icons.folder),
-            title: const Text("Program Kerja"),
-            children: [
-              ListTile(
-                title: const Text('PKAT'),
-                onTap: () {
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(builder: (context) => PkatPage()),
-                  );
-                },
-              ),
-              ListTile(
-                title: const Text('Rencana Biaya'),
-                onTap: () {
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(builder: (context) => RencanaBiayaPage()),
-                  );
-                },
-              ),
-              ListTile(
-                title: const Text('Dokumen PKAT'),
-                onTap: () {
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(builder: (context) => DokumenPkatPage()),
-                  );
-                },
-              ),
-            ],
-          ),
-          ExpansionTile(
-            leading: const Icon(Icons.receipt_long),
-            title: const Text("Persiapan Audit"),
-            children: [
-              ListTile(
-                title: const Text('Surat Pemberitahuan'),
-                onTap: () {
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => SuratPemberitahuanPage(),
-                    ),
-                  );
-                },
-              ),
-              ListTile(
-                title: const Text('Program Audit'),
-                onTap: () {
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(builder: (context) => ProgramAuditPage()),
-                  );
-                },
-              ),
-              ListTile(
-                title: const Text('Biaya Penugasan'),
-                onTap: () {
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => BiayaPenugasanPage(),
-                    ),
-                  );
-                },
-              ),
-            ],
-          ),
-          const Spacer(),
-          ListTile(
-            leading: const Icon(Icons.logout),
-            title: const Text('Logout'),
-            onTap: () {
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(builder: (context) => const LoginPage()),
-              );
-            },
-          ),
-        ],
-      ),
-    );
-  }
 }
-
