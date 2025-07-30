@@ -96,15 +96,40 @@ class _ProgramAuditCardState extends State<ProgramAuditCard> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("Objek Audit: ${widget.item.objekAudit}", style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 16)),
+                  RichText(text: TextSpan(
+                    children: <TextSpan> [
+                      TextSpan(text: "Objek Audit: ", style: const TextStyle(fontWeight: FontWeight.w400, fontSize: 16)),
+                      TextSpan(text: "${widget.item.objekAudit}", style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 16))
+                    ]
+                  ),),
                   const SizedBox(height: 4),
-                  Text("Surat Tugas: ${widget.item.suratTugas}", style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 16)),
+                  RichText(text: TextSpan(
+                    children: <TextSpan> [
+                      TextSpan(text: "Surat Tugas: ", style: const TextStyle(fontWeight: FontWeight.w400, fontSize: 16)),
+                      TextSpan(text: "${widget.item.suratTugas}", style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 16))
+                    ]
+                  ),),
                   const SizedBox(height: 4),
-                  Text("Auditor: ${widget.item.auditor}", style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 16)),
+                  RichText(text: TextSpan(
+                    children: <TextSpan> [
+                      TextSpan(text: "Surat Tugas: ", style: const TextStyle(fontWeight: FontWeight.w400, fontSize: 16)),
+                      TextSpan(text: "${widget.item.suratTugas}", style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 16))
+                    ]
+                  ),),
                   const SizedBox(height: 4),
-                  Text("Program Audit: ${widget.item.programAudit}", style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 16)),
-                  const SizedBox(height: 4,),
-                  Text("Rev: ${widget.item.rev}", style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 16)),
+                  RichText(text: TextSpan(
+                    children: <TextSpan> [
+                      TextSpan(text: "Auditor: ", style: const TextStyle(fontWeight: FontWeight.w400, fontSize: 16)),
+                      TextSpan(text: "${widget.item.auditor}", style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 16))
+                    ]
+                  ),),
+                  const SizedBox(height: 4),
+                  RichText(text: TextSpan(
+                    children: <TextSpan> [
+                      TextSpan(text: "Rev: ", style: const TextStyle(fontWeight: FontWeight.w400, fontSize: 16)),
+                      TextSpan(text: "${widget.item.rev}", style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 16))
+                    ]
+                  ),),
                 ],
               ),
             ),
