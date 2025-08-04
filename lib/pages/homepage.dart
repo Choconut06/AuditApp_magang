@@ -5,7 +5,19 @@ import 'package:audit_app_magang/pages/pkatpage.dart';
 import 'package:audit_app_magang/pages/program__auditpage.dart';
 import 'package:audit_app_magang/pages/rencana_biayapage.dart';
 import 'package:audit_app_magang/pages/surat_pemberitahuanpage.dart';
+import 'package:audit_app_magang/pages/undangan_openingpage.dart';
 import 'package:audit_app_magang/widget/sidebar.dart';
+import 'package:audit_app_magang/pages/opening_meetingpage.dart';
+import 'package:audit_app_magang/pages/permintaan_dokumenpage.dart';
+import 'package:audit_app_magang/pages/pemenuhan_dokumenpage.dart';
+import 'package:audit_app_magang/pages/draft_lhapage.dart';
+import 'package:audit_app_magang/pages/review_draft_lhapage.dart';
+import 'package:audit_app_magang/pages/tanggapanpage.dart';
+import 'package:audit_app_magang/pages/temuanpage.dart';
+import 'package:audit_app_magang/pages/undangan_closingpage.dart';
+import 'package:audit_app_magang/pages/closing_meetingpage.dart';
+import 'package:audit_app_magang/pages/komitmenpage.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'risk_assessment.dart';
@@ -117,7 +129,84 @@ class _HomePageState extends State<HomePage> {
                       builder: (context) => const ProgramAuditPage(),
                     ),
                   );
+                //BELOM DIUBAH
+                case 'Undangan Opening':
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const UndanganOpeningPage(),
+                    ),
+                  );
                   break;
+                case 'Opening Meeting':
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const OpeningMeetingPage(),
+                    ),
+                  );
+                case 'Permintaan Dokumen':
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const PermintaanDokumenPage(),
+                    ),
+                  );
+                case 'Pemenuhan Dokumen':
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const PemenuhanDokumenPage(),
+                    ),
+                  );
+                case 'Draft LHA':
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const DraftLHAPage(),
+                    ),
+                  );
+                case 'Review Draft LHA':
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const ReviewDraftLHAPage(),
+                    ),
+                  );
+                case 'Tanggapan':
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const TanggapanPage(),
+                    ),
+                  );
+                case 'Temuan':
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const TemuanPage()),
+                  );
+                case 'Undangan Closing':
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const UndanganClosingPage(),
+                    ),
+                  );
+                case 'Closing Meeting':
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const ClosingMeetingPage(),
+                    ),
+                  );
+                case 'Komitmen':
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const KomitmenPage(),
+                    ),
+                  );
+                //AMPE SINI
                 case 'Biaya Penugasan':
                   Navigator.push(
                     context,
