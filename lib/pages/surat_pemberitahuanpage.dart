@@ -2,16 +2,8 @@
 // import 'dart:nativewrappers/_internal/vm/lib/ffi_patch.dart';
 import 'package:audit_app_magang/model/persiapan_audit_model.dart';
 import 'package:audit_app_magang/widget/card_surat_pemberitahuan.dart';
-import 'package:audit_app_magang/pages/biaya_penugasanpage.dart';
-import 'package:audit_app_magang/pages/dokumen_pkatpage.dart';
-import 'package:audit_app_magang/pages/homepage.dart';
-import 'package:audit_app_magang/pages/pkatpage.dart';
-import 'package:audit_app_magang/pages/program__auditpage.dart';
-import 'package:audit_app_magang/pages/rencana_biayapage.dart';
-import 'package:audit_app_magang/pages/risk_assessment.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'login.dart';
 import 'package:audit_app_magang/widget/sidebar.dart';
 
 class SuratPemberitahuanPage extends StatefulWidget {
