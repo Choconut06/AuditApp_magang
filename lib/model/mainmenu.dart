@@ -70,6 +70,93 @@ class MainMenuModel {
         boxColor: Colors.blue.shade400,
       ),
     );
+
+    mainMenu.add(
+      MainMenuModel(
+        name: 'Undangan Opening',
+        iconPath: 'assets/icons/pictures.svg',
+        boxColor: Colors.blue.shade400,
+      ),
+    );
+
+    mainMenu.add(
+      MainMenuModel(
+        name: 'Opening Meeting',
+        iconPath: 'assets/icons/pictures.svg',
+        boxColor: Colors.blue.shade400,
+      ),
+    );
+
+    mainMenu.add(
+      MainMenuModel(
+        name: 'Permintaan Dokumen',
+        iconPath: 'assets/icons/pictures.svg',
+        boxColor: Colors.blue.shade400,
+      ),
+    );
+
+    mainMenu.add(
+      MainMenuModel(
+        name: 'Pemenuhan Dokumen',
+        iconPath: 'assets/icons/pictures.svg',
+        boxColor: Colors.blue.shade400,
+      ),
+    );
+
+    mainMenu.add(
+      MainMenuModel(
+        name: 'Draft LHA',
+        iconPath: 'assets/icons/pictures.svg',
+        boxColor: Colors.blue.shade400,
+      ),
+    );
+    mainMenu.add(
+      MainMenuModel(
+        name: 'Review Draft LHA',
+        iconPath: 'assets/icons/pictures.svg',
+        boxColor: Colors.blue.shade400,
+      ),
+    );
+
+    mainMenu.add(
+      MainMenuModel(
+        name: 'Tanggapan',
+        iconPath: 'assets/icons/pictures.svg',
+        boxColor: Colors.blue.shade400,
+      ),
+    );
+
+    mainMenu.add(
+      MainMenuModel(
+        name: 'Temuan',
+        iconPath: 'assets/icons/pictures.svg',
+        boxColor: Colors.blue.shade400,
+      ),
+    );
+
+    mainMenu.add(
+      MainMenuModel(
+        name: 'Undangan Closing',
+        iconPath: 'assets/icons/pictures.svg',
+        boxColor: Colors.blue.shade400,
+      ),
+    );
+
+    mainMenu.add(
+      MainMenuModel(
+        name: 'Closing Meeting',
+        iconPath: 'assets/icons/pictures.svg',
+        boxColor: Colors.blue.shade400,
+      ),
+    );
+
+    mainMenu.add(
+      MainMenuModel(
+        name: 'Komitmen',
+        iconPath: 'assets/icons/pictures.svg',
+        boxColor: Colors.blue.shade400,
+      ),
+    );
     return mainMenu;
   }
 }
