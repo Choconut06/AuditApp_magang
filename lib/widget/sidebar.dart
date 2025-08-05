@@ -46,7 +46,9 @@ class _CustomDrawerState extends State<CustomDrawer> {
             ),
             ListTile(
               leading: const Icon(Icons.home),
-              title: const Text('Home'),
+              title: const Text('Home', style: TextStyle(
+                fontWeight: FontWeight.w600
+              ),),
               onTap: () {
                 Navigator.pushReplacement(
                   context,
@@ -56,7 +58,9 @@ class _CustomDrawerState extends State<CustomDrawer> {
             ),
             ListTile(
               leading: const Icon(Icons.shield),
-              title: const Text('Penilaian Resiko'),
+              title: const Text('Penilaian Resiko', style: TextStyle(
+                fontWeight: FontWeight.w600
+              ),),
               onTap: () {
                 Navigator.pushReplacement(
                   context,
@@ -69,10 +73,12 @@ class _CustomDrawerState extends State<CustomDrawer> {
             // Tile Program Kerja
             ExpansionTile(
               leading: const Icon(Icons.folder),
-              title: const Text("Program Kerja"),
+              title: const Text("Program Kerja", style: TextStyle(
+                fontWeight: FontWeight.w600
+              ),),
               children: [
                 ListTile(
-                  title: const Text('PKAT'),
+                  title: const Text('         PKAT'),
                   onTap: () {
                     Navigator.pushReplacement(
                       context,
@@ -81,7 +87,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                   },
                 ),
                 ListTile(
-                  title: const Text('Rencana Biaya'),
+                  title: const Text('         Rencana Biaya'),
                   onTap: () {
                     Navigator.pushReplacement(
                       context,
@@ -92,7 +98,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                   },
                 ),
                 ListTile(
-                  title: const Text('Dokumen PKAT'),
+                  title: const Text('         Dokumen PKAT'),
                   onTap: () {
                     Navigator.pushReplacement(
                       context,
@@ -107,10 +113,12 @@ class _CustomDrawerState extends State<CustomDrawer> {
             // Tile Persiapan Audit
             ExpansionTile(
               leading: const Icon(Icons.receipt_long),
-              title: const Text("Persiapan Audit"),
+              title: const Text("Persiapan Audit", style: TextStyle(
+                fontWeight: FontWeight.w600
+              ),),
               children: [
                 ListTile(
-                  title: const Text('Surat Pemberitahuan'),
+                  title: const Text('         Surat Pemberitahuan'),
                   onTap: () {
                     Navigator.pushReplacement(
                       context,
@@ -121,7 +129,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                   },
                 ),
                 ListTile(
-                  title: const Text('Program Audit'),
+                  title: const Text('         Program Audit'),
                   onTap: () {
                     Navigator.pushReplacement(
                       context,
@@ -132,7 +140,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                   },
                 ),
                 ListTile(
-                  title: const Text('Biaya Penugasan'),
+                  title: const Text('         Biaya Penugasan'),
                   onTap: () {
                     Navigator.pushReplacement(
                       context,
@@ -147,10 +155,16 @@ class _CustomDrawerState extends State<CustomDrawer> {
             // Tile Pelaksanaan Audit
             ExpansionTile(
               leading: const Icon(Icons.ballot),
-              title: const Text("Pelaksanaan Audit"),
+              title: const Text(
+                "Pelaksanaan Audit",
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600
+                ),
+              ),
               children: [
                 ListTile(
-                  title: const Text('Undangan Opening'),
+                  title: const Text('         Undangan Opening'),
                   onTap: () {
                     Navigator.pushReplacement(
                       context,
@@ -161,7 +175,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                   },
                 ),
                 ListTile(
-                  title: const Text('Opening Meeting'),
+                  title: const Text('         Opening Meeting'),
                   onTap: () {
                     Navigator.pushReplacement(
                       context,
@@ -172,7 +186,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                   },
                 ),
                 ListTile(
-                  title: const Text('Permintaan Dokumen'),
+                  title: const Text('         Permintaan Dokumen'),
                   onTap: () {
                     Navigator.pushReplacement(
                       context,
@@ -183,7 +197,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                   },
                 ),
                 ListTile(
-                  title: const Text('Pemenuhan Dokumen'),
+                  title: const Text('         Pemenuhan Dokumen'),
                   onTap: () {
                     Navigator.pushReplacement(
                       context,
@@ -194,7 +208,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                   },
                 ),
                 ListTile(
-                  title: const Text('Draft LHA'),
+                  title: const Text('         Draft LHA'),
                   onTap: () {
                     Navigator.pushReplacement(
                       context,
@@ -205,7 +219,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                   },
                 ),
                 ListTile(
-                  title: const Text('Review Draft LHA'),
+                  title: const Text('         Review Draft LHA'),
                   onTap: () {
                     Navigator.pushReplacement(
                       context,
@@ -216,7 +230,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                   },
                 ),
                 ListTile(
-                  title: const Text('Tanggapan'),
+                  title: const Text('         Tanggapan'),
                   onTap: () {
                     Navigator.pushReplacement(
                       context,
@@ -227,7 +241,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                   },
                 ),
                 ListTile(
-                  title: const Text('Temuan'),
+                  title: const Text('         Temuan'),
                   onTap: () {
                     Navigator.pushReplacement(
                       context,
@@ -238,7 +252,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                   },
                 ),
                 ListTile(
-                  title: const Text('Undangan Closing'),
+                  title: const Text('         Undangan Closing'),
                   onTap: () {
                     Navigator.pushReplacement(
                       context,
@@ -249,7 +263,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                   },
                 ),
                 ListTile(
-                  title: const Text('Closing Meeting'),
+                  title: const Text('         Closing Meeting'),
                   onTap: () {
                     Navigator.pushReplacement(
                       context,
@@ -260,7 +274,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                   },
                 ),
                 ListTile(
-                  title: const Text('Komitmen'),
+                  title: const Text('         Komitmen'),
                   onTap: () {
                     Navigator.pushReplacement(
                       context,
@@ -274,7 +288,9 @@ class _CustomDrawerState extends State<CustomDrawer> {
             ),
             ListTile(
               leading: const Icon(Icons.logout),
-              title: const Text('Logout'),
+              title: const Text('Logout', style: TextStyle(
+                fontWeight: FontWeight.w600
+              ),),
               onTap: () {
                 Navigator.pushReplacement(
                   context,
