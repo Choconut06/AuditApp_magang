@@ -256,7 +256,7 @@ class MainMenuModel {
 
     mainMenu.add(
       MainMenuModel(
-        name: 'Bukti Pemulaan',
+        name: 'Bukti Permulaan',
         iconPath: 'assets/icons/pictures.svg',
         boxColor: Colors.blue.shade400,
       ),

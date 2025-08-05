@@ -2,17 +2,34 @@ import 'package:audit_app_magang/model/mainmenu.dart';
 import 'package:audit_app_magang/pages/LHPpage.dart';
 import 'package:audit_app_magang/pages/ba_penyelesaianpage.dart';
 import 'package:audit_app_magang/pages/biaya_penugasanpage.dart';
+import 'package:audit_app_magang/pages/bukti_permulaanpage.dart';
 import 'package:audit_app_magang/pages/dokumen_pkatpage.dart';
 import 'package:audit_app_magang/pages/executive_summarypage.dart';
+import 'package:audit_app_magang/pages/form_konsultasipage.dart';
+import 'package:audit_app_magang/pages/hasil_surveypage.dart';
+import 'package:audit_app_magang/pages/instruksi_auditpage.dart';
 import 'package:audit_app_magang/pages/memo_tindak_lanjutpage.dart';
+import 'package:audit_app_magang/pages/pemeriksaanpage.dart';
+import 'package:audit_app_magang/pages/pengirimanpage.dart';
+import 'package:audit_app_magang/pages/pengisianpage.dart';
+import 'package:audit_app_magang/pages/penilaian_kinerjapage.dart';
+import 'package:audit_app_magang/pages/perencanaanpage.dart';
 import 'package:audit_app_magang/pages/pkatpage.dart';
 import 'package:audit_app_magang/pages/program__auditpage.dart';
 import 'package:audit_app_magang/pages/realisasi_biayapage.dart';
+import 'package:audit_app_magang/pages/realisasi_konsultasipage.dart';
+import 'package:audit_app_magang/pages/realisasi_pelatihan_auditorpage.dart';
+import 'package:audit_app_magang/pages/register_audit_eksternalpage.dart';
 import 'package:audit_app_magang/pages/rencana_biayapage.dart';
+import 'package:audit_app_magang/pages/risalah_rapat_umumpage.dart';
 import 'package:audit_app_magang/pages/surat_kesediaanpage.dart';
+import 'package:audit_app_magang/pages/surat_pemanggilanpage.dart';
 import 'package:audit_app_magang/pages/surat_pemberitahuanpage.dart';
+import 'package:audit_app_magang/pages/tanya_jawabpage.dart';
+import 'package:audit_app_magang/pages/tindak_lanjut_audit_eksternalpage.dart';
 import 'package:audit_app_magang/pages/tindak_lanjut_temuanpage.dart';
 import 'package:audit_app_magang/pages/undangan_openingpage.dart';
+import 'package:audit_app_magang/pages/undangan_rapat_umumpage.dart';
 import 'package:audit_app_magang/widget/sidebar.dart';
 import 'package:audit_app_magang/pages/opening_meetingpage.dart';
 import 'package:audit_app_magang/pages/permintaan_dokumenpage.dart';
@@ -286,6 +303,146 @@ class _HomePageState extends State<HomePage> {
                     ),
                   );
                   break;
+                case 'Penilaian Kinerja':
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const PenilaianKinerjaPage(),
+                    ),
+                  );
+                  break;
+                //todo
+                case 'Pengiriman':
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const PengirimanPage(),
+                    ),
+                  );
+                  break;
+                case 'Pengisian':
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const Pengisianpage(),
+                    ),
+                  );
+                  break;
+                case 'Hasil Survey':
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const HasilSurveypage(),
+                    ),
+                  );
+                  break;
+                case 'Bukti Permulaan':
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const BuktiPermulaanpage(),
+                    ),
+                  );
+                  break;
+                case 'Instruksi Audit':
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const InstruksiAuditPage(),
+                    ),
+                  );
+                  break;
+                case 'Surat Pemanggilan':
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const SuratPemanggilanPage(),
+                    ),
+                  );
+                  break;
+                case 'Pemeriksaan Investigasi':
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const PemeriksaanPage(),
+                    ),
+                  );
+                  break;
+                case 'Register Audit Eksternal':
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const RegisterAuditEksternalpage(),
+                    ),
+                  );
+                  break;
+                case 'Tindak Lanjut Audit Eksternal':
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder:
+                          (context) => const TindakLanjutAuditEksternalpage(),
+                    ),
+                  );
+                  break;
+                case 'Form Konsultasi':
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const FormKonsultasipage(),
+                    ),
+                  );
+                  break;
+                case 'Realisasi Konsultasi':
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const RealisasiKonsultasipage(),
+                    ),
+                  );
+                  break;
+                //awdawd
+                case 'Tanya Jawab':
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const TanyaJawabpage(),
+                    ),
+                  );
+                  break;
+                case 'Perencanaan':
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const Perencanaanpage(),
+                    ),
+                  );
+                  break;
+                case 'Realisasi Pelatihan Auditor':
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder:
+                          (context) => const RealisasiPelatihanAuditorpage(),
+                    ),
+                  );
+                  break;
+                case 'Undangan Rapat Umum':
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const UndanganRapatUmumpage(),
+                    ),
+                  );
+                  break;
+                case 'Risalah Rapat Umum':
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const RisalahRapatUmumpage(),
+                    ),
+                  );
+                  break;
                 default:
                   // fallback jika menu tidak ditemukan
                   ScaffoldMessenger.of(context).showSnackBar(
@@ -316,7 +473,7 @@ class _HomePageState extends State<HomePage> {
                   Text(
                     item.name,
                     textAlign: TextAlign.center,
-                    style: const TextStyle(fontSize: 12),
+                    style: const TextStyle(fontSize: 11),
                   ),
                 ],
               ),
