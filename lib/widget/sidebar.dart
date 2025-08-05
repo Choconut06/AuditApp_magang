@@ -28,6 +28,7 @@ class CustomDrawer extends StatefulWidget {
 }
 
 class _CustomDrawerState extends State<CustomDrawer> {
+  
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -280,6 +281,387 @@ class _CustomDrawerState extends State<CustomDrawer> {
                       context,
                       MaterialPageRoute(
                         builder: (context) => const KomitmenPage(),
+                      ),
+                    );
+                  },
+                ),
+              ],
+            ),
+            // Tile Pelaporan Audit
+            ExpansionTile(
+              leading: const Icon(Icons.ballot),
+              title: const Text(
+                "Pelaporan Audit",
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600
+                ),
+              ),
+              children: [
+                ListTile(
+                  title: const Text('         Surat Kesediaan'),
+                  onTap: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const UndanganOpeningPage(),
+                      ),
+                    );
+                  },
+                ),
+                ListTile(
+                  title: const Text('         Excecutive Summary'),
+                  onTap: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const OpeningMeetingPage(),
+                      ),
+                    );
+                  },
+                ),
+                ListTile(
+                  title: const Text('         LHP'),
+                  onTap: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const PermintaanDokumenPage(),
+                      ),
+                    );
+                  },
+                ),
+                ListTile(
+                  title: const Text('         Realisasi Biaya'),
+                  onTap: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const PemenuhanDokumenPage(),
+                      ),
+                    );
+                  },
+                ),
+              ],
+            ),
+            // Tile Tindak Lanjut Audit
+            ExpansionTile(
+              leading: const Icon(Icons.ballot),
+              title: const Text(
+                "Tindak Lanjut Audit",
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600
+                ),
+              ),
+              children: [
+                ListTile(
+                  title: const Text('         Memo Tindak Lanjut'),
+                  onTap: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const UndanganOpeningPage(),
+                      ),
+                    );
+                  },
+                ),
+                ListTile(
+                  title: const Text('         Tindak Lanjut Temuan'),
+                  onTap: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const OpeningMeetingPage(),
+                      ),
+                    );
+                  },
+                ),
+                ListTile(
+                  title: const Text('         Review Tindak Lanjut'),
+                  onTap: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const PermintaanDokumenPage(),
+                      ),
+                    );
+                  },
+                ),
+                ListTile(
+                  title: const Text('         BA Penyelesaian'),
+                  onTap: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const PemenuhanDokumenPage(),
+                      ),
+                    );
+                  },
+                ),
+              ],
+            ),
+            //Tile Penilaian Kinerja
+            ListTile(
+              leading: const Icon(Icons.checklist_rounded),
+              title: const Text('Penilaian Kinerja', style: TextStyle(
+                fontWeight: FontWeight.w600
+              ),),
+              onTap: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => const LoginPage()) 
+                );
+              },
+            ),
+            // Tile Survey Kepuasan Audit
+            ExpansionTile(
+              leading: const Icon(Icons.grading_sharp),
+              title: const Text(
+                "Survey Kepuasan Audit",
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600
+                ),
+              ),
+              children: [
+                ListTile(
+                  title: const Text('         Pengiriman'),
+                  onTap: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const UndanganOpeningPage(),
+                      ),
+                    );
+                  },
+                ),
+                ListTile(
+                  title: const Text('         Pengisian'),
+                  onTap: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const OpeningMeetingPage(),
+                      ),
+                    );
+                  },
+                ),
+                ListTile(
+                  title: const Text('         Hasil Survey'),
+                  onTap: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const PermintaanDokumenPage(),
+                      ),
+                    );
+                  },
+                ),
+              ],
+            ),
+            // Tile Investigasi
+            ExpansionTile(
+              leading: const Icon(Icons.search),
+              title: const Text(
+                "Investigasi",
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600
+                ),
+              ),
+              children: [
+                ListTile(
+                  title: const Text('         Bukti Permulaan'),
+                  onTap: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const UndanganOpeningPage(),
+                      ),
+                    );
+                  },
+                ),
+                ListTile(
+                  title: const Text('         Instruksi Audit'),
+                  onTap: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const OpeningMeetingPage(),
+                      ),
+                    );
+                  },
+                ),
+                ListTile(
+                  title: const Text('         Surat Pemanggilan'),
+                  onTap: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const PermintaanDokumenPage(),
+                      ),
+                    );
+                  },
+                ),
+                ListTile(
+                  title: const Text('         Pemeriksaan'),
+                  onTap: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const PemenuhanDokumenPage(),
+                      ),
+                    );
+                  },
+                ),
+              ],
+            ),
+            // Tile Audit Eksternal
+            ExpansionTile(
+              leading: const Icon(Icons.list),
+              title: const Text(
+                "Audit Eksternal",
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600
+                ),
+              ),
+              children: [
+                ListTile(
+                  title: const Text('         Register'),
+                  onTap: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const UndanganOpeningPage(),
+                      ),
+                    );
+                  },
+                ),
+                ListTile(
+                  title: const Text('         Tindak Lanjut'),
+                  onTap: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const OpeningMeetingPage(),
+                      ),
+                    );
+                  },
+                ),
+              ],
+            ),
+            // Tile Konsultasi
+            ExpansionTile(
+              leading: const Icon(Icons.group),
+              title: const Text(
+                "Konsultasi",
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600
+                ),
+              ),
+              children: [
+                ListTile(
+                  title: const Text('         FOrm Konsultasi'),
+                  onTap: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const UndanganOpeningPage(),
+                      ),
+                    );
+                  },
+                ),
+                ListTile(
+                  title: const Text('         Realisasi'),
+                  onTap: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const OpeningMeetingPage(),
+                      ),
+                    );
+                  },
+                ),
+                ListTile(
+                  title: const Text('         Tanya Jawab'),
+                  onTap: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const PermintaanDokumenPage(),
+                      ),
+                    );
+                  },
+                ),
+              ],
+            ),
+            // Tile Pelatihan Auditor
+            ExpansionTile(
+              leading: const Icon(Icons.candlestick_chart_rounded),
+              title: const Text(
+                "Pelatihan Auditor",
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600
+                ),
+              ),
+              children: [
+                ListTile(
+                  title: const Text('         Perencanaan'),
+                  onTap: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const UndanganOpeningPage(),
+                      ),
+                    );
+                  },
+                ),
+                ListTile(
+                  title: const Text('         Realisasi'),
+                  onTap: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const OpeningMeetingPage(),
+                      ),
+                    );
+                  },
+                ),
+              ],
+            ),
+            // Tile Rapat Umum
+            ExpansionTile(
+              leading: const Icon(Icons.handyman),
+              title: const Text(
+                "Rapat Umum",
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600
+                ),
+              ),
+              children: [
+                ListTile(
+                  title: const Text('         Undangan Rapat'),
+                  onTap: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const UndanganOpeningPage(),
+                      ),
+                    );
+                  },
+                ),
+                ListTile(
+                  title: const Text('         Risalah Rapat'),
+                  onTap: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const OpeningMeetingPage(),
                       ),
                     );
                   },
