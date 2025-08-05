@@ -189,6 +189,175 @@ class MainMenuModel {
         boxColor: Colors.blue.shade400,
       ),
     );
+
+    mainMenu.add(
+      MainMenuModel(
+        name: 'Memo Tindak Lanjut',
+        iconPath: 'assets/icons/pictures.svg',
+        boxColor: Colors.blue.shade400,
+      ),
+    );
+
+    mainMenu.add(
+      MainMenuModel(
+        name: 'Tindak Lanjut Temuan',
+        iconPath: 'assets/icons/pictures.svg',
+        boxColor: Colors.blue.shade400,
+      ),
+    );
+
+    mainMenu.add(
+      MainMenuModel(
+        name: 'Review Tindak Lanjut',
+        iconPath: 'assets/icons/pictures.svg',
+        boxColor: Colors.blue.shade400,
+      ),
+    );
+
+    mainMenu.add(
+      MainMenuModel(
+        name: 'BA Penyelesaian',
+        iconPath: 'assets/icons/pictures.svg',
+        boxColor: Colors.blue.shade400,
+      ),
+    );
+
+    mainMenu.add(
+      MainMenuModel(
+        name: 'Penilaian Kinerja',
+        iconPath: 'assets/icons/pictures.svg',
+        boxColor: Colors.blue.shade400,
+      ),
+    );
+
+    mainMenu.add(
+      MainMenuModel(
+        name: 'Pengiriman',
+        iconPath: 'assets/icons/pictures.svg',
+        boxColor: Colors.blue.shade400,
+      ),
+    );
+
+    mainMenu.add(
+      MainMenuModel(
+        name: 'Pengisian',
+        iconPath: 'assets/icons/pictures.svg',
+        boxColor: Colors.blue.shade400,
+      ),
+    );
+
+    mainMenu.add(
+      MainMenuModel(
+        name: 'Hasil Survey',
+        iconPath: 'assets/icons/pictures.svg',
+        boxColor: Colors.blue.shade400,
+      ),
+    );
+
+    mainMenu.add(
+      MainMenuModel(
+        name: 'Bukti Pemulaan',
+        iconPath: 'assets/icons/pictures.svg',
+        boxColor: Colors.blue.shade400,
+      ),
+    );
+
+    mainMenu.add(
+      MainMenuModel(
+        name: 'Instruksi Audit',
+        iconPath: 'assets/icons/pictures.svg',
+        boxColor: Colors.blue.shade400,
+      ),
+    );
+
+    mainMenu.add(
+      MainMenuModel(
+        name: 'Surat Pemanggilan',
+        iconPath: 'assets/icons/pictures.svg',
+        boxColor: Colors.blue.shade400,
+      ),
+    );
+
+    mainMenu.add(
+      MainMenuModel(
+        name: 'Pemeriksaan Investigasi',
+        iconPath: 'assets/icons/pictures.svg',
+        boxColor: Colors.blue.shade400,
+      ),
+    );
+    //AUDIT EKSTERNAL
+    mainMenu.add(
+      MainMenuModel(
+        name: 'Register Audit Eksternal',
+        iconPath: 'assets/icons/pictures.svg',
+        boxColor: Colors.blue.shade400,
+      ),
+    );
+
+    mainMenu.add(
+      MainMenuModel(
+        name: 'Tindak Lanjut Audit Eksternal',
+        iconPath: 'assets/icons/pictures.svg',
+        boxColor: Colors.blue.shade400,
+      ),
+    );
+    //KONSULTASI
+    mainMenu.add(
+      MainMenuModel(
+        name: 'Form Konsultasi',
+        iconPath: 'assets/icons/pictures.svg',
+        boxColor: Colors.blue.shade400,
+      ),
+    );
+
+    mainMenu.add(
+      MainMenuModel(
+        name: 'Realisasi Konsultasi',
+        iconPath: 'assets/icons/pictures.svg',
+        boxColor: Colors.blue.shade400,
+      ),
+    );
+
+    mainMenu.add(
+      MainMenuModel(
+        name: 'Tanya Jawab',
+        iconPath: 'assets/icons/pictures.svg',
+        boxColor: Colors.blue.shade400,
+      ),
+    );
+    //Pelatihan Auditor
+    mainMenu.add(
+      MainMenuModel(
+        name: 'Perencanaan',
+        iconPath: 'assets/icons/pictures.svg',
+        boxColor: Colors.blue.shade400,
+      ),
+    );
+
+    mainMenu.add(
+      MainMenuModel(
+        name: 'Realisasi Pelatihan Auditor',
+        iconPath: 'assets/icons/pictures.svg',
+        boxColor: Colors.blue.shade400,
+      ),
+    );
+    // RAPAT UMUM
+    mainMenu.add(
+      MainMenuModel(
+        name: 'Undangan Rapat Umum',
+        iconPath: 'assets/icons/pictures.svg',
+        boxColor: Colors.blue.shade400,
+      ),
+    );
+
+    mainMenu.add(
+      MainMenuModel(
+        name: 'Risalah Rapat Umum',
+        iconPath: 'assets/icons/pictures.svg',
+        boxColor: Colors.blue.shade400,
+      ),
+    );
+
     return mainMenu;
   }
 }

@@ -1,14 +1,17 @@
 import 'package:audit_app_magang/model/mainmenu.dart';
 import 'package:audit_app_magang/pages/LHPpage.dart';
+import 'package:audit_app_magang/pages/ba_penyelesaianpage.dart';
 import 'package:audit_app_magang/pages/biaya_penugasanpage.dart';
 import 'package:audit_app_magang/pages/dokumen_pkatpage.dart';
 import 'package:audit_app_magang/pages/executive_summarypage.dart';
+import 'package:audit_app_magang/pages/memo_tindak_lanjutpage.dart';
 import 'package:audit_app_magang/pages/pkatpage.dart';
 import 'package:audit_app_magang/pages/program__auditpage.dart';
 import 'package:audit_app_magang/pages/realisasi_biayapage.dart';
 import 'package:audit_app_magang/pages/rencana_biayapage.dart';
 import 'package:audit_app_magang/pages/surat_kesediaanpage.dart';
 import 'package:audit_app_magang/pages/surat_pemberitahuanpage.dart';
+import 'package:audit_app_magang/pages/tindak_lanjut_temuanpage.dart';
 import 'package:audit_app_magang/pages/undangan_openingpage.dart';
 import 'package:audit_app_magang/widget/sidebar.dart';
 import 'package:audit_app_magang/pages/opening_meetingpage.dart';
@@ -133,6 +136,7 @@ class _HomePageState extends State<HomePage> {
                       builder: (context) => const ProgramAuditPage(),
                     ),
                   );
+                  break;
                 case 'Undangan Opening':
                   Navigator.push(
                     context,
@@ -148,6 +152,7 @@ class _HomePageState extends State<HomePage> {
                       builder: (context) => const OpeningMeetingPage(),
                     ),
                   );
+                  break;
                 case 'Permintaan Dokumen':
                   Navigator.push(
                     context,
@@ -155,6 +160,7 @@ class _HomePageState extends State<HomePage> {
                       builder: (context) => const PermintaanDokumenPage(),
                     ),
                   );
+                  break;
                 case 'Pemenuhan Dokumen':
                   Navigator.push(
                     context,
@@ -162,6 +168,7 @@ class _HomePageState extends State<HomePage> {
                       builder: (context) => const PemenuhanDokumenPage(),
                     ),
                   );
+                  break;
                 case 'Draft LHA':
                   Navigator.push(
                     context,
@@ -169,6 +176,7 @@ class _HomePageState extends State<HomePage> {
                       builder: (context) => const DraftLHAPage(),
                     ),
                   );
+                  break;
                 case 'Review Draft LHA':
                   Navigator.push(
                     context,
@@ -176,6 +184,7 @@ class _HomePageState extends State<HomePage> {
                       builder: (context) => const ReviewDraftLHAPage(),
                     ),
                   );
+                  break;
                 case 'Tanggapan':
                   Navigator.push(
                     context,
@@ -183,11 +192,13 @@ class _HomePageState extends State<HomePage> {
                       builder: (context) => const TanggapanPage(),
                     ),
                   );
+                  break;
                 case 'Temuan':
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => const TemuanPage()),
                   );
+                  break;
                 case 'Undangan Closing':
                   Navigator.push(
                     context,
@@ -195,6 +206,7 @@ class _HomePageState extends State<HomePage> {
                       builder: (context) => const UndanganClosingPage(),
                     ),
                   );
+                  break;
                 case 'Closing Meeting':
                   Navigator.push(
                     context,
@@ -202,6 +214,7 @@ class _HomePageState extends State<HomePage> {
                       builder: (context) => const ClosingMeetingPage(),
                     ),
                   );
+                  break;
                 case 'Komitmen':
                   Navigator.push(
                     context,
@@ -209,6 +222,7 @@ class _HomePageState extends State<HomePage> {
                       builder: (context) => const KomitmenPage(),
                     ),
                   );
+                  break;
                 //Todo
                 case 'Surat Kesediaan':
                   Navigator.push(
@@ -217,6 +231,7 @@ class _HomePageState extends State<HomePage> {
                       builder: (context) => const SuratKesediaanPage(),
                     ),
                   );
+                  break;
                 case 'Executive Summary':
                   Navigator.push(
                     context,
@@ -224,11 +239,13 @@ class _HomePageState extends State<HomePage> {
                       builder: (context) => const ExecutiverSummaryPage(),
                     ),
                   );
+                  break;
                 case 'LHP':
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => const LHPPage()),
                   );
+                  break;
                 case 'Realisasi Biaya':
                   Navigator.push(
                     context,
@@ -236,11 +253,36 @@ class _HomePageState extends State<HomePage> {
                       builder: (context) => const RealisasiBiayaPage(),
                     ),
                   );
+                  break;
                 case 'Biaya Penugasan':
                   Navigator.push(
                     context,
                     MaterialPageRoute(
                       builder: (context) => const BiayaPenugasanPage(),
+                    ),
+                  );
+                  break;
+                case 'Memo Tindak Lanjut':
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const MemoTindakLanjutPage(),
+                    ),
+                  );
+                  break;
+                case 'Tindak Lanjut Temuan':
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const TindakLanjutTemuanPage(),
+                    ),
+                  );
+                  break;
+                case 'BA Penyelesaian':
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const BAPenyelesaianPage(),
                     ),
                   );
                   break;
