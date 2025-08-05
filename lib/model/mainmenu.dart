@@ -157,6 +157,38 @@ class MainMenuModel {
         boxColor: Colors.blue.shade400,
       ),
     );
+
+    mainMenu.add(
+      MainMenuModel(
+        name: 'Surat Kesediaan',
+        iconPath: 'assets/icons/pictures.svg',
+        boxColor: Colors.blue.shade400,
+      ),
+    );
+
+    mainMenu.add(
+      MainMenuModel(
+        name: 'Executive Summary',
+        iconPath: 'assets/icons/pictures.svg',
+        boxColor: Colors.blue.shade400,
+      ),
+    );
+
+    mainMenu.add(
+      MainMenuModel(
+        name: 'LHP',
+        iconPath: 'assets/icons/pictures.svg',
+        boxColor: Colors.blue.shade400,
+      ),
+    );
+
+    mainMenu.add(
+      MainMenuModel(
+        name: 'Realisasi Biaya',
+        iconPath: 'assets/icons/pictures.svg',
+        boxColor: Colors.blue.shade400,
+      ),
+    );
     return mainMenu;
   }
 }

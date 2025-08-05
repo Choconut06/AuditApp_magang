@@ -1,9 +1,13 @@
 import 'package:audit_app_magang/model/mainmenu.dart';
+import 'package:audit_app_magang/pages/LHPpage.dart';
 import 'package:audit_app_magang/pages/biaya_penugasanpage.dart';
 import 'package:audit_app_magang/pages/dokumen_pkatpage.dart';
+import 'package:audit_app_magang/pages/executive_summarypage.dart';
 import 'package:audit_app_magang/pages/pkatpage.dart';
 import 'package:audit_app_magang/pages/program__auditpage.dart';
+import 'package:audit_app_magang/pages/realisasi_biayapage.dart';
 import 'package:audit_app_magang/pages/rencana_biayapage.dart';
+import 'package:audit_app_magang/pages/surat_kesediaanpage.dart';
 import 'package:audit_app_magang/pages/surat_pemberitahuanpage.dart';
 import 'package:audit_app_magang/pages/undangan_openingpage.dart';
 import 'package:audit_app_magang/widget/sidebar.dart';
@@ -129,7 +133,6 @@ class _HomePageState extends State<HomePage> {
                       builder: (context) => const ProgramAuditPage(),
                     ),
                   );
-                //BELOM DIUBAH
                 case 'Undangan Opening':
                   Navigator.push(
                     context,
@@ -206,7 +209,33 @@ class _HomePageState extends State<HomePage> {
                       builder: (context) => const KomitmenPage(),
                     ),
                   );
-                //AMPE SINI
+                //Todo
+                case 'Surat Kesediaan':
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const SuratKesediaanPage(),
+                    ),
+                  );
+                case 'Executive Summary':
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const ExecutiverSummaryPage(),
+                    ),
+                  );
+                case 'LHP':
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const LHPPage()),
+                  );
+                case 'Realisasi Biaya':
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const RealisasiBiayaPage(),
+                    ),
+                  );
                 case 'Biaya Penugasan':
                   Navigator.push(
                     context,
