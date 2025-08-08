@@ -83,7 +83,7 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           children: [
             Padding(
-            padding: const EdgeInsets.all(8),
+            padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
             child: Center(child: menuContainer()),
             ),
             SizedBox(
@@ -129,13 +129,11 @@ class _HomePageState extends State<HomePage> {
                     ),
                     // isi card
                     Padding(
-                      padding: const EdgeInsets.all(4),
-                      child: GridView.count(
-                        shrinkWrap: true, // agar tidak mengambil seluruh layar
-                        crossAxisCount: 4, // hanya 4 item per baris
-                        crossAxisSpacing: 4,
-                        mainAxisSpacing: 4,
-                        physics: const NeverScrollableScrollPhysics(), // karena ada dalam ScrollView
+                      padding: const EdgeInsets.all(8),
+                      child: Wrap(
+                        spacing: 10,
+                        runSpacing: 10,
+                        alignment: WrapAlignment.spaceEvenly,
                         children: List.generate(programKerja.length, (index) {
                           final item = programKerja[index];
                           return GestureDetector(
@@ -170,31 +168,33 @@ class _HomePageState extends State<HomePage> {
                                   );
                               }
                             },
-                            child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Container(
-                                  height: 50,
-                                  width: 50,
-                                  decoration: BoxDecoration(
-                                    color: item.boxColor,
-                                    borderRadius: BorderRadius.circular(8),
-                                  ),
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(10),
-                                    child: SvgPicture.asset(
-                                      item.iconPath,
-                                      color: Colors.white,
+                            child: SizedBox(
+                              width: 80,
+                              child: Column(
+                                children: [
+                                  Container(
+                                    height: 50,
+                                    width: 50,
+                                    decoration: BoxDecoration(
+                                      color: item.boxColor,
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(10),
+                                      child: SvgPicture.asset(
+                                        item.iconPath,
+                                        color: Colors.white,
+                                      ),
                                     ),
                                   ),
-                                ),
-                                const SizedBox(height: 8),
-                                Text(
-                                  item.name,
-                                  textAlign: TextAlign.center,
-                                  style: const TextStyle(fontSize: 11),
-                                ),
-                              ],
+                                  const SizedBox(height: 8),
+                                  Text(
+                                    item.name,
+                                    textAlign: TextAlign.center,
+                                    style: const TextStyle(fontSize: 11),
+                                  ),
+                                ],
+                              ),
                             ),
                           );
                         }),
@@ -213,7 +213,7 @@ class _HomePageState extends State<HomePage> {
 
   Container menuContainer() {
     return Container(
-      width: 460,
+      width: double.infinity,
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: Colors.white,
@@ -231,7 +231,7 @@ class _HomePageState extends State<HomePage> {
       child: Wrap(
         spacing: 12,
         runSpacing: 12,
-        alignment: WrapAlignment.center,
+        alignment: WrapAlignment.spaceEvenly,
         children: List.generate(mainMenu.length, (index) {
           final item = mainMenu[index];
           return GestureDetector(
@@ -580,7 +580,7 @@ class _HomePageState extends State<HomePage> {
               }
             },
             child: SizedBox(
-              width: 70,
+              width: 80,
               child: Column(
                 children: [
                   Container(
