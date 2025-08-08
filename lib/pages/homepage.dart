@@ -56,15 +56,21 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   List<MainMenuModel> mainMenu = [];
+  List<ProgramKerjaModel> programKerja = [];
 
   @override
   void initState() {
     super.initState();
     _getMainMenu();
+    _getProgramKerja();
   }
 
   void _getMainMenu() {
     mainMenu = MainMenuModel.getMainMenu();
+  }
+
+  void _getProgramKerja(){
+    programKerja = ProgramKerjaModel.getProgramKerja();
   }
 
   @override
@@ -74,17 +80,140 @@ class _HomePageState extends State<HomePage> {
       appBar: appBar(),
       drawer: const CustomDrawer(),
       body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(16),
-          child: Center(child: menuContainer()),
+        child: Column(
+          children: [
+            Padding(
+            padding: const EdgeInsets.all(8),
+            child: Center(child: menuContainer()),
+            ),
+            SizedBox(
+              height: 4,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+              child: Container(
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(8),
+                  border: Border.all(
+                    color: Colors.blueGrey.shade400.withOpacity(0.3),
+                  ),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    // Header
+                    Container(
+                      decoration: BoxDecoration(
+                        // color: Colors.blue[200],
+                        borderRadius: const BorderRadius.vertical(top: Radius.circular(8)),
+                      ),
+                      padding: const EdgeInsets.all(8),
+                      alignment: Alignment.centerLeft,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            padding: EdgeInsets.only(left: 8),
+                            child: Text(
+                              "Program Kerja", 
+                              style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 16
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                    // isi card
+                    Padding(
+                      padding: const EdgeInsets.all(4),
+                      child: GridView.count(
+                        shrinkWrap: true, // agar tidak mengambil seluruh layar
+                        crossAxisCount: 4, // hanya 4 item per baris
+                        crossAxisSpacing: 4,
+                        mainAxisSpacing: 4,
+                        physics: const NeverScrollableScrollPhysics(), // karena ada dalam ScrollView
+                        children: List.generate(programKerja.length, (index) {
+                          final item = programKerja[index];
+                          return GestureDetector(
+                            onTap: () {
+                              switch (item.name) {
+                                case 'PKAT':
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(builder: (context) => const PkatPage()),
+                                  );
+                                  break;
+                                case 'Rencana Biaya':
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => const RencanaBiayaPage(),
+                                    ),
+                                  );
+                                  break;
+                                case 'Dokumen PKAT':
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => const DokumenPkatPage(),
+                                    ),
+                                  );
+                                  break;
+                                default:
+                                  // fallback jika menu tidak ditemukan
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    const SnackBar(content: Text('Halaman belum tersedia')),
+                                  );
+                              }
+                            },
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Container(
+                                  height: 50,
+                                  width: 50,
+                                  decoration: BoxDecoration(
+                                    color: item.boxColor,
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(10),
+                                    child: SvgPicture.asset(
+                                      item.iconPath,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(height: 8),
+                                Text(
+                                  item.name,
+                                  textAlign: TextAlign.center,
+                                  style: const TextStyle(fontSize: 11),
+                                ),
+                              ],
+                            ),
+                          );
+                        }),
+                      ),
+                    ),                  
+                  ],
+                ),
+              ),
+            ),
+          ]
         ),
+        
       ),
     );
   }
 
   Container menuContainer() {
     return Container(
-      width: 360,
+      width: 460,
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: Colors.white,

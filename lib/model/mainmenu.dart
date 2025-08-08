@@ -23,29 +23,29 @@ class MainMenuModel {
       ),
     );
 
-    mainMenu.add(
-      MainMenuModel(
-        name: 'PKAT',
-        iconPath: 'assets/icons/pictures.svg',
-        boxColor: Colors.blue.shade400,
-      ),
-    );
+    // mainMenu.add(
+    //   MainMenuModel(
+    //     name: 'PKAT',
+    //     iconPath: 'assets/icons/pictures.svg',
+    //     boxColor: Colors.blue.shade400,
+    //   ),
+    // );
 
-    mainMenu.add(
-      MainMenuModel(
-        name: 'Rencana Biaya',
-        iconPath: 'assets/icons/pictures.svg',
-        boxColor: Colors.blue.shade400,
-      ),
-    );
+    // mainMenu.add(
+    //   MainMenuModel(
+    //     name: 'Rencana Biaya',
+    //     iconPath: 'assets/icons/pictures.svg',
+    //     boxColor: Colors.blue.shade400,
+    //   ),
+    // );
 
-    mainMenu.add(
-      MainMenuModel(
-        name: 'Dokumen PKAT',
-        iconPath: 'assets/icons/pictures.svg',
-        boxColor: Colors.blue.shade400,
-      ),
-    );
+    // mainMenu.add(
+    //   MainMenuModel(
+    //     name: 'Dokumen PKAT',
+    //     iconPath: 'assets/icons/pictures.svg',
+    //     boxColor: Colors.blue.shade400,
+    //   ),
+    // );
 
     mainMenu.add(
       MainMenuModel(
@@ -359,5 +359,47 @@ class MainMenuModel {
     );
 
     return mainMenu;
+  }
+}
+
+class ProgramKerjaModel{
+  String name;
+  String iconPath;
+  Color boxColor;
+
+  ProgramKerjaModel({
+    required this.name,
+    required this.iconPath,
+    required this.boxColor,
+  });
+
+  static List<ProgramKerjaModel> getProgramKerja() {
+    List<ProgramKerjaModel> prokerModel = [];
+
+    prokerModel.add(
+        ProgramKerjaModel(
+          name: 'PKAT',
+          iconPath: 'assets/icons/pictures.svg',
+          boxColor: Colors.blue.shade400,
+        ),
+    );
+
+    prokerModel.add(
+        ProgramKerjaModel(
+          name: 'Rencana Biaya',
+          iconPath: 'assets/icons/pictures.svg',
+          boxColor: Colors.blue.shade400,
+        ),
+    );
+
+    prokerModel.add(
+        ProgramKerjaModel(
+          name: 'Dokumen PKAT',
+          iconPath: 'assets/icons/pictures.svg',
+          boxColor: Colors.blue.shade400,
+        ),
+    );
+
+    return prokerModel;
   }
 }
