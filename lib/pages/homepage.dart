@@ -41,10 +41,10 @@ import 'package:audit_app_magang/pages/temuanpage.dart';
 import 'package:audit_app_magang/pages/undangan_closingpage.dart';
 import 'package:audit_app_magang/pages/closing_meetingpage.dart';
 import 'package:audit_app_magang/pages/komitmenpage.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'risk_assessment.dart';
+import 'package:audit_app_magang/widget/navbar.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -57,6 +57,7 @@ class _HomePageState extends State<HomePage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   List<MainMenuModel> mainMenu = [];
   List<ProgramKerjaModel> programKerja = [];
+  int _navIndex = 0; // index navbar
 
   @override
   void initState() {
@@ -69,7 +70,7 @@ class _HomePageState extends State<HomePage> {
     mainMenu = MainMenuModel.getMainMenu();
   }
 
-  void _getProgramKerja(){
+  void _getProgramKerja() {
     programKerja = ProgramKerjaModel.getProgramKerja();
   }
 
@@ -83,12 +84,10 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           children: [
             Padding(
-            padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-            child: Center(child: menuContainer()),
+              padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+              child: Center(child: menuContainer()),
             ),
-            SizedBox(
-              height: 4,
-            ),
+            const SizedBox(height: 4),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
               child: Container(
@@ -105,29 +104,25 @@ class _HomePageState extends State<HomePage> {
                   children: [
                     // Header
                     Container(
-                      decoration: BoxDecoration(
-                        // color: Colors.blue[200],
-                        borderRadius: const BorderRadius.vertical(top: Radius.circular(8)),
+                      decoration: const BoxDecoration(
+                        borderRadius: BorderRadius.vertical(
+                          top: Radius.circular(8),
+                        ),
                       ),
                       padding: const EdgeInsets.all(8),
                       alignment: Alignment.centerLeft,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            padding: EdgeInsets.only(left: 8),
-                            child: Text(
-                              "Program Kerja", 
-                              style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontSize: 16
-                              ),
-                            ),
-                          )
-                        ],
+                      child: const Padding(
+                        padding: EdgeInsets.only(left: 8),
+                        child: Text(
+                          "Program Kerja",
+                          style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            fontSize: 16,
+                          ),
+                        ),
                       ),
                     ),
-                    // isi card
+                    // Isi card
                     Padding(
                       padding: const EdgeInsets.all(8),
                       child: Wrap(
@@ -142,14 +137,17 @@ class _HomePageState extends State<HomePage> {
                                 case 'PKAT':
                                   Navigator.push(
                                     context,
-                                    MaterialPageRoute(builder: (context) => const PkatPage()),
+                                    MaterialPageRoute(
+                                      builder: (context) => const PkatPage(),
+                                    ),
                                   );
                                   break;
                                 case 'Rencana Biaya':
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => const RencanaBiayaPage(),
+                                      builder:
+                                          (context) => const RencanaBiayaPage(),
                                     ),
                                   );
                                   break;
@@ -157,14 +155,16 @@ class _HomePageState extends State<HomePage> {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => const DokumenPkatPage(),
+                                      builder:
+                                          (context) => const DokumenPkatPage(),
                                     ),
                                   );
                                   break;
                                 default:
-                                  // fallback jika menu tidak ditemukan
                                   ScaffoldMessenger.of(context).showSnackBar(
-                                    const SnackBar(content: Text('Halaman belum tersedia')),
+                                    const SnackBar(
+                                      content: Text('Halaman belum tersedia'),
+                                    ),
                                   );
                               }
                             },
@@ -199,14 +199,42 @@ class _HomePageState extends State<HomePage> {
                           );
                         }),
                       ),
-                    ),                  
+                    ),
                   ],
                 ),
               ),
             ),
-          ]
+          ],
         ),
-        
+      ),
+      // NAVBAR tidak menutupi konten (Scaffold atur otomatis + SafeArea di widget)
+      bottomNavigationBar: CustomNavBar(
+        currentIndex: _navIndex,
+        onTap: (i) {
+          if (i == _navIndex) return;
+          setState(() => _navIndex = i);
+          switch (i) {
+            case 0:
+              // Beranda (stay di halaman ini)
+              break;
+            case 1:
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const ProgramAuditPage()),
+              );
+              break;
+            case 2:
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text('Notifikasi coming soon')),
+              );
+              break;
+            case 3:
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text('Profil coming soon')),
+              );
+              break;
+          }
+        },
       ),
     );
   }
@@ -369,7 +397,6 @@ class _HomePageState extends State<HomePage> {
                     ),
                   );
                   break;
-                //Todo
                 case 'Surat Kesediaan':
                   Navigator.push(
                     context,
@@ -440,7 +467,6 @@ class _HomePageState extends State<HomePage> {
                     ),
                   );
                   break;
-                //todo
                 case 'Pengiriman':
                   Navigator.push(
                     context,
@@ -530,7 +556,6 @@ class _HomePageState extends State<HomePage> {
                     ),
                   );
                   break;
-                //awdawd
                 case 'Tanya Jawab':
                   Navigator.push(
                     context,
@@ -573,7 +598,6 @@ class _HomePageState extends State<HomePage> {
                   );
                   break;
                 default:
-                  // fallback jika menu tidak ditemukan
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(content: Text('Halaman belum tersedia')),
                   );
@@ -633,9 +657,7 @@ class _HomePageState extends State<HomePage> {
                   children: [
                     // Menu Button
                     GestureDetector(
-                      onTap: () {
-                        _scaffoldKey.currentState?.openDrawer();
-                      },
+                      onTap: () => _scaffoldKey.currentState?.openDrawer(),
                       child: Container(
                         padding: const EdgeInsets.all(8),
                         decoration: BoxDecoration(
@@ -650,7 +672,6 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                     ),
-
                     // Profile icon
                     Container(
                       padding: const EdgeInsets.all(8),
