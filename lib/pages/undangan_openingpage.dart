@@ -18,7 +18,7 @@ class _UndanganOpeningState extends State<UndanganOpeningPage> {
       appBar: appBar(),
       drawer: const CustomDrawer(), // Drawer standar
       body: const Center(
-        child: Text('Ini adalah Halaman A', style: TextStyle(fontSize: 24)),
+        child: Text('Undangan Opening', style: TextStyle(fontSize: 24)),
       ),
     );
   }

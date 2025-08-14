@@ -58,6 +58,9 @@ class _HomePageState extends State<HomePage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   List<MainMenuModel> mainMenu = [];
   List<ProgramKerjaModel> programKerja = [];
+  List<PersiapanAuditModel> persiapanAudit = [];
+  List<PelaksanaanAuditModel> pelaksanaanAudit = [];
+
   int _navIndex = 0; // index navbar
 
   @override
@@ -65,6 +68,8 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     _getMainMenu();
     _getProgramKerja();
+    _getPersiapanAudit();
+    _getPelaksanaanAudit();
   }
 
   void _getMainMenu() {
@@ -73,6 +78,14 @@ class _HomePageState extends State<HomePage> {
 
   void _getProgramKerja() {
     programKerja = ProgramKerjaModel.getProgramKerja();
+  }
+
+  void _getPersiapanAudit() {
+    persiapanAudit = PersiapanAuditModel.getPersiapanAudit();
+  }
+
+  void _getPelaksanaanAudit() {
+    pelaksanaanAudit = PelaksanaanAuditModel.getPelaksanaanAudit();
   }
 
   @override
@@ -158,6 +171,322 @@ class _HomePageState extends State<HomePage> {
                                     MaterialPageRoute(
                                       builder:
                                           (context) => const DokumenPkatPage(),
+                                    ),
+                                  );
+                                  break;
+                                default:
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    const SnackBar(
+                                      content: Text('Halaman belum tersedia'),
+                                    ),
+                                  );
+                              }
+                            },
+                            child: SizedBox(
+                              width: 80,
+                              child: Column(
+                                children: [
+                                  Container(
+                                    height: 50,
+                                    width: 50,
+                                    decoration: BoxDecoration(
+                                      color: item.boxColor,
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(10),
+                                      child: SvgPicture.asset(
+                                        item.iconPath,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ),
+                                  const SizedBox(height: 8),
+                                  Text(
+                                    item.name,
+                                    textAlign: TextAlign.center,
+                                    style: const TextStyle(fontSize: 11),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          );
+                        }),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+              child: Container(
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(8),
+                  border: Border.all(
+                    color: Colors.blueGrey.shade400.withOpacity(0.3),
+                  ),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    // Header
+                    Container(
+                      decoration: const BoxDecoration(
+                        borderRadius: BorderRadius.vertical(
+                          top: Radius.circular(8),
+                        ),
+                      ),
+                      padding: const EdgeInsets.all(8),
+                      alignment: Alignment.centerLeft,
+                      child: const Padding(
+                        padding: EdgeInsets.only(left: 8),
+                        child: Text(
+                          "Persiapan Audit",
+                          style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            fontSize: 16,
+                          ),
+                        ),
+                      ),
+                    ),
+                    // Isi card
+                    Padding(
+                      padding: const EdgeInsets.all(8),
+                      child: Wrap(
+                        spacing: 10,
+                        runSpacing: 10,
+                        alignment: WrapAlignment.spaceEvenly,
+                        children: List.generate(persiapanAudit.length, (index) {
+                          final item = persiapanAudit[index];
+                          return GestureDetector(
+                            onTap: () {
+                              switch (item.name) {
+                                case 'Surat Pemberitahuan':
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder:
+                                          (context) =>
+                                              const SuratPemberitahuanPage(),
+                                    ),
+                                  );
+                                  break;
+                                case 'Program Audit':
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder:
+                                          (context) => const ProgramAuditPage(),
+                                    ),
+                                  );
+                                  break;
+                                case 'Biaya Penugasan':
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder:
+                                          (context) =>
+                                              const BiayaPenugasanPage(),
+                                    ),
+                                  );
+                                  break;
+                                default:
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    const SnackBar(
+                                      content: Text('Halaman belum tersedia'),
+                                    ),
+                                  );
+                              }
+                            },
+                            child: SizedBox(
+                              width: 80,
+                              child: Column(
+                                children: [
+                                  Container(
+                                    height: 50,
+                                    width: 50,
+                                    decoration: BoxDecoration(
+                                      color: item.boxColor,
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(10),
+                                      child: SvgPicture.asset(
+                                        item.iconPath,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ),
+                                  const SizedBox(height: 8),
+                                  Text(
+                                    item.name,
+                                    textAlign: TextAlign.center,
+                                    style: const TextStyle(fontSize: 11),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          );
+                        }),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+              child: Container(
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(8),
+                  border: Border.all(
+                    color: Colors.blueGrey.shade400.withOpacity(0.3),
+                  ),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    // Header
+                    Container(
+                      decoration: const BoxDecoration(
+                        borderRadius: BorderRadius.vertical(
+                          top: Radius.circular(8),
+                        ),
+                      ),
+                      padding: const EdgeInsets.all(8),
+                      alignment: Alignment.centerLeft,
+                      child: const Padding(
+                        padding: EdgeInsets.only(left: 8),
+                        child: Text(
+                          "Pelaksanaan Audit",
+                          style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            fontSize: 16,
+                          ),
+                        ),
+                      ),
+                    ),
+                    // Isi card
+                    Padding(
+                      padding: const EdgeInsets.all(8),
+                      child: Wrap(
+                        spacing: 10,
+                        runSpacing: 10,
+                        alignment: WrapAlignment.spaceEvenly,
+                        children: List.generate(pelaksanaanAudit.length, (
+                          index,
+                        ) {
+                          final item = pelaksanaanAudit[index];
+                          return GestureDetector(
+                            onTap: () {
+                              switch (item.name) {
+                                case 'Undangan Opening':
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder:
+                                          (context) =>
+                                              const UndanganOpeningPage(),
+                                    ),
+                                  );
+                                  break;
+                                case 'Opening Meeting':
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder:
+                                          (context) =>
+                                              const OpeningMeetingPage(),
+                                    ),
+                                  );
+                                  break;
+                                case 'Permintaan Dokumen':
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder:
+                                          (context) =>
+                                              const PermintaanDokumenPage(),
+                                    ),
+                                  );
+                                  break;
+                                case 'Pemenuhan Dokumen':
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder:
+                                          (context) =>
+                                              const PemenuhanDokumenPage(),
+                                    ),
+                                  );
+                                  break;
+                                case 'Draft LHA':
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder:
+                                          (context) => const DraftLHAPage(),
+                                    ),
+                                  );
+                                  break;
+                                case 'Review Draft LHA':
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder:
+                                          (context) =>
+                                              const ReviewDraftLHAPage(),
+                                    ),
+                                  );
+                                  break;
+                                case 'Tanggapan':
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder:
+                                          (context) => const TanggapanPage(),
+                                    ),
+                                  );
+                                  break;
+                                case 'Temuan':
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => const TemuanPage(),
+                                    ),
+                                  );
+                                  break;
+                                case 'Undangan Closing':
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder:
+                                          (context) =>
+                                              const UndanganClosingPage(),
+                                    ),
+                                  );
+                                  break;
+                                case 'Closing Meeting':
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder:
+                                          (context) =>
+                                              const ClosingMeetingPage(),
+                                    ),
+                                  );
+                                  break;
+                                case 'Komitmen':
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder:
+                                          (context) => const KomitmenPage(),
                                     ),
                                   );
                                   break;

@@ -362,7 +362,8 @@ class MainMenuModel {
   }
 }
 
-class ProgramKerjaModel{
+//PROGRAM KERJA
+class ProgramKerjaModel {
   String name;
   String iconPath;
   Color boxColor;
@@ -377,29 +378,177 @@ class ProgramKerjaModel{
     List<ProgramKerjaModel> prokerModel = [];
 
     prokerModel.add(
-        ProgramKerjaModel(
-          name: 'PKAT',
-          iconPath: 'assets/icons/pictures.svg',
-          boxColor: Colors.blue.shade400,
-        ),
+      ProgramKerjaModel(
+        name: 'PKAT',
+        iconPath: 'assets/icons/pictures.svg',
+        boxColor: Colors.blue.shade400,
+      ),
     );
 
     prokerModel.add(
-        ProgramKerjaModel(
-          name: 'Rencana Biaya',
-          iconPath: 'assets/icons/pictures.svg',
-          boxColor: Colors.blue.shade400,
-        ),
+      ProgramKerjaModel(
+        name: 'Rencana Biaya',
+        iconPath: 'assets/icons/pictures.svg',
+        boxColor: Colors.blue.shade400,
+      ),
     );
 
     prokerModel.add(
-        ProgramKerjaModel(
-          name: 'Dokumen PKAT',
-          iconPath: 'assets/icons/pictures.svg',
-          boxColor: Colors.blue.shade400,
-        ),
+      ProgramKerjaModel(
+        name: 'Dokumen PKAT',
+        iconPath: 'assets/icons/pictures.svg',
+        boxColor: Colors.blue.shade400,
+      ),
     );
 
     return prokerModel;
+  }
+}
+
+//PERSIAPAN AUDIT
+class PersiapanAuditModel {
+  String name;
+  String iconPath;
+  Color boxColor;
+
+  PersiapanAuditModel({
+    required this.name,
+    required this.iconPath,
+    required this.boxColor,
+  });
+
+  static List<PersiapanAuditModel> getPersiapanAudit() {
+    List<PersiapanAuditModel> persiapanAuditModel = [];
+
+    persiapanAuditModel.add(
+      PersiapanAuditModel(
+        name: 'Surat Pemberitahuan',
+        iconPath: 'assets/icons/pictures.svg',
+        boxColor: Colors.blue.shade400,
+      ),
+    );
+
+    persiapanAuditModel.add(
+      PersiapanAuditModel(
+        name: 'Program Audit',
+        iconPath: 'assets/icons/pictures.svg',
+        boxColor: Colors.blue.shade400,
+      ),
+    );
+
+    persiapanAuditModel.add(
+      PersiapanAuditModel(
+        name: 'Biaya Penugasan',
+        iconPath: 'assets/icons/pictures.svg',
+        boxColor: Colors.blue.shade400,
+      ),
+    );
+
+    return persiapanAuditModel;
+  }
+}
+
+//PELAKSANAAN AUDIT
+class PelaksanaanAuditModel {
+  String name;
+  String iconPath;
+  Color boxColor;
+
+  PelaksanaanAuditModel({
+    required this.name,
+    required this.iconPath,
+    required this.boxColor,
+  });
+
+  static List<PelaksanaanAuditModel> getPelaksanaanAudit() {
+    List<PelaksanaanAuditModel> pelaksanaanAuditModel = [];
+
+    pelaksanaanAuditModel.add(
+      PelaksanaanAuditModel(
+        name: 'Undangan Opening',
+        iconPath: 'assets/icons/pictures.svg',
+        boxColor: Colors.blue.shade400,
+      ),
+    );
+
+    pelaksanaanAuditModel.add(
+      PelaksanaanAuditModel(
+        name: 'Opening Meeting',
+        iconPath: 'assets/icons/pictures.svg',
+        boxColor: Colors.blue.shade400,
+      ),
+    );
+
+    pelaksanaanAuditModel.add(
+      PelaksanaanAuditModel(
+        name: 'Permintaan Dokumen',
+        iconPath: 'assets/icons/pictures.svg',
+        boxColor: Colors.blue.shade400,
+      ),
+    );
+
+    pelaksanaanAuditModel.add(
+      PelaksanaanAuditModel(
+        name: 'Pemenuhan Dokumen',
+        iconPath: 'assets/icons/pictures.svg',
+        boxColor: Colors.blue.shade400,
+      ),
+    );
+
+    pelaksanaanAuditModel.add(
+      PelaksanaanAuditModel(
+        name: 'Draft LHA',
+        iconPath: 'assets/icons/pictures.svg',
+        boxColor: Colors.blue.shade400,
+      ),
+    );
+
+    pelaksanaanAuditModel.add(
+      PelaksanaanAuditModel(
+        name: 'Review Draft LHA',
+        iconPath: 'assets/icons/pictures.svg',
+        boxColor: Colors.blue.shade400,
+      ),
+    );
+    pelaksanaanAuditModel.add(
+      PelaksanaanAuditModel(
+        name: 'Tanggapan',
+        iconPath: 'assets/icons/pictures.svg',
+        boxColor: Colors.blue.shade400,
+      ),
+    );
+
+    pelaksanaanAuditModel.add(
+      PelaksanaanAuditModel(
+        name: 'Temuan',
+        iconPath: 'assets/icons/pictures.svg',
+        boxColor: Colors.blue.shade400,
+      ),
+    );
+
+    pelaksanaanAuditModel.add(
+      PelaksanaanAuditModel(
+        name: 'Undangan Closing',
+        iconPath: 'assets/icons/pictures.svg',
+        boxColor: Colors.blue.shade400,
+      ),
+    );
+
+    pelaksanaanAuditModel.add(
+      PelaksanaanAuditModel(
+        name: 'Closing Meeting',
+        iconPath: 'assets/icons/pictures.svg',
+        boxColor: Colors.blue.shade400,
+      ),
+    );
+
+    pelaksanaanAuditModel.add(
+      PelaksanaanAuditModel(
+        name: 'Komitmen',
+        iconPath: 'assets/icons/pictures.svg',
+        boxColor: Colors.blue.shade400,
+      ),
+    );
+    return pelaksanaanAuditModel;
   }
 }
