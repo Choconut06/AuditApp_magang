@@ -24,7 +24,6 @@ class CustomNavBar extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.fromLTRB(12, 0, 12, 12),
         child: ClipRRect(
-          borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
           child: BackdropFilter(
             filter: ImageFilter.blur(sigmaX: 16, sigmaY: 16),
             child: DecoratedBox(
@@ -54,23 +53,11 @@ class CustomNavBar extends StatelessWidget {
                     'Beranda',
                     0,
                   ),
-                  _buildDestination(
-                    Icons.grid_view_outlined,
-                    Icons.grid_view_rounded,
-                    'Modul',
-                    1,
-                  ),
                   _buildDestinationNotif(
                     Icons.notifications_outlined,
                     Icons.notifications_rounded,
                     'Notifikasi',
-                    2,
-                  ),
-                  _buildDestination(
-                    Icons.person_outline,
-                    Icons.person_rounded,
-                    'Profil',
-                    3,
+                    1,
                   ),
                 ],
               ),

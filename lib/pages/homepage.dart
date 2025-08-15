@@ -10,6 +10,7 @@ import 'package:audit_app_magang/pages/hasil_surveypage.dart';
 import 'package:audit_app_magang/pages/instruksi_auditpage.dart';
 import 'package:audit_app_magang/pages/memo_tindak_lanjutpage.dart';
 import 'package:audit_app_magang/pages/modulpage.dart';
+import 'package:audit_app_magang/pages/notifikasipage.dart';
 import 'package:audit_app_magang/pages/pemeriksaanpage.dart';
 import 'package:audit_app_magang/pages/pengirimanpage.dart';
 import 'package:audit_app_magang/pages/pengisianpage.dart';
@@ -550,19 +551,8 @@ class _HomePageState extends State<HomePage> {
             case 1:
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (_) => const ModulPage()),
+                MaterialPageRoute(builder: (_) => const NotifikasiPage()),
               );
-              break;
-            case 2:
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('Notifikasi coming soon')),
-              );
-              break;
-            case 3:
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('Profil coming soon')),
-              );
-              break;
           }
         },
       ),
