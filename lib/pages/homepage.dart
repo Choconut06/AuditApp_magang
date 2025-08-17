@@ -47,6 +47,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'risk_assessment.dart';
 import 'package:audit_app_magang/widget/navbar.dart';
+import 'package:audit_app_magang/pages/profilepage.dart';
+import 'package:audit_app_magang/model/slideanim.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -538,7 +540,6 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
-      // NAVBAR tidak menutupi konten (Scaffold atur otomatis + SafeArea di widget)
       bottomNavigationBar: CustomNavBar(
         currentIndex: _navIndex,
         onTap: (i) {
@@ -993,17 +994,25 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                     // Profile icon
-                    Container(
-                      padding: const EdgeInsets.all(8),
-                      decoration: BoxDecoration(
-                        color: Colors.blue[400],
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: SvgPicture.asset(
-                        'assets/icons/profile.svg',
-                        color: Colors.white,
-                        height: 40,
-                        width: 40,
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          slideRightRoute(const ProfilePage()),
+                        );
+                      },
+                      child: Container(
+                        padding: const EdgeInsets.all(8),
+                        decoration: BoxDecoration(
+                          color: Colors.blue[400],
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: SvgPicture.asset(
+                          'assets/icons/profile.svg',
+                          color: Colors.white,
+                          height: 40,
+                          width: 40,
+                        ),
                       ),
                     ),
                   ],
