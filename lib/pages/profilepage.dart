@@ -18,14 +18,6 @@ class _ProfilePageState extends State<ProfilePage> {
   String email = "rizqililiati@example.com";
   String jabatan = "Kepala Divisi Internal Audit";
 
-  // Controller untuk ubah password
-  final TextEditingController _oldPasswordController = TextEditingController();
-  final TextEditingController _newPasswordController = TextEditingController();
-  final TextEditingController _confirmPasswordController =
-      TextEditingController();
-
-  int _navIndex = 0;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -133,17 +125,7 @@ class _ProfilePageState extends State<ProfilePage> {
     );
   }
 
-  // Widget untuk TextField password
-  Widget _buildTextField(String label, TextEditingController controller) {
-    return TextField(
-      controller: controller,
-      obscureText: true,
-      decoration: InputDecoration(
-        labelText: label,
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
-      ),
-    );
-  }
+  // Widget untuk TextField passwor
 
   PreferredSizeWidget _appBar() {
     return PreferredSize(
