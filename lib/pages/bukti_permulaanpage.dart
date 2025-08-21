@@ -1,6 +1,4 @@
-import 'package:audit_app_magang/widget/sidebar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:audit_app_magang/pages/addbuktipermulaanpage.dart';
 
 class BuktiPermulaanpage extends StatefulWidget {
@@ -11,8 +9,6 @@ class BuktiPermulaanpage extends StatefulWidget {
 }
 
 class _BuktiPermulaanPageState extends State<BuktiPermulaanpage> {
-  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-
   final List<Map<String, dynamic>> _buktiPermulaanData = [
     {
       "nomor": 1,
@@ -37,18 +33,12 @@ class _BuktiPermulaanPageState extends State<BuktiPermulaanpage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: _scaffoldKey,
-      appBar: appBar(),
-      drawer: const CustomDrawer(),
+      appBar: _appBar(),
       body: Padding(
         padding: const EdgeInsets.all(12.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              "Daftar Bukti Permulaan",
-              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-            ),
             const SizedBox(height: 20),
 
             /// Tabel Responsif
@@ -57,13 +47,10 @@ class _BuktiPermulaanPageState extends State<BuktiPermulaanpage> {
                 builder: (context, constraints) {
                   double tableWidth = constraints.maxWidth;
 
-                  // Gunakan scroll horizontal jika layar sempit
                   return SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: ConstrainedBox(
-                      constraints: BoxConstraints(
-                        minWidth: tableWidth, // Lebar minimal = lebar layar
-                      ),
+                      constraints: BoxConstraints(minWidth: tableWidth),
                       child: DataTable(
                         headingRowColor: MaterialStateColor.resolveWith(
                           (states) => Colors.blue.shade100,
@@ -158,8 +145,8 @@ class _BuktiPermulaanPageState extends State<BuktiPermulaanpage> {
     );
   }
 
-  /// Custom AppBar
-  PreferredSizeWidget appBar() {
+  /// Custom AppBar dengan tinggi seragam
+  PreferredSizeWidget _appBar() {
     return PreferredSize(
       preferredSize: const Size.fromHeight(120),
       child: AppBar(
@@ -174,38 +161,36 @@ class _BuktiPermulaanPageState extends State<BuktiPermulaanpage> {
                   horizontal: 10,
                   vertical: 10,
                 ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                child: Stack(
+                  alignment: Alignment.center,
                   children: [
-                    GestureDetector(
-                      onTap: () {
-                        _scaffoldKey.currentState?.openDrawer();
-                      },
-                      child: Container(
-                        padding: const EdgeInsets.all(8),
-                        decoration: BoxDecoration(
-                          color: Colors.blue[400],
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: SvgPicture.asset(
-                          'assets/icons/three-lines.svg',
-                          color: Colors.white,
-                          height: 40,
-                          width: 40,
+                    // Tombol Back di kiri
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: GestureDetector(
+                        onTap: () => Navigator.pop(context),
+                        child: Container(
+                          padding: const EdgeInsets.all(8),
+                          decoration: BoxDecoration(
+                            color: Colors.blue[400],
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: const Icon(
+                            Icons.arrow_back,
+                            color: Colors.white,
+                            size: 32,
+                          ),
                         ),
                       ),
                     ),
-                    Container(
-                      padding: const EdgeInsets.all(8),
-                      decoration: BoxDecoration(
-                        color: Colors.blue[400],
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: SvgPicture.asset(
-                        'assets/icons/profile.svg',
-                        color: Colors.white,
-                        height: 40,
-                        width: 40,
+                    const Center(
+                      child: Text(
+                        "Bukti Permulaan",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
                     ),
                   ],

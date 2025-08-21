@@ -30,7 +30,7 @@ class _SuratPemanggilanPageState extends State<SuratPemanggilanPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      appBar: appBar(),
+      appBar: _appBar(),
       drawer: const CustomDrawer(),
       body: Padding(
         padding: const EdgeInsets.all(12),
@@ -153,7 +153,7 @@ class _SuratPemanggilanPageState extends State<SuratPemanggilanPage> {
     );
   }
 
-  PreferredSizeWidget appBar() {
+  PreferredSizeWidget _appBar() {
     return PreferredSize(
       preferredSize: const Size.fromHeight(120),
       child: AppBar(
@@ -168,36 +168,36 @@ class _SuratPemanggilanPageState extends State<SuratPemanggilanPage> {
                   horizontal: 10,
                   vertical: 10,
                 ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                child: Stack(
+                  alignment: Alignment.center,
                   children: [
-                    GestureDetector(
-                      onTap: () => _scaffoldKey.currentState?.openDrawer(),
-                      child: Container(
-                        padding: const EdgeInsets.all(8),
-                        decoration: BoxDecoration(
-                          color: Colors.blue[400],
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: SvgPicture.asset(
-                          'assets/icons/three-lines.svg',
-                          color: Colors.white,
-                          height: 40,
-                          width: 40,
+                    // Tombol Back di kiri
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: GestureDetector(
+                        onTap: () => Navigator.pop(context),
+                        child: Container(
+                          padding: const EdgeInsets.all(8),
+                          decoration: BoxDecoration(
+                            color: Colors.blue[400],
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: const Icon(
+                            Icons.arrow_back,
+                            color: Colors.white,
+                            size: 32,
+                          ),
                         ),
                       ),
                     ),
-                    Container(
-                      padding: const EdgeInsets.all(8),
-                      decoration: BoxDecoration(
-                        color: Colors.blue[400],
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: SvgPicture.asset(
-                        'assets/icons/profile.svg',
-                        color: Colors.white,
-                        height: 40,
-                        width: 40,
+                    const Center(
+                      child: Text(
+                        "Surat Pemanggilan",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
                     ),
                   ],
