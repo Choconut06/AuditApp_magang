@@ -896,7 +896,7 @@ class RapatUmumModel {
 
     rapatUmumModel.add(
       RapatUmumModel(
-        name: 'Perencanaan',
+        name: 'Undangan Rapat',
         iconPath: 'assets/icons/pictures.svg',
         boxColor: Colors.blue.shade400,
       ),
@@ -904,7 +904,7 @@ class RapatUmumModel {
 
     rapatUmumModel.add(
       RapatUmumModel(
-        name: 'Realisasi',
+        name: 'Risalah Rapat',
         iconPath: 'assets/icons/pictures.svg',
         boxColor: Colors.blue.shade400,
       ),
