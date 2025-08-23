@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:audit_app_magang/widget/sidebar.dart';
 
-class Pengisianpage extends StatelessWidget {
-  const Pengisianpage({super.key});
+class PengisianPage extends StatelessWidget {
+  const PengisianPage({super.key});
 
   @override
   Widget build(BuildContext context) {

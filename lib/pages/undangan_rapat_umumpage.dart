@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:audit_app_magang/widget/sidebar.dart';
 
-class UndanganRapatUmumpage extends StatelessWidget {
-  const UndanganRapatUmumpage({super.key});
+class UndanganRapatUmumPage extends StatelessWidget {
+  const UndanganRapatUmumPage({super.key});
 
   @override
   Widget build(BuildContext context) {

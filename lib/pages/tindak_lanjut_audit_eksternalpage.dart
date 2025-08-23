@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:audit_app_magang/pages/addtindaklanjutauditpage.dart';
 
-class TindakLanjutAuditEksternalpage extends StatefulWidget {
-  const TindakLanjutAuditEksternalpage({super.key});
+class TindakLanjutAuditEksternalPage extends StatefulWidget {
+  const TindakLanjutAuditEksternalPage({super.key});
 
   @override
-  State<TindakLanjutAuditEksternalpage> createState() =>
+  State<TindakLanjutAuditEksternalPage> createState() =>
       _TindakLanjutPageState();
 }
 
-class _TindakLanjutPageState extends State<TindakLanjutAuditEksternalpage> {
+class _TindakLanjutPageState extends State<TindakLanjutAuditEksternalPage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   final List<Map<String, dynamic>> _rows = [

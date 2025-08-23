@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:audit_app_magang/pages/addformkonsultasipage.dart';
 
-class FormKonsultasipage extends StatefulWidget {
-  const FormKonsultasipage({super.key});
+class FormKonsultasiPage extends StatefulWidget {
+  const FormKonsultasiPage({super.key});
 
   @override
-  State<FormKonsultasipage> createState() => _FormKonsultasipageState();
+  State<FormKonsultasiPage> createState() => _FormKonsultasipageState();
 }
 
-class _FormKonsultasipageState extends State<FormKonsultasipage> {
+class _FormKonsultasipageState extends State<FormKonsultasiPage> {
   final List<Map<String, dynamic>> _rows = [
     {
       "nomor": 1,

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:audit_app_magang/pages/addbuktipermulaanpage.dart';
 
-class BuktiPermulaanpage extends StatefulWidget {
-  const BuktiPermulaanpage({super.key});
+class BuktiPermulaanPage extends StatefulWidget {
+  const BuktiPermulaanPage({super.key});
 
   @override
-  State<BuktiPermulaanpage> createState() => _BuktiPermulaanPageState();
+  State<BuktiPermulaanPage> createState() => _BuktiPermulaanPageState();
 }
 
-class _BuktiPermulaanPageState extends State<BuktiPermulaanpage> {
+class _BuktiPermulaanPageState extends State<BuktiPermulaanPage> {
   final List<Map<String, dynamic>> _buktiPermulaanData = [
     {
       "nomor": 1,

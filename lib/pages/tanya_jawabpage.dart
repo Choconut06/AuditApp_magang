@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:audit_app_magang/pages/addtanyajawabpage.dart';
 
-class TanyaJawabpage extends StatefulWidget {
-  const TanyaJawabpage({super.key});
+class TanyaJawabPage extends StatefulWidget {
+  const TanyaJawabPage({super.key});
 
   @override
-  State<TanyaJawabpage> createState() => _TanyaJawabpageState();
+  State<TanyaJawabPage> createState() => _TanyaJawabpageState();
 }
 
-class _TanyaJawabpageState extends State<TanyaJawabpage> {
+class _TanyaJawabpageState extends State<TanyaJawabPage> {
   final List<Map<String, dynamic>> _rows = [
     {
       "nomor": 1,

@@ -1101,7 +1101,7 @@ class _HomePageState extends State<HomePage> {
                                   context,
                                   MaterialPageRoute(
                                     builder:
-                                        (context) => const Pengisianpage(),
+                                        (context) => const PengisianPage(),
                                   ),
                                 );
                                 break;
@@ -1110,7 +1110,7 @@ class _HomePageState extends State<HomePage> {
                                   context,
                                   MaterialPageRoute(
                                     builder:
-                                        (context) => const HasilSurveypage(),
+                                        (context) => const HasilSurveyPage(),
                                   ),
                                 );
                                 break;
@@ -1210,7 +1210,7 @@ class _HomePageState extends State<HomePage> {
                                   MaterialPageRoute(
                                     builder:
                                         (context) =>
-                                            const BuktiPermulaanpage(),
+                                            const BuktiPermulaanPage(),
                                   ),
                                 );
                                 break;
@@ -1349,7 +1349,7 @@ class _HomePageState extends State<HomePage> {
                                   MaterialPageRoute(
                                     builder:
                                         (context) =>
-                                            const TindakLanjutAuditEksternalpage(),
+                                            const TindakLanjutAuditEksternalPage(),
                                   ),
                                 );
                                 break;
@@ -1449,7 +1449,7 @@ class _HomePageState extends State<HomePage> {
                                   MaterialPageRoute(
                                     builder:
                                         (context) =>
-                                            const FormKonsultasipage(),
+                                            const FormKonsultasiPage(),
                                   ),
                                 );
                                 break;
@@ -1457,7 +1457,7 @@ class _HomePageState extends State<HomePage> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => const RealisasiKonsultasipage(),
+                                    builder: (context) => const RealisasiKonsultasiPage(),
                                   ),
                                 );
                                 break;
@@ -1465,7 +1465,7 @@ class _HomePageState extends State<HomePage> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => const TanyaJawabpage(),
+                                    builder: (context) => const TanyaJawabPage(),
                                   ),
                                 );
                                 break;
@@ -1566,7 +1566,7 @@ class _HomePageState extends State<HomePage> {
                                   context,
                                   MaterialPageRoute(
                                     builder:
-                                        (context) => const Perencanaanpage(),
+                                        (context) => const PerencanaanPage(),
                                   ),
                                 );
                                 break;
@@ -1574,7 +1574,7 @@ class _HomePageState extends State<HomePage> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => const RealisasiPelatihanAuditorpage(),
+                                    builder: (context) => const RealisasiPelatihanAuditorPage(),
                                   ),
                                 );
                                 break;
@@ -1674,7 +1674,7 @@ class _HomePageState extends State<HomePage> {
                                   MaterialPageRoute(
                                     builder:
                                         (context) =>
-                                            const UndanganRapatUmumpage(),
+                                            const UndanganRapatUmumPage(),
                                   ),
                                 );
                                 break;
@@ -1684,7 +1684,7 @@ class _HomePageState extends State<HomePage> {
                                   MaterialPageRoute(
                                     builder:
                                         (context) =>
-                                            const RisalahRapatUmumpage(),
+                                            const RisalahRapatUmumPage(),
                                   ),
                                 );
                                 break;

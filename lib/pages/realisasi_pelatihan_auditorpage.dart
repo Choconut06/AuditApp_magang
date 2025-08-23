@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:audit_app_magang/widget/sidebar.dart';
 
-class RealisasiPelatihanAuditorpage extends StatelessWidget {
-  const RealisasiPelatihanAuditorpage({super.key});
+class RealisasiPelatihanAuditorPage extends StatelessWidget {
+  const RealisasiPelatihanAuditorPage({super.key});
 
   @override
   Widget build(BuildContext context) {

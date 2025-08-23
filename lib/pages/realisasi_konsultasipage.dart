@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:audit_app_magang/pages/addrealisasikonsultasipage.dart';
 
-class RealisasiKonsultasipage extends StatefulWidget {
-  const RealisasiKonsultasipage({super.key});
+class RealisasiKonsultasiPage extends StatefulWidget {
+  const RealisasiKonsultasiPage({super.key});
 
   @override
-  State<RealisasiKonsultasipage> createState() =>
+  State<RealisasiKonsultasiPage> createState() =>
       _RealisasiKonsultasipageState();
 }
 
-class _RealisasiKonsultasipageState extends State<RealisasiKonsultasipage> {
+class _RealisasiKonsultasipageState extends State<RealisasiKonsultasiPage> {
   final List<Map<String, dynamic>> _rows = [
     {
       "nomor": 1,

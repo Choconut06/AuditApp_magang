@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:audit_app_magang/widget/sidebar.dart';
 
-class HasilSurveypage extends StatelessWidget {
-  const HasilSurveypage({super.key});
+class HasilSurveyPage extends StatelessWidget {
+  const HasilSurveyPage({super.key});
 
   @override
   Widget build(BuildContext context) {

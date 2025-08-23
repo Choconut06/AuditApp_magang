@@ -1,31 +1,49 @@
+import 'package:audit_app_magang/model/mainmenu.dart';
 import 'package:audit_app_magang/pages/LHPpage.dart';
+import 'package:audit_app_magang/pages/addinstruksiauditpage.dart';
 import 'package:audit_app_magang/pages/ba_penyelesaianpage.dart';
 import 'package:audit_app_magang/pages/biaya_penugasanpage.dart';
+import 'package:audit_app_magang/pages/bukti_permulaanpage.dart';
 import 'package:audit_app_magang/pages/closing_meetingpage.dart';
 import 'package:audit_app_magang/pages/dokumen_pkatpage.dart';
 import 'package:audit_app_magang/pages/draft_lhapage.dart';
 import 'package:audit_app_magang/pages/executive_summarypage.dart';
+import 'package:audit_app_magang/pages/form_konsultasipage.dart';
+import 'package:audit_app_magang/pages/hasil_surveypage.dart';
 import 'package:audit_app_magang/pages/homepage.dart';
 import 'package:audit_app_magang/pages/memo_tindak_lanjutpage.dart';
 import 'package:audit_app_magang/pages/opening_meetingpage.dart';
 import 'package:audit_app_magang/pages/pemenuhan_dokumenpage.dart';
+import 'package:audit_app_magang/pages/pemeriksaanpage.dart';
+import 'package:audit_app_magang/pages/pengirimanpage.dart';
+import 'package:audit_app_magang/pages/pengisianpage.dart';
+import 'package:audit_app_magang/pages/penilaian_kinerjapage.dart';
+import 'package:audit_app_magang/pages/perencanaanpage.dart';
 import 'package:audit_app_magang/pages/permintaan_dokumenpage.dart';
 import 'package:audit_app_magang/pages/pkatpage.dart';
 import 'package:audit_app_magang/pages/program__auditpage.dart';
 import 'package:audit_app_magang/pages/realisasi_biayapage.dart';
+import 'package:audit_app_magang/pages/realisasi_konsultasipage.dart';
+import 'package:audit_app_magang/pages/realisasi_pelatihan_auditorpage.dart';
+import 'package:audit_app_magang/pages/register_audit_eksternalpage.dart';
 import 'package:audit_app_magang/pages/rencana_biayapage.dart';
 import 'package:audit_app_magang/pages/review_draft_lhapage.dart';
 import 'package:audit_app_magang/pages/review_tindak_lanjutpage.dart';
+import 'package:audit_app_magang/pages/risalah_rapat_umumpage.dart';
 import 'package:audit_app_magang/pages/surat_kesediaanpage.dart';
+import 'package:audit_app_magang/pages/surat_pemanggilanpage.dart';
 import 'package:audit_app_magang/pages/surat_pemberitahuanpage.dart';
 import 'package:audit_app_magang/pages/komitmenpage.dart';
 import 'package:audit_app_magang/pages/login.dart';
 import 'package:audit_app_magang/pages/risk_assessment.dart';
 import 'package:audit_app_magang/pages/tanggapanpage.dart';
+import 'package:audit_app_magang/pages/tanya_jawabpage.dart';
 import 'package:audit_app_magang/pages/temuanpage.dart';
+import 'package:audit_app_magang/pages/tindak_lanjut_audit_eksternalpage.dart';
 import 'package:audit_app_magang/pages/tindak_lanjut_temuanpage.dart';
 import 'package:audit_app_magang/pages/undangan_closingpage.dart';
 import 'package:audit_app_magang/pages/undangan_openingpage.dart';
+import 'package:audit_app_magang/pages/undangan_rapat_umumpage.dart';
 import 'package:flutter/material.dart';
 
 class CustomDrawer extends StatefulWidget {
@@ -418,7 +436,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
               onTap: () {
                 Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(builder: (context) => const LoginPage()) 
+                  MaterialPageRoute(builder: (context) => const PenilaianKinerjaPage()) 
                 );
               },
             ),
@@ -439,7 +457,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const UndanganOpeningPage(),
+                        builder: (context) => const PengirimanPage(),
                       ),
                     );
                   },
@@ -450,7 +468,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const OpeningMeetingPage(),
+                        builder: (context) => const PengisianPage(),
                       ),
                     );
                   },
@@ -461,7 +479,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const PermintaanDokumenPage(),
+                        builder: (context) => const HasilSurveyPage(),
                       ),
                     );
                   },
@@ -485,7 +503,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const UndanganOpeningPage(),
+                        builder: (context) => const BuktiPermulaanPage(),
                       ),
                     );
                   },
@@ -496,7 +514,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const OpeningMeetingPage(),
+                        builder: (context) => const AddInstruksiAuditPage(),
                       ),
                     );
                   },
@@ -507,7 +525,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const PermintaanDokumenPage(),
+                        builder: (context) => const SuratPemanggilanPage(),
                       ),
                     );
                   },
@@ -518,7 +536,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const PemenuhanDokumenPage(),
+                        builder: (context) => const PemeriksaanPage(),
                       ),
                     );
                   },
@@ -542,7 +560,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const UndanganOpeningPage(),
+                        builder: (context) => const RegisterAuditEksternalpage(),
                       ),
                     );
                   },
@@ -553,7 +571,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const OpeningMeetingPage(),
+                        builder: (context) => const TindakLanjutAuditEksternalPage(),
                       ),
                     );
                   },
@@ -577,7 +595,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const UndanganOpeningPage(),
+                        builder: (context) => const FormKonsultasiPage(),
                       ),
                     );
                   },
@@ -588,7 +606,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const OpeningMeetingPage(),
+                        builder: (context) => const RealisasiKonsultasiPage(),
                       ),
                     );
                   },
@@ -599,7 +617,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const PermintaanDokumenPage(),
+                        builder: (context) => const TanyaJawabPage(),
                       ),
                     );
                   },
@@ -623,7 +641,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const UndanganOpeningPage(),
+                        builder: (context) => const PerencanaanPage(),
                       ),
                     );
                   },
@@ -634,8 +652,8 @@ class _CustomDrawerState extends State<CustomDrawer> {
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const OpeningMeetingPage(),
-                      ),
+                        builder: (context) => const RealisasiPelatihanAuditorPage(),
+                      )
                     );
                   },
                 ),
@@ -658,7 +676,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const UndanganOpeningPage(),
+                        builder: (context) => const UndanganRapatUmumPage(),
                       ),
                     );
                   },
@@ -669,7 +687,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const OpeningMeetingPage(),
+                        builder: (context) => const RisalahRapatUmumPage(),
                       ),
                     );
                   },
