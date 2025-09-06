@@ -54,7 +54,6 @@ class CustomDrawer extends StatefulWidget {
 }
 
 class _CustomDrawerState extends State<CustomDrawer> {
-  
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -73,9 +72,10 @@ class _CustomDrawerState extends State<CustomDrawer> {
             ),
             ListTile(
               leading: const Icon(Icons.home),
-              title: const Text('Home', style: TextStyle(
-                fontWeight: FontWeight.w600
-              ),),
+              title: const Text(
+                'Home',
+                style: TextStyle(fontWeight: FontWeight.w600),
+              ),
               onTap: () {
                 Navigator.pushReplacement(
                   context,
@@ -85,9 +85,10 @@ class _CustomDrawerState extends State<CustomDrawer> {
             ),
             ListTile(
               leading: const Icon(Icons.shield),
-              title: const Text('Penilaian Resiko', style: TextStyle(
-                fontWeight: FontWeight.w600
-              ),),
+              title: const Text(
+                'Penilaian Resiko',
+                style: TextStyle(fontWeight: FontWeight.w600),
+              ),
               onTap: () {
                 Navigator.pushReplacement(
                   context,
@@ -100,9 +101,10 @@ class _CustomDrawerState extends State<CustomDrawer> {
             // Tile Program Kerja
             ExpansionTile(
               leading: const Icon(Icons.folder),
-              title: const Text("Program Kerja", style: TextStyle(
-                fontWeight: FontWeight.w600
-              ),),
+              title: const Text(
+                "Program Kerja",
+                style: TextStyle(fontWeight: FontWeight.w600),
+              ),
               children: [
                 ListTile(
                   title: const Text('         PKAT'),
@@ -140,9 +142,10 @@ class _CustomDrawerState extends State<CustomDrawer> {
             // Tile Persiapan Audit
             ExpansionTile(
               leading: const Icon(Icons.receipt_long),
-              title: const Text("Persiapan Audit", style: TextStyle(
-                fontWeight: FontWeight.w600
-              ),),
+              title: const Text(
+                "Persiapan Audit",
+                style: TextStyle(fontWeight: FontWeight.w600),
+              ),
               children: [
                 ListTile(
                   title: const Text('         Surat Pemberitahuan'),
@@ -184,10 +187,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
               leading: const Icon(Icons.ballot),
               title: const Text(
                 "Pelaksanaan Audit",
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600
-                ),
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
               ),
               children: [
                 ListTile(
@@ -318,10 +318,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
               leading: const Icon(Icons.ballot),
               title: const Text(
                 "Pelaporan Audit",
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600
-                ),
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
               ),
               children: [
                 ListTile(
@@ -341,7 +338,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const ExecutiverSummaryPage(),
+                        builder: (context) => const ExecutiveSummaryPage(),
                       ),
                     );
                   },
@@ -351,9 +348,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                   onTap: () {
                     Navigator.pushReplacement(
                       context,
-                      MaterialPageRoute(
-                        builder: (context) => const LHPPage(),
-                      ),
+                      MaterialPageRoute(builder: (context) => const LHPPage()),
                     );
                   },
                 ),
@@ -375,10 +370,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
               leading: const Icon(Icons.ballot),
               title: const Text(
                 "Tindak Lanjut Audit",
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600
-                ),
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
               ),
               children: [
                 ListTile(
@@ -430,13 +422,16 @@ class _CustomDrawerState extends State<CustomDrawer> {
             //Tile Penilaian Kinerja
             ListTile(
               leading: const Icon(Icons.checklist_rounded),
-              title: const Text('Penilaian Kinerja', style: TextStyle(
-                fontWeight: FontWeight.w600
-              ),),
+              title: const Text(
+                'Penilaian Kinerja',
+                style: TextStyle(fontWeight: FontWeight.w600),
+              ),
               onTap: () {
                 Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(builder: (context) => const PenilaianKinerjaPage()) 
+                  MaterialPageRoute(
+                    builder: (context) => const PenilaianKinerjaPage(),
+                  ),
                 );
               },
             ),
@@ -445,10 +440,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
               leading: const Icon(Icons.grading_sharp),
               title: const Text(
                 "Survey Kepuasan Audit",
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600
-                ),
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
               ),
               children: [
                 ListTile(
@@ -491,10 +483,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
               leading: const Icon(Icons.search),
               title: const Text(
                 "Investigasi",
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600
-                ),
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
               ),
               children: [
                 ListTile(
@@ -548,10 +537,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
               leading: const Icon(Icons.list),
               title: const Text(
                 "Audit Eksternal",
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600
-                ),
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
               ),
               children: [
                 ListTile(
@@ -560,7 +546,8 @@ class _CustomDrawerState extends State<CustomDrawer> {
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const RegisterAuditEksternalpage(),
+                        builder:
+                            (context) => const RegisterAuditEksternalpage(),
                       ),
                     );
                   },
@@ -571,7 +558,8 @@ class _CustomDrawerState extends State<CustomDrawer> {
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const TindakLanjutAuditEksternalPage(),
+                        builder:
+                            (context) => const TindakLanjutAuditEksternalPage(),
                       ),
                     );
                   },
@@ -583,10 +571,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
               leading: const Icon(Icons.group),
               title: const Text(
                 "Konsultasi",
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600
-                ),
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
               ),
               children: [
                 ListTile(
@@ -629,10 +614,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
               leading: const Icon(Icons.candlestick_chart_rounded),
               title: const Text(
                 "Pelatihan Auditor",
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600
-                ),
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
               ),
               children: [
                 ListTile(
@@ -652,8 +634,9 @@ class _CustomDrawerState extends State<CustomDrawer> {
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const RealisasiPelatihanAuditorPage(),
-                      )
+                        builder:
+                            (context) => const RealisasiPelatihanAuditorPage(),
+                      ),
                     );
                   },
                 ),
@@ -664,10 +647,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
               leading: const Icon(Icons.handyman),
               title: const Text(
                 "Rapat Umum",
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600
-                ),
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
               ),
               children: [
                 ListTile(
@@ -696,9 +676,10 @@ class _CustomDrawerState extends State<CustomDrawer> {
             ),
             ListTile(
               leading: const Icon(Icons.logout),
-              title: const Text('Logout', style: TextStyle(
-                fontWeight: FontWeight.w600
-              ),),
+              title: const Text(
+                'Logout',
+                style: TextStyle(fontWeight: FontWeight.w600),
+              ),
               onTap: () {
                 Navigator.pushReplacement(
                   context,
