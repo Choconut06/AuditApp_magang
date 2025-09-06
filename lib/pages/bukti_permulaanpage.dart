@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:audit_app_magang/pages/addbuktipermulaanpage.dart';
+import 'package:audit_app_magang/model/investigasi_model.dart';
+import 'package:audit_app_magang/widget/card_investigasi.dart';
 
 class BuktiPermulaanPage extends StatefulWidget {
   const BuktiPermulaanPage({super.key});
@@ -9,135 +11,60 @@ class BuktiPermulaanPage extends StatefulWidget {
 }
 
 class _BuktiPermulaanPageState extends State<BuktiPermulaanPage> {
-  final List<Map<String, dynamic>> _buktiPermulaanData = [
-    {
-      "nomor": 1,
-      "tahun": "2025",
-      "objekAudit": "Audit Operasional Cabang",
-      "buktiPermulaan": "Indikasi penyimpangan SOP",
-      "rev": "1",
-      "status": "Dalam Proses",
-      "#": "BP001",
-    },
-    {
-      "nomor": 2,
-      "tahun": "2025",
-      "objekAudit": "Audit Keuangan Pusat",
-      "buktiPermulaan": "Kelebihan pembayaran vendor",
-      "rev": "2",
-      "status": "Disetujui",
-      "#": "BP002",
-    },
-  ];
+  late List<BuktiPermulaanItem> _items;
+
+  @override
+  void initState() {
+    super.initState();
+    _items = BuktiPermulaanItem.seed();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: _appBar(),
-      body: Padding(
-        padding: const EdgeInsets.all(12.0),
+      body: SingleChildScrollView(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(height: 20),
-
-            /// Tabel Responsif
-            Expanded(
-              child: LayoutBuilder(
-                builder: (context, constraints) {
-                  double tableWidth = constraints.maxWidth;
-
-                  return SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: ConstrainedBox(
-                      constraints: BoxConstraints(minWidth: tableWidth),
-                      child: DataTable(
-                        headingRowColor: MaterialStateColor.resolveWith(
-                          (states) => Colors.blue.shade100,
-                        ),
-                        headingTextStyle: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black87,
-                        ),
-                        columns: const [
-                          DataColumn(label: Text("Nomor")),
-                          DataColumn(label: Text("Tahun")),
-                          DataColumn(label: Text("Objek Audit")),
-                          DataColumn(label: Text("Bukti Permulaan")),
-                          DataColumn(label: Text("Rev")),
-                          DataColumn(label: Text("Status")),
-                          DataColumn(label: Text("#")),
-                          DataColumn(label: Text("Aksi")),
-                        ],
-                        rows:
-                            _buktiPermulaanData.map((data) {
-                              return DataRow(
-                                cells: [
-                                  DataCell(Text(data["nomor"].toString())),
-                                  DataCell(Text(data["tahun"])),
-                                  DataCell(Text(data["objekAudit"])),
-                                  DataCell(Text(data["buktiPermulaan"])),
-                                  DataCell(Text(data["rev"])),
-                                  DataCell(Text(data["status"])),
-                                  DataCell(Text(data["#"])),
-                                  DataCell(
-                                    Row(
-                                      children: [
-                                        IconButton(
-                                          icon: const Icon(
-                                            Icons.edit,
-                                            color: Colors.orange,
-                                          ),
-                                          onPressed: () {
-                                            ScaffoldMessenger.of(
-                                              context,
-                                            ).showSnackBar(
-                                              SnackBar(
-                                                content: Text(
-                                                  'Edit data ${data["objekAudit"]}',
-                                                ),
-                                              ),
-                                            );
-                                          },
-                                        ),
-                                        IconButton(
-                                          icon: const Icon(
-                                            Icons.delete,
-                                            color: Colors.red,
-                                          ),
-                                          onPressed: () {
-                                            ScaffoldMessenger.of(
-                                              context,
-                                            ).showSnackBar(
-                                              SnackBar(
-                                                content: Text(
-                                                  'Hapus data ${data["objekAudit"]}',
-                                                ),
-                                              ),
-                                            );
-                                          },
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              );
-                            }).toList(),
-                      ),
-                    ),
-                  );
-                },
-              ),
-            ),
+            const SizedBox(height: 12),
+            if (_items.isEmpty)
+              const Padding(
+                padding: EdgeInsets.all(24),
+                child: Text("Belum ada Bukti Permulaan"),
+              )
+            else
+              for (final it in _items)
+                InvestigasiCard(
+                  title: it.kode, // BP001
+                  status: it.status,
+                  subtitle: it.buktiPermulaan, // deskripsi singkat
+                  chips: [
+                    InvestigasiChip("Nomor", it.nomor.toString()),
+                    InvestigasiChip("Tahun", it.tahun),
+                    InvestigasiChip("Objek Audit", it.objekAudit),
+                    InvestigasiChip("Rev", it.rev),
+                  ],
+                  onEdit: () {
+                    ScaffoldMessenger.of(
+                      context,
+                    ).showSnackBar(SnackBar(content: Text('Edit ${it.kode}')));
+                  },
+                  onDelete: () => _confirmDelete(it),
+                ),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {
-          Navigator.push(
+        onPressed: () async {
+          final res = await Navigator.push<Map<String, String>?>(
             context,
             MaterialPageRoute(builder: (_) => const AddBuktiPermulaanPage()),
           );
+          if (res != null) {
+            setState(() {
+              _items.add(BuktiPermulaanItem.fromMap(res));
+            });
+          }
         },
         icon: const Icon(Icons.add),
         label: const Text("Tambah Bukti"),
@@ -145,7 +72,30 @@ class _BuktiPermulaanPageState extends State<BuktiPermulaanPage> {
     );
   }
 
-  /// Custom AppBar dengan tinggi seragam
+  void _confirmDelete(BuktiPermulaanItem it) {
+    showDialog(
+      context: context,
+      builder:
+          (ctx) => AlertDialog(
+            title: const Text("Hapus Bukti Permulaan"),
+            content: Text("Yakin ingin menghapus ${it.kode}?"),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(ctx),
+                child: const Text("Batal"),
+              ),
+              TextButton(
+                onPressed: () {
+                  setState(() => _items.remove(it));
+                  Navigator.pop(ctx);
+                },
+                child: const Text("Hapus", style: TextStyle(color: Colors.red)),
+              ),
+            ],
+          ),
+    );
+  }
+
   PreferredSizeWidget _appBar() {
     return PreferredSize(
       preferredSize: const Size.fromHeight(120),
@@ -164,7 +114,6 @@ class _BuktiPermulaanPageState extends State<BuktiPermulaanPage> {
                 child: Stack(
                   alignment: Alignment.center,
                   children: [
-                    // Tombol Back di kiri
                     Align(
                       alignment: Alignment.centerLeft,
                       child: GestureDetector(

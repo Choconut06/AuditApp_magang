@@ -3,6 +3,9 @@ import 'package:audit_app_magang/widget/sidebar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import 'package:audit_app_magang/model/program_kerja_model.dart';
+import 'package:audit_app_magang/widget/card_program_kerja.dart';
+
 class PkatPage extends StatefulWidget {
   const PkatPage({super.key});
 
@@ -12,19 +15,13 @@ class PkatPage extends StatefulWidget {
 
 class _PkatPageState extends State<PkatPage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  late List<ProgramKerjaItem> items;
 
-  final List<Map<String, dynamic>> _pkatData = [
-    {
-      "nomor": 1,
-      "tahun": "2025",
-      "pkat": "PKAT-001",
-      "detail": "Audit Keuangan Semester 1",
-      "jumlah": "20 Juta",
-      "revisi": "1",
-      "status": "Disetujui",
-      "noRevisi": "R001",
-    },
-  ];
+  @override
+  void initState() {
+    super.initState();
+    items = ProgramKerjaItem.samplePkat();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,81 +29,39 @@ class _PkatPageState extends State<PkatPage> {
       key: _scaffoldKey,
       appBar: _appBar(),
       drawer: const CustomDrawer(),
-      body: Padding(
-        padding: const EdgeInsets.all(12.0),
+      body: SingleChildScrollView(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(height: 20),
-            Expanded(
-              child: SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: DataTable(
-                  headingRowColor: MaterialStateColor.resolveWith(
-                    (states) => Colors.blue.shade100,
-                  ),
-                  columns: const [
-                    DataColumn(label: Text("Nomor")),
-                    DataColumn(label: Text("Tahun")),
-                    DataColumn(label: Text("PKAT")),
-                    DataColumn(label: Text("Detail Rencana")),
-                    DataColumn(label: Text("Jumlah")),
-                    DataColumn(label: Text("Revisi")),
-                    DataColumn(label: Text("Status Revisi")),
-                    DataColumn(label: Text("Nomor Revisi")),
-                    DataColumn(label: Text("Aksi")),
-                  ],
-                  rows:
-                      _pkatData.map((data) {
-                        return DataRow(
-                          cells: [
-                            DataCell(Text(data["nomor"].toString())),
-                            DataCell(Text(data["tahun"])),
-                            DataCell(Text(data["pkat"])),
-                            DataCell(Text(data["detail"])),
-                            DataCell(Text(data["jumlah"])),
-                            DataCell(Text(data["revisi"])),
-                            DataCell(Text(data["status"])),
-                            DataCell(Text(data["noRevisi"])),
-                            DataCell(
-                              Row(
-                                children: [
-                                  IconButton(
-                                    icon: const Icon(
-                                      Icons.edit,
-                                      color: Colors.orange,
-                                    ),
-                                    onPressed: () {
-                                      // Aksi edit
-                                    },
-                                  ),
-                                  IconButton(
-                                    icon: const Icon(
-                                      Icons.delete,
-                                      color: Colors.red,
-                                    ),
-                                    onPressed: () {
-                                      // Aksi delete
-                                    },
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        );
-                      }).toList(),
-                ),
+            _filterBar(),
+            const SizedBox(height: 4),
+            for (final item in items)
+              CardProgramKerja(
+                item: item,
+                onEdit: () {
+                  // TODO: aksi edit
+                },
+                onDelete: () {
+                  setState(() {
+                    items.remove(item);
+                  });
+                },
               ),
-            ),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {
-          Navigator.push(
+        onPressed: () async {
+          // Arahkan ke form tambah PKAT jika ada
+          final result = await Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => const AddPkatPage()),
           );
+
+          if (result is ProgramKerjaItem) {
+            setState(() {
+              items.add(result);
+            });
+          }
         },
         icon: const Icon(Icons.add),
         label: const Text("Tambah PKAT"),
@@ -114,13 +69,48 @@ class _PkatPageState extends State<PkatPage> {
     );
   }
 
-  /// Custom AppBar dengan tombol Back
+  Widget _filterBar() {
+    return Row(
+      children: [
+        Container(
+          height: 60,
+          width: 160,
+          padding: const EdgeInsets.only(left: 16, right: 16, top: 10),
+          child: GestureDetector(
+            onTap: () {
+              // TODO: buka modal filter
+            },
+            child: Container(
+              padding: const EdgeInsets.all(8),
+              height: 40,
+              width: 120,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                border: Border.all(
+                  color: Colors.blueGrey.shade400.withOpacity(0.3),
+                ),
+                borderRadius: BorderRadius.circular(24),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Icon(Icons.filter_alt_outlined, color: Colors.blue.shade400),
+                  Text('Filter', style: TextStyle(color: Colors.blue.shade400)),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
   PreferredSizeWidget _appBar() {
     return PreferredSize(
       preferredSize: const Size.fromHeight(120),
       child: AppBar(
-        automaticallyImplyLeading: false,
         backgroundColor: Colors.blue[400],
+        automaticallyImplyLeading: false,
         flexibleSpace: SafeArea(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.end,
@@ -130,36 +120,46 @@ class _PkatPageState extends State<PkatPage> {
                   horizontal: 10,
                   vertical: 10,
                 ),
-                child: Stack(
-                  alignment: Alignment.center,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    // Tombol Back di kiri
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: GestureDetector(
-                        onTap: () => Navigator.pop(context),
-                        child: Container(
-                          padding: const EdgeInsets.all(8),
-                          decoration: BoxDecoration(
-                            color: Colors.blue[400],
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: const Icon(
-                            Icons.arrow_back,
-                            color: Colors.white,
-                            size: 32,
-                          ),
+                    // Menu Button
+                    GestureDetector(
+                      onTap: () => _scaffoldKey.currentState?.openDrawer(),
+                      child: Container(
+                        padding: const EdgeInsets.all(8),
+                        decoration: BoxDecoration(
+                          color: Colors.blue[400],
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: SvgPicture.asset(
+                          'assets/icons/three-lines.svg',
+                          color: Colors.white,
+                          height: 40,
+                          width: 40,
                         ),
                       ),
                     ),
-                    const Center(
-                      child: Text(
-                        "PKAT",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18,
-                          fontWeight: FontWeight.w600,
-                        ),
+                    const Text(
+                      'PKAT',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 24,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    // Profile icon
+                    Container(
+                      padding: const EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                        color: Colors.blue[400],
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: SvgPicture.asset(
+                        'assets/icons/profile.svg',
+                        color: Colors.white,
+                        height: 40,
+                        width: 40,
                       ),
                     ),
                   ],

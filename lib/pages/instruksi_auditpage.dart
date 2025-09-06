@@ -1,7 +1,8 @@
 import 'package:audit_app_magang/widget/sidebar.dart';
 import 'package:flutter/material.dart';
-// import 'package:flutter_svg/flutter_svg.dart';
 import 'package:audit_app_magang/pages/addinstruksiauditpage.dart';
+import 'package:audit_app_magang/model/investigasi_model.dart';
+import 'package:audit_app_magang/widget/card_investigasi.dart';
 
 class InstruksiAuditPage extends StatefulWidget {
   const InstruksiAuditPage({super.key});
@@ -12,19 +13,13 @@ class InstruksiAuditPage extends StatefulWidget {
 
 class _InstruksiAuditPageState extends State<InstruksiAuditPage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  late List<InstruksiAuditItem> _items;
 
-  final List<Map<String, dynamic>> _rows = [
-    {
-      "nomor": 1,
-      "tahun": "2025",
-      "buktiPermulaan": "BP001",
-      "instruksiAudit": "Periksa kas kecil",
-      "auditor": "Tim A",
-      "versi": "1.0",
-      "status": "Aktif",
-      "#": "INS-001",
-    },
-  ];
+  @override
+  void initState() {
+    super.initState();
+    _items = InstruksiAuditItem.seed();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,94 +27,39 @@ class _InstruksiAuditPageState extends State<InstruksiAuditPage> {
       key: _scaffoldKey,
       appBar: _appBar(),
       drawer: const CustomDrawer(),
-      body: Padding(
-        padding: const EdgeInsets.all(12),
+      body: SingleChildScrollView(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              "Instruksi Audit",
-              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 20),
-            Expanded(
-              child: LayoutBuilder(
-                builder: (context, constraints) {
-                  final tableWidth = constraints.maxWidth;
-                  return SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: ConstrainedBox(
-                      constraints: BoxConstraints(minWidth: tableWidth),
-                      child: DataTable(
-                        headingRowColor: MaterialStateColor.resolveWith(
-                          (_) => Colors.blue.shade100,
-                        ),
-                        columns: const [
-                          DataColumn(label: Text("Nomor")),
-                          DataColumn(label: Text("Tahun")),
-                          DataColumn(label: Text("Bukti Permulaan")),
-                          DataColumn(label: Text("Instruksi Audit")),
-                          DataColumn(label: Text("Auditor")),
-                          DataColumn(label: Text("Versi")),
-                          DataColumn(label: Text("Status")),
-                          DataColumn(label: Text("#")),
-                          DataColumn(label: Text("Aksi")),
-                        ],
-                        rows:
-                            _rows.map((data) {
-                              return DataRow(
-                                cells: [
-                                  DataCell(Text(data["nomor"].toString())),
-                                  DataCell(Text(data["tahun"] ?? "")),
-                                  DataCell(Text(data["buktiPermulaan"] ?? "")),
-                                  DataCell(Text(data["instruksiAudit"] ?? "")),
-                                  DataCell(Text(data["auditor"] ?? "")),
-                                  DataCell(Text(data["versi"] ?? "")),
-                                  DataCell(Text(data["status"] ?? "")),
-                                  DataCell(Text(data["#"] ?? "")),
-                                  DataCell(
-                                    Row(
-                                      children: [
-                                        IconButton(
-                                          icon: const Icon(
-                                            Icons.edit,
-                                            color: Colors.orange,
-                                          ),
-                                          onPressed: () {
-                                            ScaffoldMessenger.of(
-                                              context,
-                                            ).showSnackBar(
-                                              SnackBar(
-                                                content: Text(
-                                                  'Edit ${data["#"] ?? ""}',
-                                                ),
-                                              ),
-                                            );
-                                          },
-                                        ),
-                                        IconButton(
-                                          icon: const Icon(
-                                            Icons.delete,
-                                            color: Colors.red,
-                                          ),
-                                          onPressed: () {
-                                            setState(() {
-                                              _rows.remove(data);
-                                            });
-                                          },
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              );
-                            }).toList(),
-                      ),
-                    ),
-                  );
-                },
+            const SizedBox(height: 12),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 12),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  "Instruksi Audit",
+                  style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                ),
               ),
             ),
+            const SizedBox(height: 8),
+            for (final it in _items)
+              InvestigasiCard(
+                title: it.kode, // INS-001
+                status: it.status,
+                subtitle: it.instruksiAudit,
+                chips: [
+                  InvestigasiChip("Nomor", it.nomor.toString()),
+                  InvestigasiChip("Tahun", it.tahun),
+                  InvestigasiChip("BP", it.buktiPermulaan),
+                  InvestigasiChip("Auditor", it.auditor),
+                  InvestigasiChip("Versi", it.versi),
+                ],
+                onEdit:
+                    () => ScaffoldMessenger.of(
+                      context,
+                    ).showSnackBar(SnackBar(content: Text('Edit ${it.kode}'))),
+                onDelete: () => _confirmDelete(it),
+              ),
           ],
         ),
       ),
@@ -130,24 +70,36 @@ class _InstruksiAuditPageState extends State<InstruksiAuditPage> {
             MaterialPageRoute(builder: (_) => const AddInstruksiAuditPage()),
           );
           if (result != null) {
-            setState(() {
-              _rows.add({
-                "nomor":
-                    int.tryParse(result["nomor"] ?? "") ?? _rows.length + 1,
-                "tahun": result["tahun"] ?? "",
-                "buktiPermulaan": result["buktiPermulaan"] ?? "",
-                "instruksiAudit": result["instruksiAudit"] ?? "",
-                "auditor": result["auditor"] ?? "",
-                "versi": result["versi"] ?? "",
-                "status": result["status"] ?? "",
-                "#": result["#"] ?? "",
-              });
-            });
+            setState(() => _items.add(InstruksiAuditItem.fromMap(result)));
           }
         },
         icon: const Icon(Icons.add),
         label: const Text("Tambah Instruksi"),
       ),
+    );
+  }
+
+  void _confirmDelete(InstruksiAuditItem it) {
+    showDialog(
+      context: context,
+      builder:
+          (ctx) => AlertDialog(
+            title: const Text("Hapus Instruksi"),
+            content: Text("Hapus ${it.kode}?"),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(ctx),
+                child: const Text("Batal"),
+              ),
+              TextButton(
+                onPressed: () {
+                  setState(() => _items.remove(it));
+                  Navigator.pop(ctx);
+                },
+                child: const Text("Hapus", style: TextStyle(color: Colors.red)),
+              ),
+            ],
+          ),
     );
   }
 
@@ -169,7 +121,6 @@ class _InstruksiAuditPageState extends State<InstruksiAuditPage> {
                 child: Stack(
                   alignment: Alignment.center,
                   children: [
-                    // Tombol Back di kiri
                     Align(
                       alignment: Alignment.centerLeft,
                       child: GestureDetector(

@@ -1,7 +1,8 @@
 import 'package:audit_app_magang/widget/sidebar.dart';
 import 'package:flutter/material.dart';
-// import 'package:flutter_svg/flutter_svg.dart';
 import 'package:audit_app_magang/pages/addpemeriksaanpage.dart';
+import 'package:audit_app_magang/model/investigasi_model.dart';
+import 'package:audit_app_magang/widget/card_investigasi.dart';
 
 class PemeriksaanPage extends StatefulWidget {
   const PemeriksaanPage({super.key});
@@ -12,20 +13,13 @@ class PemeriksaanPage extends StatefulWidget {
 
 class _PemeriksaanPageState extends State<PemeriksaanPage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  late List<PemeriksaanItem> _items;
 
-  final List<Map<String, dynamic>> _rows = [
-    {
-      "nomor": 1,
-      "objekAudit": "Unit Operasional",
-      "suratPemanggilan": "SP-001/INV/2025",
-      "kepada": "Kepala Unit",
-      "auditor": "Tim A",
-      "buktiPemeriksaan": "BAP-001",
-      "rev": "0",
-      "status": "Selesai",
-      "#": "PMK001",
-    },
-  ];
+  @override
+  void initState() {
+    super.initState();
+    _items = PemeriksaanItem.seed();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,125 +27,69 @@ class _PemeriksaanPageState extends State<PemeriksaanPage> {
       key: _scaffoldKey,
       appBar: _appBar(),
       drawer: const CustomDrawer(),
-      body: Padding(
-        padding: const EdgeInsets.all(12),
+      body: SingleChildScrollView(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(height: 20),
-            Expanded(
-              child: LayoutBuilder(
-                builder: (context, constraints) {
-                  final w = constraints.maxWidth;
-                  return SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: ConstrainedBox(
-                      constraints: BoxConstraints(minWidth: w),
-                      child: DataTable(
-                        headingRowColor: MaterialStateColor.resolveWith(
-                          (_) => Colors.blue.shade100,
-                        ),
-                        columns: const [
-                          DataColumn(label: Text("Nomor")),
-                          DataColumn(label: Text("Objek Audit")),
-                          DataColumn(label: Text("Surat Pemanggilan")),
-                          DataColumn(label: Text("Kepada")),
-                          DataColumn(label: Text("Auditor")),
-                          DataColumn(label: Text("Bukti Pemeriksaan")),
-                          DataColumn(label: Text("Rev")),
-                          DataColumn(label: Text("Status")),
-                          DataColumn(label: Text("#")),
-                          DataColumn(label: Text("Aksi")),
-                        ],
-                        rows:
-                            _rows.map((data) {
-                              return DataRow(
-                                cells: [
-                                  DataCell(Text(data["nomor"].toString())),
-                                  DataCell(Text(data["objekAudit"] ?? "")),
-                                  DataCell(
-                                    Text(data["suratPemanggilan"] ?? ""),
-                                  ),
-                                  DataCell(Text(data["kepada"] ?? "")),
-                                  DataCell(Text(data["auditor"] ?? "")),
-                                  DataCell(
-                                    Text(data["buktiPemeriksaan"] ?? ""),
-                                  ),
-                                  DataCell(Text(data["rev"] ?? "")),
-                                  DataCell(Text(data["status"] ?? "")),
-                                  DataCell(Text(data["#"] ?? "")),
-                                  DataCell(
-                                    Row(
-                                      children: [
-                                        IconButton(
-                                          icon: const Icon(
-                                            Icons.edit,
-                                            color: Colors.orange,
-                                          ),
-                                          onPressed: () {
-                                            ScaffoldMessenger.of(
-                                              context,
-                                            ).showSnackBar(
-                                              SnackBar(
-                                                content: Text(
-                                                  'Edit ${data["#"]}',
-                                                ),
-                                              ),
-                                            );
-                                          },
-                                        ),
-                                        IconButton(
-                                          icon: const Icon(
-                                            Icons.delete,
-                                            color: Colors.red,
-                                          ),
-                                          onPressed: () {
-                                            setState(() {
-                                              _rows.remove(data);
-                                            });
-                                          },
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              );
-                            }).toList(),
-                      ),
-                    ),
-                  );
-                },
+            const SizedBox(height: 12),
+            for (final it in _items)
+              InvestigasiCard(
+                title: it.buktiPemeriksaan, // BAP-001
+                status: it.status,
+                subtitle: "Objek: ${it.objekAudit}",
+                chips: [
+                  InvestigasiChip("Nomor", it.nomor.toString()),
+                  InvestigasiChip("SP", it.suratPemanggilan),
+                  InvestigasiChip("Kepada", it.kepada),
+                  InvestigasiChip("Auditor", it.auditor),
+                  InvestigasiChip("Rev", it.rev),
+                  InvestigasiChip("#", it.kode),
+                ],
+                onEdit:
+                    () => ScaffoldMessenger.of(
+                      context,
+                    ).showSnackBar(SnackBar(content: Text('Edit ${it.kode}'))),
+                onDelete: () => _confirmDelete(it),
               ),
-            ),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () async {
-          final result = await Navigator.push<Map<String, String>?>(
+          final res = await Navigator.push<Map<String, String>?>(
             context,
             MaterialPageRoute(builder: (_) => const AddPemeriksaanPage()),
           );
-          if (result != null) {
-            setState(() {
-              _rows.add({
-                "nomor":
-                    int.tryParse(result["nomor"] ?? "") ?? _rows.length + 1,
-                "objekAudit": result["objekAudit"] ?? "",
-                "suratPemanggilan": result["suratPemanggilan"] ?? "",
-                "kepada": result["kepada"] ?? "",
-                "auditor": result["auditor"] ?? "",
-                "buktiPemeriksaan": result["buktiPemeriksaan"] ?? "",
-                "rev": result["rev"] ?? "",
-                "status": result["status"] ?? "",
-                "#": result["#"] ?? "",
-              });
-            });
+          if (res != null) {
+            setState(() => _items.add(PemeriksaanItem.fromMap(res)));
           }
         },
         icon: const Icon(Icons.add),
         label: const Text("Tambah Pemeriksaan"),
       ),
+    );
+  }
+
+  void _confirmDelete(PemeriksaanItem it) {
+    showDialog(
+      context: context,
+      builder:
+          (ctx) => AlertDialog(
+            title: const Text("Hapus Pemeriksaan"),
+            content: Text("Hapus ${it.kode}?"),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(ctx),
+                child: const Text("Batal"),
+              ),
+              TextButton(
+                onPressed: () {
+                  setState(() => _items.remove(it));
+                  Navigator.pop(ctx);
+                },
+                child: const Text("Hapus", style: TextStyle(color: Colors.red)),
+              ),
+            ],
+          ),
     );
   }
 
@@ -173,7 +111,6 @@ class _PemeriksaanPageState extends State<PemeriksaanPage> {
                 child: Stack(
                   alignment: Alignment.center,
                   children: [
-                    // Tombol Back di kiri
                     Align(
                       alignment: Alignment.centerLeft,
                       child: GestureDetector(
