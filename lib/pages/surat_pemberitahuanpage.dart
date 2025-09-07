@@ -31,7 +31,7 @@ class _SuratPemberitahuanPageState extends State<SuratPemberitahuanPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      appBar: appBar(),
+      appBar: _appBar(),
       drawer: CustomDrawer(),
       body: SingleChildScrollView(
         child: Column(
@@ -105,84 +105,56 @@ class _SuratPemberitahuanPageState extends State<SuratPemberitahuanPage> {
     );
   }
 
-  PreferredSizeWidget appBar() {
+  PreferredSizeWidget _appBar() {
     return PreferredSize(
       preferredSize: const Size.fromHeight(120),
       child: AppBar(
-        backgroundColor: Colors.blue[400],
         automaticallyImplyLeading: false,
+        backgroundColor: Colors.blue[400],
         flexibleSpace: SafeArea(
-          child: Container(
-            // decoration: BoxDecoration(
-            //   gradient: LinearGradient(
-            //     colors: [
-            //       const Color.fromARGB(255, 41, 148, 236),
-            //       Colors.blue.shade400,
-            //       Colors.white
-            //     ],
-            //     begin: Alignment.topLeft,
-            //     end: Alignment.bottomRight,
-            //     transform: GradientRotation(math.pi/4)
-            //   )
-            // ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 10,
-                    vertical: 10,
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      // Menu Button
-                      GestureDetector(
-                        onTap: () {
-                          _scaffoldKey.currentState?.openDrawer();
-                        },
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 10,
+                  vertical: 10,
+                ),
+                child: Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: GestureDetector(
+                        onTap: () => Navigator.pop(context),
                         child: Container(
                           padding: const EdgeInsets.all(8),
                           decoration: BoxDecoration(
                             color: Colors.blue[400],
                             borderRadius: BorderRadius.circular(10),
                           ),
-                          child: SvgPicture.asset(
-                            'assets/icons/three-lines.svg',
+                          child: const Icon(
+                            Icons.arrow_back,
                             color: Colors.white,
-                            height: 40,
-                            width: 40,
+                            size: 32,
                           ),
                         ),
                       ),
-                      //Title
-                      const Text(
-                        'Surat Pemberitahuan',
+                    ),
+                    const Center(
+                      child: Text(
+                        "LHP",
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: 24,
-                          fontWeight: FontWeight.w500,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600,
                         ),
                       ),
-                      // Profile icon
-                      Container(
-                        padding: const EdgeInsets.all(8),
-                        decoration: BoxDecoration(
-                          color: Colors.blue[400],
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: SvgPicture.asset(
-                          'assets/icons/profile.svg',
-                          color: Colors.white,
-                          height: 40,
-                          width: 40,
-                        ),
-                      ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),

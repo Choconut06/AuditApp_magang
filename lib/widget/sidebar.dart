@@ -1,6 +1,7 @@
 import 'package:audit_app_magang/pages/login.dart';
 import 'package:audit_app_magang/pages/profilepage.dart';
 import 'package:flutter/material.dart';
+import 'package:audit_app_magang/pages/aktivitaspage.dart';
 
 class CustomDrawer extends StatefulWidget {
   const CustomDrawer({super.key});
@@ -30,7 +31,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
             ListTile(
               leading: const Icon(Icons.person),
               title: const Text(
-                'Lihat Profile',
+                'Lihat Profil',
                 style: TextStyle(fontWeight: FontWeight.w600),
               ),
               onTap: () {
@@ -48,13 +49,15 @@ class _CustomDrawerState extends State<CustomDrawer> {
                 style: TextStyle(fontWeight: FontWeight.w600),
               ),
               onTap: () {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(
-                    content: Text('Halaman Aktivitas coming soon'),
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const AktivitasPage(),
                   ),
                 );
               },
             ),
+
             // Logout
             ListTile(
               leading: const Icon(Icons.logout),

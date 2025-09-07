@@ -664,21 +664,6 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                     // profil
-                    GestureDetector(
-                      onTap: () => _go(const ProfilePage()),
-                      child: Container(
-                        padding: const EdgeInsets.all(8),
-                        decoration: BoxDecoration(
-                          color: Colors.blue[400],
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: const Icon(
-                          Icons.person,
-                          color: Colors.white,
-                          size: 40,
-                        ),
-                      ),
-                    ),
                   ],
                 ),
               ),
