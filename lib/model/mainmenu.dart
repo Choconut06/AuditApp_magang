@@ -362,554 +362,435 @@ import 'package:flutter/material.dart';
 //   }
 // }
 
-//PROGRAM KERJA
+/// PROGRAM KERJA
+
 class ProgramKerjaModel {
   String name;
-  String iconPath;
+  IconData icon;
   Color boxColor;
 
   ProgramKerjaModel({
     required this.name,
-    required this.iconPath,
+    required this.icon,
     required this.boxColor,
   });
 
   static List<ProgramKerjaModel> getProgramKerja() {
-    List<ProgramKerjaModel> prokerModel = [];
-
-    prokerModel.add(
+    return [
       ProgramKerjaModel(
         name: 'PKAT',
-        iconPath: 'assets/icons/pictures.svg',
+        icon: Icons.assignment, // ganti sesuka hati
         boxColor: Colors.blue.shade400,
       ),
-    );
-
-    prokerModel.add(
       ProgramKerjaModel(
         name: 'Rencana Biaya',
-        iconPath: 'assets/icons/pictures.svg',
+        icon: Icons.calculate,
         boxColor: Colors.blue.shade400,
       ),
-    );
-
-    prokerModel.add(
       ProgramKerjaModel(
         name: 'Dokumen PKAT',
-        iconPath: 'assets/icons/pictures.svg',
+        icon: Icons.folder,
         boxColor: Colors.blue.shade400,
       ),
-    );
-
-    return prokerModel;
+    ];
   }
 }
 
-//PERSIAPAN AUDIT
+/// PERSIAPAN AUDIT
 class PersiapanAuditModel {
   String name;
-  String iconPath;
+  IconData icon;
   Color boxColor;
 
   PersiapanAuditModel({
     required this.name,
-    required this.iconPath,
+    required this.icon,
     required this.boxColor,
   });
 
   static List<PersiapanAuditModel> getPersiapanAudit() {
-    List<PersiapanAuditModel> persiapanAuditModel = [];
-
-    persiapanAuditModel.add(
+    return [
       PersiapanAuditModel(
         name: 'Surat Pemberitahuan',
-        iconPath: 'assets/icons/pictures.svg',
+        icon: Icons.mark_email_unread,
         boxColor: Colors.blue.shade400,
       ),
-    );
-
-    persiapanAuditModel.add(
       PersiapanAuditModel(
         name: 'Program Audit',
-        iconPath: 'assets/icons/pictures.svg',
+        icon: Icons.fact_check,
         boxColor: Colors.blue.shade400,
       ),
-    );
-
-    persiapanAuditModel.add(
       PersiapanAuditModel(
         name: 'Biaya Penugasan',
-        iconPath: 'assets/icons/pictures.svg',
+        icon: Icons.payments,
         boxColor: Colors.blue.shade400,
       ),
-    );
-
-    return persiapanAuditModel;
+    ];
   }
 }
 
-//PELAKSANAAN AUDIT
+/// PELAKSANAAN AUDIT
 class PelaksanaanAuditModel {
   String name;
-  String iconPath;
+  IconData icon;
   Color boxColor;
 
   PelaksanaanAuditModel({
     required this.name,
-    required this.iconPath,
+    required this.icon,
     required this.boxColor,
   });
 
   static List<PelaksanaanAuditModel> getPelaksanaanAudit() {
-    List<PelaksanaanAuditModel> pelaksanaanAuditModel = [];
-
-    pelaksanaanAuditModel.add(
+    return [
       PelaksanaanAuditModel(
         name: 'Undangan Opening',
-        iconPath: 'assets/icons/pictures.svg',
+        icon: Icons.forward_to_inbox,
         boxColor: Colors.blue.shade400,
       ),
-    );
-
-    pelaksanaanAuditModel.add(
       PelaksanaanAuditModel(
         name: 'Opening Meeting',
-        iconPath: 'assets/icons/pictures.svg',
+        icon: Icons.meeting_room,
         boxColor: Colors.blue.shade400,
       ),
-    );
-
-    pelaksanaanAuditModel.add(
       PelaksanaanAuditModel(
         name: 'Permintaan Dokumen',
-        iconPath: 'assets/icons/pictures.svg',
+        icon: Icons.request_page,
         boxColor: Colors.blue.shade400,
       ),
-    );
-
-    pelaksanaanAuditModel.add(
       PelaksanaanAuditModel(
         name: 'Pemenuhan Dokumen',
-        iconPath: 'assets/icons/pictures.svg',
+        icon: Icons.rule_folder,
         boxColor: Colors.blue.shade400,
       ),
-    );
-
-    pelaksanaanAuditModel.add(
       PelaksanaanAuditModel(
         name: 'Draft LHA',
-        iconPath: 'assets/icons/pictures.svg',
+        icon: Icons.description,
         boxColor: Colors.blue.shade400,
       ),
-    );
-
-    pelaksanaanAuditModel.add(
       PelaksanaanAuditModel(
         name: 'Review Draft LHA',
-        iconPath: 'assets/icons/pictures.svg',
+        icon: Icons.rate_review,
         boxColor: Colors.blue.shade400,
       ),
-    );
-    pelaksanaanAuditModel.add(
       PelaksanaanAuditModel(
         name: 'Tanggapan',
-        iconPath: 'assets/icons/pictures.svg',
+        icon: Icons.reply_all,
         boxColor: Colors.blue.shade400,
       ),
-    );
-
-    pelaksanaanAuditModel.add(
       PelaksanaanAuditModel(
         name: 'Temuan',
-        iconPath: 'assets/icons/pictures.svg',
+        icon: Icons.search,
         boxColor: Colors.blue.shade400,
       ),
-    );
-
-    pelaksanaanAuditModel.add(
       PelaksanaanAuditModel(
         name: 'Undangan Closing',
-        iconPath: 'assets/icons/pictures.svg',
+        icon: Icons.mark_email_read,
         boxColor: Colors.blue.shade400,
       ),
-    );
-
-    pelaksanaanAuditModel.add(
       PelaksanaanAuditModel(
         name: 'Closing Meeting',
-        iconPath: 'assets/icons/pictures.svg',
+        icon: Icons.handshake,
         boxColor: Colors.blue.shade400,
       ),
-    );
-
-    pelaksanaanAuditModel.add(
       PelaksanaanAuditModel(
         name: 'Komitmen',
-        iconPath: 'assets/icons/pictures.svg',
+        icon: Icons.task_alt,
         boxColor: Colors.blue.shade400,
       ),
-    );
-    return pelaksanaanAuditModel;
+    ];
   }
 }
 
+/// PELAPORAN AUDIT
 class PelaporanAuditModel {
   String name;
-  String iconPath;
+  IconData icon;
   Color boxColor;
 
   PelaporanAuditModel({
     required this.name,
-    required this.iconPath,
+    required this.icon,
     required this.boxColor,
   });
 
   static List<PelaporanAuditModel> getPelaporanAudit() {
-    List<PelaporanAuditModel> pelaporanAuditModel = [];
-
-    pelaporanAuditModel.add(
+    return [
       PelaporanAuditModel(
         name: 'Surat Kesediaan',
-        iconPath: 'assets/icons/pictures.svg',
+        icon: Icons.edit_note,
         boxColor: Colors.blue.shade400,
       ),
-    );
-
-    pelaporanAuditModel.add(
       PelaporanAuditModel(
         name: 'Executive Summary',
-        iconPath: 'assets/icons/pictures.svg',
+        icon: Icons.summarize,
         boxColor: Colors.blue.shade400,
       ),
-    );
-
-    pelaporanAuditModel.add(
       PelaporanAuditModel(
         name: 'LHP',
-        iconPath: 'assets/icons/pictures.svg',
+        icon: Icons.book,
         boxColor: Colors.blue.shade400,
       ),
-    );
-
-    pelaporanAuditModel.add(
       PelaporanAuditModel(
         name: 'Realisasi Biaya',
-        iconPath: 'assets/icons/pictures.svg',
+        icon: Icons.attach_money,
         boxColor: Colors.blue.shade400,
       ),
-    );
-
-    return pelaporanAuditModel;
+    ];
   }
 }
 
-//todo: tambah ke homepage=============================
+/// TINDAK LANJUT AUDIT
 class TindakLanjutAuditModel {
   String name;
-  String iconPath;
+  IconData icon;
   Color boxColor;
 
   TindakLanjutAuditModel({
     required this.name,
-    required this.iconPath,
+    required this.icon,
     required this.boxColor,
   });
 
   static List<TindakLanjutAuditModel> getTindakLanjutAudit() {
-    List<TindakLanjutAuditModel> tindakLanjutAuditModel = [];
-
-    tindakLanjutAuditModel.add(
+    return [
       TindakLanjutAuditModel(
         name: 'Memo Tindak Lanjut',
-        iconPath: 'assets/icons/pictures.svg',
+        icon: Icons.note_alt,
         boxColor: Colors.blue.shade400,
       ),
-    );
-
-    tindakLanjutAuditModel.add(
       TindakLanjutAuditModel(
         name: 'Tindak Lanjut Temuan',
-        iconPath: 'assets/icons/pictures.svg',
+        icon: Icons.playlist_add_check_circle,
         boxColor: Colors.blue.shade400,
       ),
-    );
-
-    tindakLanjutAuditModel.add(
       TindakLanjutAuditModel(
         name: 'Review Tindak Lanjut',
-        iconPath: 'assets/icons/pictures.svg',
+        icon: Icons.reviews,
         boxColor: Colors.blue.shade400,
       ),
-    );
-
-    tindakLanjutAuditModel.add(
       TindakLanjutAuditModel(
         name: 'BA Penyelesaian',
-        iconPath: 'assets/icons/pictures.svg',
+        icon: Icons.assignment_turned_in,
         boxColor: Colors.blue.shade400,
       ),
-    );
-
-    return tindakLanjutAuditModel;
+    ];
   }
 }
 
+/// PENILAIAN KINERJA
 class PenilaianKinerjaModel {
   String name;
-  String iconPath;
+  IconData icon;
   Color boxColor;
 
   PenilaianKinerjaModel({
     required this.name,
-    required this.iconPath,
+    required this.icon,
     required this.boxColor,
   });
 
   static List<PenilaianKinerjaModel> getPenilaianKinerja() {
-    List<PenilaianKinerjaModel> penilaianKinerjaModel = [];
-
-    penilaianKinerjaModel.add(
+    return [
       PenilaianKinerjaModel(
         name: 'Penilaian Kinerja',
-        iconPath: 'assets/icons/pictures.svg',
+        icon: Icons.grade,
         boxColor: Colors.blue.shade400,
       ),
-    );
-
-    return penilaianKinerjaModel;
+    ];
   }
 }
 
+/// SURVEY KEPUASAN AUDIT
 class SurveyKepuasanAuditModel {
   String name;
-  String iconPath;
+  IconData icon;
   Color boxColor;
 
   SurveyKepuasanAuditModel({
     required this.name,
-    required this.iconPath,
+    required this.icon,
     required this.boxColor,
   });
 
   static List<SurveyKepuasanAuditModel> getSurveyKepuasanAudit() {
-    List<SurveyKepuasanAuditModel> surveyKepuasanAuditModel = [];
-
-    surveyKepuasanAuditModel.add(
+    return [
       SurveyKepuasanAuditModel(
         name: 'Pengiriman',
-        iconPath: 'assets/icons/pictures.svg',
+        icon: Icons.send,
         boxColor: Colors.blue.shade400,
       ),
-    );
-
-    surveyKepuasanAuditModel.add(
       SurveyKepuasanAuditModel(
         name: 'Pengisian',
-        iconPath: 'assets/icons/pictures.svg',
+        icon: Icons.edit,
         boxColor: Colors.blue.shade400,
       ),
-    );
-
-    surveyKepuasanAuditModel.add(
       SurveyKepuasanAuditModel(
         name: 'Hasil Survey',
-        iconPath: 'assets/icons/pictures.svg',
+        icon: Icons.insights,
         boxColor: Colors.blue.shade400,
       ),
-    );
-    return surveyKepuasanAuditModel;
+    ];
   }
 }
 
+/// INVESTIGASI
 class InvestigasiModel {
   String name;
-  String iconPath;
+  IconData icon;
   Color boxColor;
 
   InvestigasiModel({
     required this.name,
-    required this.iconPath,
+    required this.icon,
     required this.boxColor,
   });
 
   static List<InvestigasiModel> getInvestigasi() {
-    List<InvestigasiModel> investigasiModel = [];
-
-    investigasiModel.add(
+    return [
       InvestigasiModel(
         name: 'Bukti Permulaan',
-        iconPath: 'assets/icons/pictures.svg',
+        icon: Icons.inventory_2,
         boxColor: Colors.blue.shade400,
       ),
-    );
-
-    investigasiModel.add(
       InvestigasiModel(
         name: 'Instruksi Audit',
-        iconPath: 'assets/icons/pictures.svg',
+        icon: Icons.rule,
         boxColor: Colors.blue.shade400,
       ),
-    );
-
-    investigasiModel.add(
       InvestigasiModel(
         name: 'Surat Pemanggilan',
-        iconPath: 'assets/icons/pictures.svg',
+        icon: Icons.mail,
         boxColor: Colors.blue.shade400,
       ),
-    );
-
-    investigasiModel.add(
       InvestigasiModel(
         name: 'Pemeriksaan',
-        iconPath: 'assets/icons/pictures.svg',
+        icon: Icons.fact_check,
         boxColor: Colors.blue.shade400,
       ),
-    );
-    return investigasiModel;
+    ];
   }
 }
 
+/// AUDIT EKSTERNAL
 class AuditEksternalModel {
   String name;
-  String iconPath;
+  IconData icon;
   Color boxColor;
 
   AuditEksternalModel({
     required this.name,
-    required this.iconPath,
+    required this.icon,
     required this.boxColor,
   });
 
   static List<AuditEksternalModel> getAuditEksternal() {
-    List<AuditEksternalModel> auditEksternalModel = [];
-
-    auditEksternalModel.add(
+    return [
       AuditEksternalModel(
         name: 'Register',
-        iconPath: 'assets/icons/pictures.svg',
+        icon: Icons.app_registration,
         boxColor: Colors.blue.shade400,
       ),
-    );
-
-    auditEksternalModel.add(
       AuditEksternalModel(
         name: 'Tindak Lanjut',
-        iconPath: 'assets/icons/pictures.svg',
+        icon: Icons.pending_actions,
         boxColor: Colors.blue.shade400,
       ),
-    );
-
-    return auditEksternalModel;
+    ];
   }
 }
 
+/// KONSULTASI
 class KonsultasiModel {
   String name;
-  String iconPath;
+  IconData icon;
   Color boxColor;
 
   KonsultasiModel({
     required this.name,
-    required this.iconPath,
+    required this.icon,
     required this.boxColor,
   });
 
   static List<KonsultasiModel> getKonsultasiModel() {
-    List<KonsultasiModel> konsultasiModel = [];
-
-    konsultasiModel.add(
+    return [
       KonsultasiModel(
         name: 'Form Konsultasi',
-        iconPath: 'assets/icons/pictures.svg',
+        icon: Icons.forum,
         boxColor: Colors.blue.shade400,
       ),
-    );
-
-    konsultasiModel.add(
       KonsultasiModel(
         name: 'Realisasi',
-        iconPath: 'assets/icons/pictures.svg',
+        icon: Icons.event_available,
         boxColor: Colors.blue.shade400,
       ),
-    );
-
-    konsultasiModel.add(
       KonsultasiModel(
         name: 'Tanya Jawab',
-        iconPath: 'assets/icons/pictures.svg',
+        icon: Icons.question_answer,
         boxColor: Colors.blue.shade400,
       ),
-    );
-
-    return konsultasiModel;
+    ];
   }
 }
 
+/// PELATIHAN AUDITOR
 class PelatihanAuditorModel {
   String name;
-  String iconPath;
+  IconData icon;
   Color boxColor;
 
   PelatihanAuditorModel({
     required this.name,
-    required this.iconPath,
+    required this.icon,
     required this.boxColor,
   });
 
   static List<PelatihanAuditorModel> getPelatihanAuditorModel() {
-    List<PelatihanAuditorModel> pelatihanAuditorModel = [];
-
-    pelatihanAuditorModel.add(
+    return [
       PelatihanAuditorModel(
         name: 'Perencanaan',
-        iconPath: 'assets/icons/pictures.svg',
+        icon: Icons.event_note,
         boxColor: Colors.blue.shade400,
       ),
-    );
-
-    pelatihanAuditorModel.add(
       PelatihanAuditorModel(
         name: 'Realisasi',
-        iconPath: 'assets/icons/pictures.svg',
+        icon: Icons.event_available,
         boxColor: Colors.blue.shade400,
       ),
-    );
-
-    return pelatihanAuditorModel;
+    ];
   }
 }
 
+/// RAPAT UMUM
 class RapatUmumModel {
   String name;
-  String iconPath;
+  IconData icon;
   Color boxColor;
 
   RapatUmumModel({
     required this.name,
-    required this.iconPath,
+    required this.icon,
     required this.boxColor,
   });
 
   static List<RapatUmumModel> getRapatUmumModel() {
-    List<RapatUmumModel> rapatUmumModel = [];
-
-    rapatUmumModel.add(
+    return [
       RapatUmumModel(
         name: 'Undangan Rapat',
-        iconPath: 'assets/icons/pictures.svg',
+        icon: Icons.mark_email_unread,
         boxColor: Colors.blue.shade400,
       ),
-    );
-
-    rapatUmumModel.add(
       RapatUmumModel(
         name: 'Risalah Rapat',
-        iconPath: 'assets/icons/pictures.svg',
+        icon: Icons.description,
         boxColor: Colors.blue.shade400,
       ),
-    );
-
-    return rapatUmumModel;
+    ];
   }
 }
+
+
+// Sampe Sini===========================
+
+
+//todo: pelaporan
