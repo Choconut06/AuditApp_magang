@@ -1,3 +1,4 @@
+import 'package:audit_app_magang/pages/homepage.dart'; // <-- tambahkan import HomePage
 import 'package:audit_app_magang/pages/ubah_passwordpage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -125,8 +126,6 @@ class _ProfilePageState extends State<ProfilePage> {
     );
   }
 
-  // Widget untuk TextField passwor
-
   PreferredSizeWidget _appBar() {
     return PreferredSize(
       preferredSize: const Size.fromHeight(120),
@@ -149,7 +148,14 @@ class _ProfilePageState extends State<ProfilePage> {
                     Align(
                       alignment: Alignment.centerLeft,
                       child: GestureDetector(
-                        onTap: () => Navigator.pop(context),
+                        onTap: () {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const HomePage(),
+                            ),
+                          );
+                        },
                         child: Container(
                           padding: const EdgeInsets.all(8),
                           decoration: BoxDecoration(

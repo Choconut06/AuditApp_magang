@@ -2,6 +2,8 @@ import 'package:audit_app_magang/widget/sidebar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:audit_app_magang/pages/addsuratpemanggilanpage.dart';
+import 'package:audit_app_magang/model/investigasi_model.dart';
+import 'package:audit_app_magang/widget/card_investigasi.dart';
 
 class SuratPemanggilanPage extends StatefulWidget {
   const SuratPemanggilanPage({super.key});
@@ -12,19 +14,13 @@ class SuratPemanggilanPage extends StatefulWidget {
 
 class _SuratPemanggilanPageState extends State<SuratPemanggilanPage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  late List<SuratPemanggilanItem> _items;
 
-  final List<Map<String, dynamic>> _rows = [
-    {
-      "nomor": 1,
-      "tahun": "2025",
-      "buktiPermulaan": "BP001",
-      "suratPemanggilan": "SP-001/INV/2025",
-      "auditor": "Tim A",
-      "rev": "0",
-      "status": "Terkirim",
-      "#": "SP001",
-    },
-  ];
+  @override
+  void initState() {
+    super.initState();
+    _items = SuratPemanggilanItem.seed();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,124 +28,79 @@ class _SuratPemanggilanPageState extends State<SuratPemanggilanPage> {
       key: _scaffoldKey,
       appBar: _appBar(),
       drawer: const CustomDrawer(),
-      body: Padding(
-        padding: const EdgeInsets.all(12),
+      body: SingleChildScrollView(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              "Surat Pemanggilan",
-              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 20),
-            Expanded(
-              child: LayoutBuilder(
-                builder: (context, constraints) {
-                  final w = constraints.maxWidth;
-                  return SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: ConstrainedBox(
-                      constraints: BoxConstraints(minWidth: w),
-                      child: DataTable(
-                        headingRowColor: MaterialStateColor.resolveWith(
-                          (_) => Colors.blue.shade100,
-                        ),
-                        columns: const [
-                          DataColumn(label: Text("Nomor")),
-                          DataColumn(label: Text("Tahun")),
-                          DataColumn(label: Text("Bukti Permulaan")),
-                          DataColumn(label: Text("Surat Pemanggilan")),
-                          DataColumn(label: Text("Auditor")),
-                          DataColumn(label: Text("Rev")),
-                          DataColumn(label: Text("Status")),
-                          DataColumn(label: Text("#")),
-                          DataColumn(label: Text("Aksi")),
-                        ],
-                        rows:
-                            _rows.map((data) {
-                              return DataRow(
-                                cells: [
-                                  DataCell(Text(data["nomor"].toString())),
-                                  DataCell(Text(data["tahun"] ?? "")),
-                                  DataCell(Text(data["buktiPermulaan"] ?? "")),
-                                  DataCell(
-                                    Text(data["suratPemanggilan"] ?? ""),
-                                  ),
-                                  DataCell(Text(data["auditor"] ?? "")),
-                                  DataCell(Text(data["rev"] ?? "")),
-                                  DataCell(Text(data["status"] ?? "")),
-                                  DataCell(Text(data["#"] ?? "")),
-                                  DataCell(
-                                    Row(
-                                      children: [
-                                        IconButton(
-                                          icon: const Icon(
-                                            Icons.edit,
-                                            color: Colors.orange,
-                                          ),
-                                          onPressed: () {
-                                            ScaffoldMessenger.of(
-                                              context,
-                                            ).showSnackBar(
-                                              SnackBar(
-                                                content: Text(
-                                                  'Edit ${data["#"]}',
-                                                ),
-                                              ),
-                                            );
-                                          },
-                                        ),
-                                        IconButton(
-                                          icon: const Icon(
-                                            Icons.delete,
-                                            color: Colors.red,
-                                          ),
-                                          onPressed: () {
-                                            setState(() {
-                                              _rows.remove(data);
-                                            });
-                                          },
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              );
-                            }).toList(),
-                      ),
-                    ),
-                  );
-                },
+            const SizedBox(height: 12),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 12),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  "Surat Pemanggilan",
+                  style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                ),
               ),
             ),
+            const SizedBox(height: 8),
+            for (final it in _items)
+              InvestigasiCard(
+                title: it.suratPemanggilan,
+                status: it.status,
+                subtitle: "Auditor: ${it.auditor}",
+                chips: [
+                  InvestigasiChip("Nomor", it.nomor.toString()),
+                  InvestigasiChip("Tahun", it.tahun),
+                  InvestigasiChip("BP", it.buktiPermulaan),
+                  InvestigasiChip("Rev", it.rev),
+                  InvestigasiChip("#", it.kode),
+                ],
+                onEdit:
+                    () => ScaffoldMessenger.of(
+                      context,
+                    ).showSnackBar(SnackBar(content: Text('Edit ${it.kode}'))),
+                onDelete: () => _confirmDelete(it),
+              ),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () async {
-          final result = await Navigator.push<Map<String, String>?>(
+          final res = await Navigator.push<Map<String, String>?>(
             context,
             MaterialPageRoute(builder: (_) => const AddSuratPemanggilanPage()),
           );
-          if (result != null) {
-            setState(() {
-              _rows.add({
-                "nomor":
-                    int.tryParse(result["nomor"] ?? "") ?? _rows.length + 1,
-                "tahun": result["tahun"] ?? "",
-                "buktiPermulaan": result["buktiPermulaan"] ?? "",
-                "suratPemanggilan": result["suratPemanggilan"] ?? "",
-                "auditor": result["auditor"] ?? "",
-                "rev": result["rev"] ?? "",
-                "status": result["status"] ?? "",
-                "#": result["#"] ?? "",
-              });
-            });
+          if (res != null) {
+            setState(() => _items.add(SuratPemanggilanItem.fromMap(res)));
           }
         },
         icon: const Icon(Icons.add),
         label: const Text("Tambah Surat"),
       ),
+    );
+  }
+
+  void _confirmDelete(SuratPemanggilanItem it) {
+    showDialog(
+      context: context,
+      builder:
+          (ctx) => AlertDialog(
+            title: const Text("Hapus Surat Pemanggilan"),
+            content: Text("Hapus ${it.suratPemanggilan}?"),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(ctx),
+                child: const Text("Batal"),
+              ),
+              TextButton(
+                onPressed: () {
+                  setState(() => _items.remove(it));
+                  Navigator.pop(ctx);
+                },
+                child: const Text("Hapus", style: TextStyle(color: Colors.red)),
+              ),
+            ],
+          ),
     );
   }
 
@@ -171,7 +122,6 @@ class _SuratPemanggilanPageState extends State<SuratPemanggilanPage> {
                 child: Stack(
                   alignment: Alignment.center,
                   children: [
-                    // Tombol Back di kiri
                     Align(
                       alignment: Alignment.centerLeft,
                       child: GestureDetector(

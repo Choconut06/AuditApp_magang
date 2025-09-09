@@ -1,7 +1,10 @@
+import 'package:audit_app_magang/widget/sidebar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+
+import 'package:audit_app_magang/model/program_kerja_model.dart';
+import 'package:audit_app_magang/widget/card_program_kerja.dart';
 import 'adddokumenpkat.dart';
-import 'package:audit_app_magang/widget/sidebar.dart';
 
 class DokumenPkatPage extends StatefulWidget {
   const DokumenPkatPage({super.key});
@@ -12,123 +15,83 @@ class DokumenPkatPage extends StatefulWidget {
 
 class _DokumenPkatPageState extends State<DokumenPkatPage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  late List<ProgramKerjaItem> items;
 
-  List<Map<String, String>> dokumenData = [
-    {
-      "nomor": "1",
-      "tahun": "2024",
-      "noPkat": "PKAT-001",
-      "tglPkat": "01/07/2024",
-      "revisi": "1",
-      "status": "Disetujui",
-      "noRevisi": "DP001",
-    },
-    {
-      "nomor": "2",
-      "tahun": "2025",
-      "noPkat": "PKAT-002",
-      "tglPkat": "15/03/2025",
-      "revisi": "2",
-      "status": "Revisi",
-      "noRevisi": "DP002",
-    },
-  ];
+  @override
+  void initState() {
+    super.initState();
+    items = ProgramKerjaItem.sampleDokumenPkat();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      appBar: appBar(),
+      appBar: _appBar(),
       drawer: const CustomDrawer(),
-      body: Column(
-        children: [
-          const SizedBox(height: 20),
-          Expanded(
-            child: SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: ConstrainedBox(
-                constraints: const BoxConstraints(minWidth: 800),
-                child: DataTable(
-                  columnSpacing: 12,
-                  headingRowColor: MaterialStateProperty.all(
-                    Colors.blue.shade100,
-                  ),
-                  border: TableBorder.all(color: Colors.grey.shade300),
-                  columns: const [
-                    DataColumn(label: Text('Nomor')),
-                    DataColumn(label: Text('Tahun')),
-                    DataColumn(label: Text('Nomor PKAT')),
-                    DataColumn(label: Text('Tanggal PKAT')),
-                    DataColumn(label: Text('Revisi')),
-                    DataColumn(label: Text('Status Revisi')),
-                    DataColumn(label: Text('Nomor Revisi')),
-                    DataColumn(label: Text('Aksi')),
-                  ],
-                  rows:
-                      dokumenData.map((row) {
-                        return DataRow(
-                          cells: [
-                            DataCell(Text(row['nomor']!)),
-                            DataCell(Text(row['tahun']!)),
-                            DataCell(Text(row['noPkat']!)),
-                            DataCell(Text(row['tglPkat']!)),
-                            DataCell(Text(row['revisi']!)),
-                            DataCell(Text(row['status']!)),
-                            DataCell(Text(row['noRevisi']!)),
-                            DataCell(
-                              Row(
-                                children: [
-                                  IconButton(
-                                    icon: const Icon(
-                                      Icons.edit,
-                                      color: Colors.orange,
-                                    ),
-                                    onPressed: () {},
-                                  ),
-                                  IconButton(
-                                    icon: const Icon(
-                                      Icons.delete,
-                                      color: Colors.red,
-                                    ),
-                                    onPressed: () {},
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        );
-                      }).toList(),
-                ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            _filterBar(),
+            const SizedBox(height: 4),
+            for (final item in items)
+              CardProgramKerja(
+                item: item,
+                onEdit: () {
+                  // TODO: aksi edit
+                },
+                onDelete: () {
+                  setState(() {
+                    items.remove(item);
+                  });
+                },
               ),
-            ),
-          ),
-        ],
-      ),
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: () async {
-          final result = await Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => const AddDokumenPkatPage()),
-          );
-
-          if (result != null) {
-            setState(() {
-              dokumenData.add(result);
-            });
-          }
-        },
-        icon: const Icon(Icons.add),
-        label: const Text("Tambah Dokumen"),
+          ],
+        ),
       ),
     );
   }
 
-  PreferredSizeWidget appBar() {
+  Widget _filterBar() {
+    return Row(
+      children: [
+        Container(
+          height: 60,
+          width: 160,
+          padding: const EdgeInsets.only(left: 16, right: 16, top: 10),
+          child: GestureDetector(
+            onTap: () {},
+            child: Container(
+              padding: const EdgeInsets.all(8),
+              height: 40,
+              width: 120,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                border: Border.all(
+                  color: Colors.blueGrey.shade400.withOpacity(0.3),
+                ),
+                borderRadius: BorderRadius.circular(24),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Icon(Icons.filter_alt_outlined, color: Colors.blue.shade400),
+                  Text('Filter', style: TextStyle(color: Colors.blue.shade400)),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  PreferredSizeWidget _appBar() {
     return PreferredSize(
       preferredSize: const Size.fromHeight(120),
       child: AppBar(
-        automaticallyImplyLeading: false,
         backgroundColor: Colors.blue[400],
+        automaticallyImplyLeading: false,
         flexibleSpace: SafeArea(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.end,
@@ -141,6 +104,7 @@ class _DokumenPkatPageState extends State<DokumenPkatPage> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
+                    // Menu Button
                     GestureDetector(
                       onTap: () => _scaffoldKey.currentState?.openDrawer(),
                       child: Container(
@@ -157,6 +121,15 @@ class _DokumenPkatPageState extends State<DokumenPkatPage> {
                         ),
                       ),
                     ),
+                    const Text(
+                      'Dokumen PKAT',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 24,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    // Profile icon
                     Container(
                       padding: const EdgeInsets.all(8),
                       decoration: BoxDecoration(
