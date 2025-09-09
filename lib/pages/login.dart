@@ -1,25 +1,56 @@
 import 'package:flutter/material.dart';
 import 'homepage.dart';
+import 'package:audit_app_magang/helper/auth_helper.dart';
 
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Login UI',
-      theme: ThemeData(primarySwatch: Colors.blue),
-      home: const LoginPage(),
-    );
-  }
+  State<LoginPage> createState() => _LoginPageState();
 }
 
-class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+class _LoginPageState extends State<LoginPage> {
+  final _formKey = GlobalKey<FormState>();
+  final _emailC = TextEditingController();
+  final _passC = TextEditingController();
+  bool _obscure = true;
+  bool _loading = false;
+
+  @override
+  void dispose() {
+    _emailC.dispose();
+    _passC.dispose();
+    super.dispose();
+  }
+
+  Future<void> _handleLogin() async {
+    if (!_formKey.currentState!.validate()) return;
+    setState(() => _loading = true);
+
+    try {
+      final data = await AuthService.login(
+        email: _emailC.text.trim(),
+        password: _passC.text,
+      );
+
+      // opsional: akses data['user'] kalau mau disimpan di provider/state
+      if (!mounted) return;
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text('Login berhasil')));
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (_) => const HomePage()),
+      );
+    } catch (e) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(e.toString().replaceFirst('Exception: ', ''))),
+      );
+    } finally {
+      if (mounted) setState(() => _loading = false);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,88 +77,116 @@ class LoginPage extends StatelessWidget {
               ),
               const SizedBox(height: 50),
               Container(
-                height: 220.0,
+                height: 260.0,
                 width: 338.0,
-                padding: const EdgeInsets.all(30.0),
+                padding: const EdgeInsets.all(24.0),
                 decoration: BoxDecoration(
                   color: Colors.blue,
                   borderRadius: BorderRadius.circular(20),
                 ),
-                child: Column(
-                  children: [
-                    Container(
-                      height: 32.0,
-                      width: 224.0,
-                      child: TextField(
-                        keyboardType: TextInputType.emailAddress,
-                        decoration: InputDecoration(
-                          filled: true,
-                          fillColor: Colors.white,
-                          hintText: 'Enter email...',
-                          // labelText: 'Email',
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                            borderSide: BorderSide.none,
-                          ),
-                          contentPadding: const EdgeInsets.symmetric(
-                            vertical: 15,
-                            horizontal: 20,
-                          ),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: 20),
-                    Container(
-                      height: 32.0,
-                      width: 224.0,
-                      child: TextField(
-                        obscureText: true,
-                        decoration: InputDecoration(
-                          filled: true,
-                          fillColor: Colors.white,
-                          hintText: 'Enter password...',
-                          // labelText: 'Password',
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                            borderSide: BorderSide.none,
-                          ),
-                          contentPadding: const EdgeInsets.symmetric(
-                            vertical: 15,
-                            horizontal: 20,
-                          ),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: 30),
-                    SizedBox(
-                      width: 85.0,
-                      height: 32.0,
-                      child: ElevatedButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const HomePage(),
+                child: Form(
+                  key: _formKey,
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: 44.0,
+                        width: 240.0,
+                        child: TextFormField(
+                          controller: _emailC,
+                          keyboardType: TextInputType.emailAddress,
+                          decoration: InputDecoration(
+                            filled: true,
+                            fillColor: Colors.white,
+                            hintText: 'Enter email...',
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide: BorderSide.none,
                             ),
-                          );
-                        },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.white,
-                          foregroundColor: Colors.black,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
+                            contentPadding: const EdgeInsets.symmetric(
+                              vertical: 12,
+                              horizontal: 16,
+                            ),
                           ),
-                        ),
-                        child: const Text(
-                          'Login',
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
-                          ),
+                          validator: (v) {
+                            if (v == null || v.trim().isEmpty)
+                              return 'Email wajib diisi';
+                            if (!RegExp(
+                              r'^[^@]+@[^@]+\.[^@]+',
+                            ).hasMatch(v.trim()))
+                              return 'Email tidak valid';
+                            return null;
+                          },
                         ),
                       ),
-                    ),
-                  ],
+                      const SizedBox(height: 16),
+                      SizedBox(
+                        height: 44.0,
+                        width: 240.0,
+                        child: TextFormField(
+                          controller: _passC,
+                          obscureText: _obscure,
+                          decoration: InputDecoration(
+                            filled: true,
+                            fillColor: Colors.white,
+                            hintText: 'Enter password...',
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide: BorderSide.none,
+                            ),
+                            contentPadding: const EdgeInsets.symmetric(
+                              vertical: 12,
+                              horizontal: 16,
+                            ),
+                            suffixIcon: IconButton(
+                              icon: Icon(
+                                _obscure
+                                    ? Icons.visibility
+                                    : Icons.visibility_off,
+                              ),
+                              onPressed:
+                                  () => setState(() => _obscure = !_obscure),
+                            ),
+                          ),
+                          validator:
+                              (v) =>
+                                  (v == null || v.isEmpty)
+                                      ? 'Password wajib diisi'
+                                      : null,
+                        ),
+                      ),
+                      const SizedBox(height: 24),
+                      SizedBox(
+                        width: 120.0,
+                        height: 40.0,
+                        child: ElevatedButton(
+                          onPressed: _loading ? null : _handleLogin,
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.white,
+                            foregroundColor: Colors.black,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                          ),
+                          child:
+                              _loading
+                                  ? const SizedBox(
+                                    width: 18,
+                                    height: 18,
+                                    child: CircularProgressIndicator(
+                                      strokeWidth: 2,
+                                    ),
+                                  )
+                                  : const Text(
+                                    'Login',
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
               const SizedBox(height: 30),
