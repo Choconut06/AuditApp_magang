@@ -14,8 +14,8 @@ class _ProfilePageState extends State<ProfilePage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   // Data user (sementara hardcode, nanti bisa diambil dari backend / database)
-  String nama = "Rizqi Liliati";
-  String email = "rizqililiati@example.com";
+  String nama = "John Doe";
+  String email = "JohnDoe@example.com";
   String jabatan = "Kepala Divisi Internal Audit";
 
   @override

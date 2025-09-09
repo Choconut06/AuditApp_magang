@@ -1,5 +1,5 @@
 import 'package:audit_app_magang/model/persiapan_audit_model.dart';
-import 'package:audit_app_magang/widget/biaya_penugasan_card.dart';
+import 'package:audit_app_magang/widget/card_biaya_penugasan.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:audit_app_magang/widget/sidebar.dart';
